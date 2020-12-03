@@ -26,7 +26,7 @@
 
 |⭐|⭐|⭐|
 |-|-|-|
-| [![OTRS-QuickDelete](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=OTRS-QuickDelete)](https://github.com/dennykorsukewitz/OTRS-QuickDelete) | [![OTRS-Inventory](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=OTRS-Inventory)](https://github.com/dennykorsukewitz/OTRS-Inventory) | [![OTRS-MRBS](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=OTRS-MRBS)](https://github.com/dennykorsukewitz/OTRS-MRBS) |
+| [![OTRS-QuickDelete](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=OTRS-QuickDelete)](https://github.com/dennykorsukewitz/OTRS-QuickDelete) | [![OTRS-Inventory](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=OTRS-Inventory)](https://github.com/dennykorsukewitz/OTRS-Inventory) | [![MRBS-OTRS](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=MRBS-OTRS)](https://github.com/dennykorsukewitz/MRBS-OTRS) |
 
 ### Znuny4OTRS
 
