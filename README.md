@@ -30,10 +30,7 @@
 
 ## My Projects
 
-|⭐|⭐|
-|-|-|
-| [![DK4OTRS-QuickDelete](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-QuickDelete)](https://github.com/dennykorsukewitz/DK4OTRS-QuickDelete) | [![DK4OTRS-UBInventory](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-UBInventory)](https://github.com/dennykorsukewitz/DK4OTRS-UBInventory) |
-| [![MRBS-OTRS](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=MRBS-OTRS)](https://github.com/dennykorsukewitz/MRBS-OTRS) | |
+ [![DK4OTRS-QuickDelete](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-QuickDelete)](https://github.com/dennykorsukewitz/DK4OTRS-QuickDelete) [![DK4OTRS-UBInventory](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-UBInventory)](https://github.com/dennykorsukewitz/DK4OTRS-UBInventory) [![MRBS-OTRS](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=MRBS-OTRS)](https://github.com/dennykorsukewitz/MRBS-OTRS)
 
 ## Contribute
 
