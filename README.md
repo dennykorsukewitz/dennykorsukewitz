@@ -13,7 +13,7 @@
 - ⚡ Fun fact: ...
 -->
 
-[![Denny Korsukewitz's GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz) [![Top Langs](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz)](https://github.com/dennykorsukewitz)
+[![Denny Korsukewitz's GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz) [![Top Langs](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent)](https://github.com/dennykorsukewitz)
 
 ## Languages and Tools:
 
