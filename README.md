@@ -28,10 +28,6 @@
 [![Denny Korsukewitz's GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz)
 [![Top Langs](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent)](https://github.com/dennykorsukewitz)
 
-## My Projects
-
- [![DK4OTRS-QuickDelete](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-QuickDelete&theme=transparent)](https://github.com/dennykorsukewitz/DK4OTRS-QuickDelete) [![DK4OTRS-UBInventory](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=DK4OTRS-UBInventory&theme=transparent)](https://github.com/dennykorsukewitz/DK4OTRS-UBInventory) [![MRBS-OTRS](https://ghrs.vercel.app/api/pin/?username=dennykorsukewitz&repo=MRBS-OTRS&theme=transparent)](https://github.com/dennykorsukewitz/MRBS-OTRS)
-
 ## Contribute
 
 ### Znuny
