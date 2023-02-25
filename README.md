@@ -2,7 +2,7 @@
 
 ## I'm Denny, developer from Berlin, Germany - <img alt="dennykorsukewitz" src="https://komarev.com/ghpvc/?username=dennykorsukewitz&label=Profile%20views&color=0e75b6&style=flat" />
 
-## Languages and Tools:
+## Languages and Tools
 
 <p class="left" >
     <img alt="GitLab" width="40" height="40" class="left" src="https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png" />
