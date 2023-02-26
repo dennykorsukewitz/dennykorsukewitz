@@ -25,8 +25,12 @@
 
 ## Statistics
 
-[![Denny Korsukewitz's GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz)
-[![Top Langs](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent)](https://github.com/dennykorsukewitz)
+<a href="https://github.com/dennykorsukewitz">
+    <img alt="Denny Korsukewitz's GitHub Stats" class="github-stats" src="https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent" />
+</a>
+<a href="https://github.com/dennykorsukewitz">
+    <img alt="Denny Korsukewitz's GitHub Top Languages" class="github-stats-languages" src="https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent" />
+</a>
 
 ## Contribute
 
