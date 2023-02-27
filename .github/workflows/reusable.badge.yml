@@ -1,0 +1,56 @@
+---
+name: Badge
+
+on:
+  workflow_call:
+    inputs:
+      gistID:
+        required: false
+        type: string
+        default: e2729bfd9b81d9c032ded617a3f924e7
+      filename:
+        required: false
+        type: string
+        default: 'badge.json'
+      label:
+        required: false
+        type: string
+        default: 'DK4'
+      message:
+        required: false
+        type: string
+        default: 'Rocks'
+      color:
+        required: false
+        type: string
+        default: 'green'
+      valColorRange:
+        required: false
+        type: string
+      minColorRange:
+        required: false
+        type: string
+      maxColorRange:
+        required: false
+        type: string
+    secrets:
+      GIST:
+        required: true
+
+jobs:
+  Badge:
+    name: Badge
+    runs-on: ubuntu-22.04 # ubuntu-latest
+    steps:
+      - name: Create Badge
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST }}
+          gistID: ${{ inputs.gistID }} # e2729bfd9b81d9c032ded617a3f924e7
+          filename: ${{ inputs.filename }}
+          label: ${{ inputs.label }}
+          message: ${{ inputs.message }}
+          color: ${{ inputs.color }}
+          valColorRange: ${{ inputs.valColorRange }}
+          minColorRange: ${{ inputs.minColorRange }}
+          maxColorRange: ${{ inputs.maxColorRange }}

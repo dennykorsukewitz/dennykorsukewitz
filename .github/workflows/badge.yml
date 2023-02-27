@@ -1,0 +1,52 @@
+---
+name: Badge
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      gistID:
+        required: false
+        type: string
+        default: e2729bfd9b81d9c032ded617a3f924e7
+      filename:
+        required: false
+        type: string
+        default: 'badge.json'
+      label:
+        required: false
+        type: string
+        default: 'DK4'
+      message:
+        required: false
+        type: string
+        default: 'Rocks'
+      color:
+        required: false
+        type: string
+        default: 'green'
+      valColorRange:
+        required: false
+        type: string
+      minColorRange:
+        required: false
+        type: string
+      maxColorRange:
+        required: false
+        type: string
+
+jobs:
+  Badge:
+    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/reusable.badge.yml@dev
+    secrets:
+      GIST: ${{ secrets.GIST }}
+    with:
+      gistID: e2729bfd9b81d9c032ded617a3f924e7
+      filename: ${{ inputs.filename }}
+      label: ${{ inputs.label }}
+      message: ${{ inputs.message }}
+      color: ${{ inputs.color }}
+      valColorRange: ${{ inputs.valColorRange }}
+      minColorRange: ${{ inputs.minColorRange }}
+      maxColorRange: ${{ inputs.maxColorRange }}

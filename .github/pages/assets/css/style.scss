@@ -1,0 +1,34 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.github-stats {
+    height: 195px;
+}
+
+.github-repository {
+    height: 119px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 10%);
+    width: 100%;
+    border-top: 1px dashed #b5e853;
+    padding: 20px 0;
+}
+
+#downloads .btn.float-right,
+.float-right {
+    float: right;
+    margin-left: 10px;
+}
+
+header h1::before {
+    content: "\# ";
+    font-size: 34px;
+}
+
+a {
+    color: #0366d6 !important;
+}

@@ -1,0 +1,19 @@
+---
+name: Trigger GitHub Pages
+
+on:
+  workflow_call:
+    secrets:
+      PAT:
+        required: true
+
+jobs:
+  Trigger-GitHub-Pages:
+    name: Trigger GitHub Pages
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - run: |
+          gh workflow run --repo dennykorsukewitz/dennykorsukewitz.github.io pages.yml --ref dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
