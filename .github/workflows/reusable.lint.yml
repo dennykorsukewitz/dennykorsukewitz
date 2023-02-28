@@ -23,17 +23,17 @@ jobs:
         with:
           path: repository
 
-      - name: Check out DK4
+      - name: Check out dennykorsukewitz
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
         with:
-          repository: dennykorsukewitz/DK4
+          repository: dennykorsukewitz/dennykorsukewitz
           ref: 'dev'
-          path: DK4
+          path: dennykorsukewitz
 
       - name: Prepare linters config
-        run: cp -R "${GITHUB_WORKSPACE}"/DK4/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
+        run: cp -R "${GITHUB_WORKSPACE}"/dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"

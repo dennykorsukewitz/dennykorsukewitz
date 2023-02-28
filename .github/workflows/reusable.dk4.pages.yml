@@ -16,17 +16,17 @@ jobs:
         with:
           path: repository
 
-      - name: Check out DK4
+      - name: Check out dennykorsukewitz
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
         with:
-          repository: dennykorsukewitz/DK4
+          repository: dennykorsukewitz/dennykorsukewitz
           ref: 'dev' # update-dev
-          path: DK4
+          path: dennykorsukewitz
 
       - name: Prepare config
-        run: cp -R "${GITHUB_WORKSPACE}"/DK4/.github/pages/* "${GITHUB_WORKSPACE}"/repository/
+        run: cp -R "${GITHUB_WORKSPACE}"/dennykorsukewitz/.github/pages/* "${GITHUB_WORKSPACE}"/repository/
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
