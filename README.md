@@ -2,7 +2,6 @@
 
 ## I'm Denny, developer from Berlin, Germany
 
-
 ## My Work
 
 <img align="right" width="50" height="50" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
