@@ -32,20 +32,18 @@ Znuny/Znuny LTS is a fork of the ((OTRS)) Community Edition, one of the most fle
     <img title="Nodejs" alt="nodejs" class="left" width="40" height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" />
     <img title="Jekyll" alt="jekyll" class="left" width="40" height="40" src="https://www.vectorlogo.zone/logos/jekyllrb/jekyllrb-icon.svg" />
     <img title="Jest" alt="jest" class="left" width="40" height="40" src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" />
-    <img title="Selenium" alt="selenium" class="left" width="40" height="40" src="https://avatars.githubusercontent.com/u/983927?s=48&v=4" ium-logo.svg" />
+    <img title="Selenium" alt="selenium" class="left" width="40" height="40" src="https://avatars.githubusercontent.com/u/983927?s=48&v=4" />
     <img title="Docker" alt="docker" class="left" width="40" height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" />
 </p>
 
 ## Statistics
-<p style="text-align: center;">
-    <img src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" width="128" alt="Achievement: Pull Shark" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/public-sponsor-default.png" width="128" alt="Achievement: Public Sponsor" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/pair-extraordinaire-default.png" width="128" alt="Achievement: Pair Extraordinaire" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png" width="128" alt="Achievement: Quickdraw" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png" width="128" alt="Achievement: Arctic Code Vault Contributor" data-view-component="true" class="achievement-badge-card">
+
+<img src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" width="128" alt="Achievement: Pull Shark" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/public-sponsor-default.png" width="128" alt="Achievement: Public Sponsor" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/pair-extraordinaire-default.png" width="128" alt="Achievement: Pair Extraordinaire" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png" width="128" alt="Achievement: Quickdraw" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png" width="128" alt="Achievement: Arctic Code Vault Contributor" data-view-component="true" class="achievement-badge-card">
 
 <hr>
 
 [![GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz)
 [![GitHub Top Languages](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent)](https://github.com/dennykorsukewitz)
-
-</p>
 
 ## Contribute
 
