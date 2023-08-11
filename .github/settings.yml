@@ -9,7 +9,7 @@ repository:
   homepage: http://dennykorsukewitz.github.io/DK4
 
   # A comma-separated list of topics to set on the repository
-  topics: open, opensource, open-source
+  topics: open, opensource, open-source, DK4, otrs, znuny, package, extension, addon, VisualStudioCode, VSC
 
   # Either `true` to make the repository private, or `false` to make it public.
   private: false
