@@ -92,3 +92,23 @@ labels:
     color: '#AD8D43'
     description: This is in Progress.
 
+  - name: Znuny 6.0
+    color: '#ff8a24'
+    description: Znuny 6.0.
+
+  - name: Znuny 6.4
+    color: '#ff8a24'
+    description: Znuny 6.4.
+
+  - name: Znuny 6.5
+    color: '#ff8a24'
+    description: Znuny 6.5.
+    
+  - name: Znuny 7.0
+    color: '#ff8a24'
+    description: Znuny 7.0.
+
+  - name: dev
+    color: '#b8e550'
+    description: dev.
+        
