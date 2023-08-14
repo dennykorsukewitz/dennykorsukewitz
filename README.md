@@ -2,15 +2,7 @@
 
 ## I'm Denny, developer from Berlin, Germany
 
-## My Work
-
-<img align="right" width="50" height="50" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
-
-Currently I am working on the ticket system [Znuny](https://www.znuny.org/).
-
-Znuny/Znuny LTS is a fork of the ((OTRS)) Community Edition, one of the most flexible web-based ticketing systems used for Customer Service, Help Desk, IT Service Management.
-
-<img title="Znuny" alt="git" src="https://www.znuny.org/media/pages/home/8ac2ada2fd-1679833325/otrs-community-edition-fork.png" />
+![Metrics](https://metrics.lecoq.io/dennykorsukewitz?template=classic&isocalendar=1&languages=1&habits=1&sponsors=1&people=1&repositories=1&achievements=1&introduction=1&base=header%2C%20activity%2C%20community%2C%20repositories%2C%20metadata&base.indepth=false&base.hireable=false&base.skip=false&repositories.batch=100&repositories.forks=false&repositories.affiliations=owner&isocalendar=false&isocalendar.duration=full-year&languages=false&languages.limit=8&languages.threshold=0%25&languages.other=false&languages.colors=github&languages.sections=most-used&languages.indepth=false&languages.analysis.timeout=15&languages.analysis.timeout.repositories=7.5&languages.categories=markup%2C%20programming&languages.recent.categories=markup%2C%20programming&languages.recent.load=300&languages.recent.days=14&habits=false&habits.from=200&habits.days=14&habits.facts=true&habits.charts=false&habits.charts.type=classic&habits.trim=false&habits.languages.limit=8&habits.languages.threshold=0%25&people=false&people.limit=24&people.identicons=false&people.identicons.hide=false&people.size=28&people.types=followers%2C%20following&people.shuffle=false&sponsors=false&sponsors.sections=goal%2C%20list%2C%20about&sponsors.past=false&sponsors.size=24&sponsors.title=Sponsor%20Me!&repositories=false&repositories.featured=znuny%2Fznuny%2C%20karldaeubel%2FPenAndPaperFloorplanner%2C%20zammad%2Fzammad&repositories.pinned=0&repositories.starred=0&repositories.random=0&repositories.order=featured%2C%20pinned%2C%20starred%2C%20random&achievements=false&achievements.threshold=C&achievements.secrets=true&achievements.display=detailed&achievements.limit=0&introduction=false&introduction.title=true&config.timezone=Europe%2FBerlin&config.display=large)
 
 ## Languages and Tools
 
@@ -35,22 +27,15 @@ Znuny/Znuny LTS is a fork of the ((OTRS)) Community Edition, one of the most fle
     <img title="Docker" alt="docker" class="left" width="40" height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" />
 </p>
 
-## Statistics
+## My Work
 
-<img src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" width="128" alt="Achievement: Pull Shark" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/public-sponsor-default.png" width="128" alt="Achievement: Public Sponsor" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/pair-extraordinaire-default.png" width="128" alt="Achievement: Pair Extraordinaire" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png" width="128" alt="Achievement: Quickdraw" data-view-component="true" class="achievement-badge-card"><img src="https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png" width="128" alt="Achievement: Arctic Code Vault Contributor" data-view-component="true" class="achievement-badge-card">
+<img align="right" width="50" height="50" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
 
-<hr>
+Currently I am working on the ticket system [Znuny](https://www.znuny.org/).
 
-[![GitHub Stats](https://ghrs.vercel.app/api?username=dennykorsukewitz&show_icons=true&include_all_commits=true&theme=transparent)](https://github.com/dennykorsukewitz)
-[![GitHub Top Languages](https://ghrs.vercel.app/api/top-langs/?username=dennykorsukewitz&theme=transparent)](https://github.com/dennykorsukewitz)
+Znuny/Znuny LTS is a fork of the ((OTRS)) Community Edition, one of the most flexible web-based ticketing systems used for Customer Service, Help Desk, IT Service Management.
 
-## Contribute
-
-[![Znuny](https://ghrs.vercel.app/api/pin/?username=karldaeubel&repo=PenAndPaperFloorplanner&theme=transparent)](https://github.com/karldaeubel/PenAndPaperFloorplanner)
-[![Znuny](https://ghrs.vercel.app/api/pin/?username=znuny&repo=znuny&theme=transparent)](https://github.com/znuny/znuny)
-[![Zammad](https://ghrs.vercel.app/api/pin/?username=zammad&repo=zammad&theme=transparent)](https://github.com/zammad/zammad)
-
-<hr>
+<img title="Znuny" alt="git" src="https://www.znuny.org/media/pages/home/8ac2ada2fd-1679833325/otrs-community-edition-fork.png" />
 
 Enjoy!
 
