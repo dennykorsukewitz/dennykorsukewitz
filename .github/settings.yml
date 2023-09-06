@@ -92,6 +92,22 @@ labels:
     color: '#AD8D43'
     description: This is in Progress.
 
+  - name: OTRS 3
+    color: '#69BECC'
+    description: OTRS 3.
+
+  - name: OTRS 4
+    color: '#69BECC'
+    description: OTRS 4.
+
+  - name: OTRS 5
+    color: '#69BECC'
+    description: OTRS 5.
+
+  - name: OTRS 6
+    color: '#69BECC'
+    description: OTRS 6.
+
   - name: Znuny 6.0
     color: '#ff8a24'
     description: Znuny 6.0.
@@ -103,7 +119,7 @@ labels:
   - name: Znuny 6.5
     color: '#ff8a24'
     description: Znuny 6.5.
-    
+
   - name: Znuny 7.0
     color: '#ff8a24'
     description: Znuny 7.0.
@@ -111,4 +127,4 @@ labels:
   - name: dev
     color: '#b8e550'
     description: dev.
-        
+
