@@ -2,7 +2,7 @@
 
 ## I'm Denny, developer from Berlin, Germany
 
-![Metrics](/github-metrics.svg)
+![Metrics](https://raw.githubusercontent.com/dennykorsukewitz/dennykorsukewitz/dev/.github/metrics/personal.svg)
 
 ## Languages and Tools
 
