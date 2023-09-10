@@ -1,12 +1,12 @@
 repository:
   # The name of the repository. Changing this will rename the repository
-  name: DK4
+  name: dennykorsukewitz
 
   # A short description of the repository that will show up on GitHub
   description: Denny Korsukéwitz 4 OpenSource. Here you can find my open source projects.
 
   # A URL with more information about the repository
-  homepage: http://dennykorsukewitz.github.io/DK4
+  homepage: http://dennykorsukewitz.github.io
 
   # A comma-separated list of topics to set on the repository
   topics: open, opensource, open-source, DK4, otrs, znuny, package, extension, addon, VisualStudioCode, VSC
@@ -92,6 +92,10 @@ labels:
     color: '#AD8D43'
     description: This is in Progress.
 
+  - name: dev
+    color: '#b8e550'
+    description: dev.
+
   - name: OTRS 3
     color: '#69BECC'
     description: OTRS 3.
@@ -112,6 +116,18 @@ labels:
     color: '#ff8a24'
     description: Znuny 6.0.
 
+  - name: Znuny 6.1
+    color: '#ff8a24'
+    description: Znuny 6.1.
+
+  - name: Znuny 6.2
+    color: '#ff8a24'
+    description: Znuny 6.2.
+
+  - name: Znuny 6.3
+    color: '#ff8a24'
+    description: Znuny 6.3.
+
   - name: Znuny 6.4
     color: '#ff8a24'
     description: Znuny 6.4.
@@ -124,7 +140,6 @@ labels:
     color: '#ff8a24'
     description: Znuny 7.0.
 
-  - name: dev
-    color: '#b8e550'
-    description: dev.
-
+  - name: Znuny 7.1
+    color: '#ff8a24'
+    description: Znuny 7.1.
