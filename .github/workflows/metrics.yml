@@ -4,7 +4,7 @@ name: Metrics
 on:
   # Schedule updates (each hour)
   schedule:
-    cron: "0 */6 * * *"
+    - cron:  '0 */6 * * *'
   workflow_dispatch:
   push:
     branches: ["dev", "main"]
