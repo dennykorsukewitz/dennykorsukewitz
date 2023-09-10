@@ -44,6 +44,8 @@ jobs:
           plugin_introduction_title: yes
           # plugin_isocalendar: yes
           # plugin_isocalendar_duration: full-year
+          plugin_calendar: yes
+          plugin_calendar_limit: 0
           plugin_languages: yes
           plugin_languages_analysis_timeout: 15
           plugin_languages_analysis_timeout_repositories: 7.5
@@ -91,9 +93,9 @@ jobs:
 
           base: ""
           plugin_languages: yes
-          plugin_languages_ignored: >-
-            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
-            gnuplot
+          # plugin_languages_ignored: >-
+          #   html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
+          #   gnuplot
           plugin_languages_indepth: yes
           plugin_languages_details: lines, bytes-size
           plugin_languages_limit: 4
@@ -112,27 +114,19 @@ jobs:
 
           base: ""
           plugin_stargazers: yes
+          plugin_stargazers_charts: yes
           plugin_stargazers_charts_type: graphs
 
-      - name: Stargazers graph 2
+      - name: Stargazers graph total
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: .github/metrics/stargazers.graph2.svg
+          filename: .github/metrics/stargazers.graph.total.svg
 
           base: ""
           plugin_stargazers: yes
+          plugin_stargazers_charts: yes
+          plugin_stargazers_days: 0
           plugin_stargazers_charts_type: graphs
 
-      - name: Stargazers with worldmap
-        uses: lowlighter/metrics@latest
-        with:
-          filename: .github/metrics/stargazers.worldmap.svg
-          token: ${{ secrets.METRICS_TOKEN }}
 
-          base: ""
-          plugin_stargazers: yes
-          plugin_stargazers_charts: no
-          plugin_stargazers_worldmap: yes
-          plugin_stargazers_worldmap_token: ${{ secrets.GOOGLE_MAP_TOKEN }}
-          plugin_stargazers_worldmap_sample: 200
