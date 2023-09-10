@@ -8,7 +8,7 @@ on:
   push:
     branches: ["dev", "main"]
 jobs:
-  personal:
+  Personal:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -65,7 +65,7 @@ jobs:
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
 
-  calendar:
+  Calendar:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -80,7 +80,7 @@ jobs:
           plugin_isocalendar_duration: full-year
 
 
-  languages:
+  Languages:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -93,15 +93,15 @@ jobs:
 
           base: ""
           plugin_languages: yes
-          # plugin_languages_ignored: >-
-          #   html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
-          #   gnuplot
+          plugin_languages_ignored: >-
+            tex, less, dockerfile, makefile, qmake, lex, cmake,
+            gnuplot
           plugin_languages_indepth: yes
           plugin_languages_details: lines, bytes-size
           plugin_languages_limit: 4
           plugin_languages_analysis_timeout: 15
 
-  stargazers:
+  Stargazers:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -115,7 +115,7 @@ jobs:
           base: ""
           plugin_stargazers: yes
           plugin_stargazers_charts: yes
-          plugin_stargazers_charts_type: graphs
+          plugin_stargazers_charts_type: graph
 
       - name: Stargazers graph total
         uses: lowlighter/metrics@latest
@@ -127,6 +127,6 @@ jobs:
           plugin_stargazers: yes
           plugin_stargazers_charts: yes
           plugin_stargazers_days: 0
-          plugin_stargazers_charts_type: graphs
+          plugin_stargazers_charts_type: graph
 
 
