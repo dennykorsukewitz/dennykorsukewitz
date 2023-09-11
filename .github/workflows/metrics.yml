@@ -199,4 +199,5 @@ jobs:
           plugin_screenshot_title: PenAndPaperFloorplanner
           plugin_screenshot_wait: 2000
           plugin_screenshot_url: https://karldaeubel.github.io/PenAndPaperFloorplanner/
+          plugin_screenshot_background: yes
           # plugin_screenshot_selector: "#comic img"
