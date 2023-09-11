@@ -201,3 +201,15 @@ jobs:
           plugin_screenshot_url: https://karldaeubel.github.io/PenAndPaperFloorplanner/
           plugin_screenshot_background: yes
           # plugin_screenshot_selector: "#comic img"
+
+      - name: Create screenshots
+        uses: alexrogalskiy/github-action-screenshots@master
+        with:
+          url: 'https://karldaeubel.github.io/PenAndPaperFloorplanner/'
+          name: 'screenshot.PenAndPaperFloorplanner'
+          path: '.github/metrics/'
+          extension: 'png'
+          encoding: 'binary'
+          fullPage: true
+          # width: 400
+          # height: 400
