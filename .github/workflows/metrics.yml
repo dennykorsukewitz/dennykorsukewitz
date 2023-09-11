@@ -207,7 +207,7 @@ jobs:
         with:
           url: 'https://karldaeubel.github.io/PenAndPaperFloorplanner/'
           name: 'screenshot.PenAndPaperFloorplanner'
-          path: '.github/metrics/'
+          path: '.github/metrics'
           extension: 'png'
           encoding: 'binary'
           fullPage: true
