@@ -4,7 +4,7 @@ name: Metrics
 on:
   # Schedule updates (each hour)
   schedule:
-    - cron:  '0 */6 * * *'
+    - cron:  '0 0 * * *'
   workflow_dispatch:
   push:
     branches: ["dev", "main"]
@@ -180,36 +180,3 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
-
-  Screenshot:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-
-      - name: Screenshot PenAndPaperFloorplanner
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: .github/metrics/screenshot.PenAndPaperFloorplanner.svg
-
-          # Options
-          base: ""
-          plugin_screenshot: yes
-          plugin_screenshot_title: PenAndPaperFloorplanner
-          plugin_screenshot_wait: 2000
-          plugin_screenshot_url: https://karldaeubel.github.io/PenAndPaperFloorplanner/
-          plugin_screenshot_background: yes
-          # plugin_screenshot_selector: "#comic img"
-
-      - name: Create screenshots
-        uses: alexrogalskiy/github-action-screenshots@master
-        with:
-          url: 'https://karldaeubel.github.io/PenAndPaperFloorplanner/'
-          name: 'screenshot.PenAndPaperFloorplanner'
-          path: '.github/metrics'
-          extension: 'png'
-          encoding: 'binary'
-          fullPage: true
-          # width: 400
-          # height: 400
