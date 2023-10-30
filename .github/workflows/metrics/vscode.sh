@@ -6,7 +6,7 @@ REPOSITORIES=($(gh search repos --owner "dennykorsukewitz" --jq '.[].name' --jso
 curl -L \
  -X GET \
  -H "Accept: Accept: application/json;api-version=3.0-preview.1" \
- -H "Authorization: Bearer ra6dhpfpuzbv2hz55nk43fxabhus4ny7vhktlcrk5kngilotr4xa" \
+ -H "Authorization: Bearer xxxx" \
   https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats
 
 declare -A REPOSITORYCOUNTER
