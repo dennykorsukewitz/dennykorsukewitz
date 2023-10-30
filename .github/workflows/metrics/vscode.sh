@@ -3,11 +3,11 @@
 OWNER="dennykorsukewitz"
 REPOSITORIES=($(gh search repos --owner "dennykorsukewitz" --jq '.[].name' --json name | sort))
 
-curl -L \
- -X GET \
- -H "Accept: Accept: application/json;api-version=3.0-preview.1" \
- -H "Authorization: Bearer xxxx" \
-  https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats
+# curl -L \
+#  -X GET \
+#  -H "Accept: Accept: application/json;api-version=3.0-preview.1" \
+#  -H "Authorization: Bearer xxxx" \
+#   https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats
 
 declare -A REPOSITORYCOUNTER
 
