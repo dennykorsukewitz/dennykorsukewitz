@@ -4,6 +4,7 @@ name: Badge
 on:
   # Runs on pushes targeting the default branch
   push:
+    branches: ["NEVER"]
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
       gistID:
