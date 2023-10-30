@@ -10,7 +10,6 @@ REPOSITORIES=($(gh search repos --owner "dennykorsukewitz" --jq '.[].name' --jso
 #   https://api.github.com/repos/dennykorsukewitz/vscode-znuny/stargazers
 
 declare -A REPOSITORYCOUNTER
-REPOSITORYCOUNTER['Total']=0;
 
 JSON='['
 COUNTER=0
@@ -24,7 +23,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
             JSON+=','
         fi
 
-        REPOSITORYCOUNTER[Total]=$(( REPOSITORYCOUNTER[Total] + 1 ));
         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + 1 ));
 
         DATE=$(echo $STARGAZER | jq '.starred_at' | sed 's/\"//g')
@@ -33,7 +31,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         DATA=$(
           jq --null-input \
             --arg date "${DATE}" \
-            --arg total "${REPOSITORYCOUNTER[Total]}" \
             --arg user "${USER}" \
             --arg $REPOSITORY "${REPOSITORYCOUNTER[$REPOSITORY]}" \
             '$ARGS.named'
@@ -49,8 +46,11 @@ JSON+=']'
 echo '------------------------------------'
 for key in ${!REPOSITORYCOUNTER[@]}
 do
-  echo "| ${key} \t \n \s => ${REPOSITORYCOUNTER[${key}]}"
+  echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
 done
 echo '------------------------------------'
 
 echo $JSON > ./.github/metrics/data/github-stars.json
+
+echo $(jq '[ .[] ] | sort_by(.date) | [ to_entries[]|.value.total=.key+1|.value ]' ./.github/metrics/data/github-stars.json) > ./.github/metrics/data/github-stars.json
+
