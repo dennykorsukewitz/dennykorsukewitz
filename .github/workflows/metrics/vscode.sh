@@ -9,49 +9,49 @@ REPOSITORIES=($(gh search repos --owner "dennykorsukewitz" --jq '.[].name' --jso
 #  -H "Authorization: Bearer xxxx" \
 #   https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats
 
-declare -A REPOSITORYCOUNTER
+# declare -A REPOSITORYCOUNTER
 
-REPOSITORYCOUNTER['Total']=0;
+# REPOSITORYCOUNTER['Total']=0;
 
-JSON='['
-COUNTER=0
-for REPOSITORY in "${REPOSITORIES[@]}"; do
-  echo -e "\n-----------$REPOSITORY-----------\n"
-    STARGAZERS=($(curl https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats --jq '.[]'))
+# JSON='['
+# COUNTER=0
+# for REPOSITORY in "${REPOSITORIES[@]}"; do
+#   echo -e "\n-----------$REPOSITORY-----------\n"
+#     STARGAZERS=($(curl https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats --jq '.[]'))
 
-    for STARGAZER in "${STARGAZERS[@]}"; do
+#     for STARGAZER in "${STARGAZERS[@]}"; do
 
-        if [ ${COUNTER} != 0 ]; then
-            JSON+=','
-        fi
+#         if [ ${COUNTER} != 0 ]; then
+#             JSON+=','
+#         fi
 
-        REPOSITORYCOUNTER[Total]=$(( REPOSITORYCOUNTER[Total] + 1 ));
-        REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + 1 ));
+#         REPOSITORYCOUNTER[Total]=$(( REPOSITORYCOUNTER[Total] + 1 ));
+#         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + 1 ));
 
-        DATE=$(echo $STARGAZER | jq '.starred_at' | sed 's/\"//g')
-        USER=$(echo $STARGAZER | jq '.user.login' | sed 's/\"//g')
+#         DATE=$(echo $STARGAZER | jq '.starred_at' | sed 's/\"//g')
+#         USER=$(echo $STARGAZER | jq '.user.login' | sed 's/\"//g')
 
-        DATA=$(
-          jq --null-input \
-            --arg date "${DATE}" \
-            --arg total "${REPOSITORYCOUNTER[Total]}" \
-            --arg user "${USER}" \
-            --arg $REPOSITORY "${REPOSITORYCOUNTER[$REPOSITORY]}" \
-            '$ARGS.named'
-        )
+#         DATA=$(
+#           jq --null-input \
+#             --arg date "${DATE}" \
+#             --arg total "${REPOSITORYCOUNTER[Total]}" \
+#             --arg user "${USER}" \
+#             --arg $REPOSITORY "${REPOSITORYCOUNTER[$REPOSITORY]}" \
+#             '$ARGS.named'
+#         )
 
-        JSON+=$DATA
-        ((COUNTER+=1))
+#         JSON+=$DATA
+#         ((COUNTER+=1))
 
-    done
-done
-JSON+=']'
+#     done
+# done
+# JSON+=']'
 
-echo '------------------------------------'
-for key in ${!REPOSITORYCOUNTER[@]}
-do
-  echo "| ${key} \t \n \s => ${REPOSITORYCOUNTER[${key}]}"
-done
-echo '------------------------------------'
+# echo '------------------------------------'
+# for key in ${!REPOSITORYCOUNTER[@]}
+# do
+#   echo "| ${key} \t \n \s => ${REPOSITORYCOUNTER[${key}]}"
+# done
+# echo '------------------------------------'
 
-echo $JSON > ./.github/metrics/data/github-stars.json
+# echo $JSON > ./.github/metrics/data/github-stars.json
