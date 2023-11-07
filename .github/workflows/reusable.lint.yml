@@ -50,7 +50,7 @@ jobs:
           USE_FIND_ALGORITHM: true
           FILTER_REGEX_EXCLUDE: "(.*.scss)"
           IGNORE_GITIGNORED_FILES: true
-          DEFAULT_WORKSPACE: "./repository"
+          DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
 
 
           VALIDATE_JSCPD: false
