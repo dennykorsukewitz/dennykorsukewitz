@@ -17,6 +17,9 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------\n"
     STARGAZERS=($(gh api -H "Accept: application/vnd.github.v3.star+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/$OWNER/$REPOSITORY/stargazers --jq '.[]'))
 
+    echo $STARGAZERS
+
+
     for STARGAZER in "${STARGAZERS[@]}"; do
 
         if [ ${COUNTER} != 0 ]; then
@@ -44,7 +47,7 @@ done
 JSON+=']'
 
 echo '------------------------------------'
-for key in ${!REPOSITORYCOUNTER[@]}
+for key in "${!REPOSITORYCOUNTER[@]}"
 do
   echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
 done
