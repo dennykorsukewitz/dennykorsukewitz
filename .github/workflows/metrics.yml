@@ -1,13 +1,13 @@
 # Visit https://github.com/lowlighter/metrics#-documentation for full reference
-
 name: Metrics
 on:
   # Schedule updates (each hour)
   schedule:
     - cron:  '0 0 * * *'
+  # push:
+  #   branches: ["dev", "main"]
   workflow_dispatch:
-  push:
-    branches: ["dev", "main"]
+
 jobs:
   Personal:
     runs-on: ubuntu-latest
