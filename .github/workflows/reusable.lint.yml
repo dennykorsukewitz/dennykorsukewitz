@@ -49,6 +49,9 @@ jobs:
           LINTER_RULES_PATH: "./repository/.github/linters"
           USE_FIND_ALGORITHM: true
           FILTER_REGEX_EXCLUDE: "(.*.scss)"
+          IGNORE_GITIGNORED_FILES: true
+          DEFAULT_WORKSPACE: "./repository"
+
 
           VALIDATE_JSCPD: false
           VALIDATE_POWERSHELL: false
