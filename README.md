@@ -4,6 +4,8 @@
 
 ![Metrics](https://raw.githubusercontent.com/dennykorsukewitz/dennykorsukewitz/dev/.github/metrics/personal.svg)
 
+<hr>
+
 ## Languages and Tools
 
 <p class="left" >
@@ -26,6 +28,8 @@
     <img title="Selenium" alt="selenium" class="left" width="40" height="40" src="https://avatars.githubusercontent.com/u/983927?s=48&v=4" />
     <img title="Docker" alt="docker" class="left" width="40" height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" />
 </p>
+
+<hr>
 
 ## My Work
 
