@@ -53,6 +53,7 @@ jobs:
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
 
 
+          VALIDATE_PYTHON_MYPY: false
           VALIDATE_JSCPD: false
           VALIDATE_POWERSHELL: false
           VALIDATE_JAVASCRIPT_STANDARD: false
