@@ -1,0 +1,554 @@
+{
+    "extensionName": "addfoldertoworkspace",
+    "publisherName": "dennykorsukewitz",
+    "statCount": 65,
+    "dailyStats": [
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-14T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-11T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-09T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-08T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-07T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 4,
+            "installCount": 2,
+            "uninstallCount": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-06T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-04T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 3
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-02T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-11-01T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-31T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-30T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-29T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-28T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-27T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-25T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-24T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-23T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-21T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-19T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 3
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-18T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-15T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-14T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-13T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-11T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-10T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-09T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-05T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-04T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-10-03T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-09-30T00:00:00Z",
+        "counts":
+        {
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-09-29T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.1.1",
+        "statisticDate": "2023-09-27T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-25T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-24T00:00:00Z",
+        "counts":
+        {
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-18T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-16T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-07T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-06T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-05T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-09-03T00:00:00Z",
+        "counts":
+        {
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-08-30T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.1.0",
+        "statisticDate": "2023-08-28T00:00:00Z",
+        "counts":
+        {
+            "installCount": 2,
+            "uninstallCount": 3
+        }
+    },
+    {
+        "version": "1.0.2",
+        "statisticDate": "2023-08-28T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.0.2",
+        "statisticDate": "2023-08-21T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.2",
+        "statisticDate": "2023-08-18T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.0.2",
+        "statisticDate": "2023-08-16T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.2",
+        "statisticDate": "2023-08-12T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-08-08T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-08-06T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 3,
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-31T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-30T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-26T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-25T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-24T00:00:00Z",
+        "counts":
+        {
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-21T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2,
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-15T00:00:00Z",
+        "counts":
+        {
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-14T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 2
+        }
+    },
+    {
+        "version": "1.0.1",
+        "statisticDate": "2023-07-13T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 4
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-13T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-11T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1,
+            "uninstallCount": 1
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-09T00:00:00Z",
+        "counts":
+        {
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-07T00:00:00Z",
+        "counts":
+        {
+            "installCount": 2
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-06T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 1,
+            "installCount": 1
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-05T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 3,
+            "webDownloadCount": 1
+        }
+    },
+    {
+        "version": "1.0.0",
+        "statisticDate": "2023-07-04T00:00:00Z",
+        "counts":
+        {
+            "webPageViews": 11,
+            "installCount": 2,
+            "webDownloadCount": 1
+        }
+    }]
+},
