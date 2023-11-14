@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 OWNER="dennykorsukewitz"
-REPOSITORIES=($(gh search repos --owner "dennykorsukewitz" --topic "vsc" --jq '.[].name' --json name | sort))
+mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 REPOSITORIES=('VSCode-Znuny')
 
@@ -21,7 +21,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     # STATSDATA=($(curl https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats))
 
 
-    STATS=($(cat ./.github/metrics/data/vscode-source.json | jq '.dailyStats'))
+    STATS=("$(cat ./.github/metrics/data/vscode-data.json | jq '.dailyStats')")
 
     for DATA in "${STATS[@]}"; do
 
@@ -32,7 +32,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     done
 
 
-    # echo $(jq '.dailyStats' ./.github/metrics/data/vscode-source.json) > ./.github/metrics/data/vscode.json
+    # echo $(jq '.dailyStats' ./.github/metrics/data/vscode-data.json) > ./.github/metrics/data/vscode.json
     # echo $(jq '[.[] | .["date"] = .statisticDate | del(.statisticDate) ]' ./.github/metrics/data/vscode.json) > ./.github/metrics/data/vscode.json
 
 
@@ -83,7 +83,7 @@ do
 done
 echo '------------------------------------'
 
-# echo $JSON > ./.github/metrics/data/vscode.json
+# echo $JSON > ./.github/metrics/data/vscode-data.json
 
-# echo $(jq '[ .[] ] | sort_by(.date) | [ to_entries[]|.value.total=.key+1|.value ]' ./.github/metrics/data/vscode.json) > ./.github/metrics/data/vscode.json
+# jq '[ .[] ] | sort_by(.date) | [ to_entries[]|.value.total=.key+1|.value ]' ./.github/metrics/data/vscode-data.json > ./.github/metrics/data/vscode.json
 
