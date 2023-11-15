@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
 OWNER="dennykorsukewitz"
+PAT=hd4odfa2vbmztshgn5vaccrixp7brnfli5u7hmh5xvnovlqhucrq
+
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 REPOSITORIES=('VSCode-Znuny')
-
-# curl -L \
-#  -X GET \
-#  -H "Accept: Accept: application/json;api-version=3.0-preview.1" \
-#  -H "Authorization: Bearer xxxx" \
-#   https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats
 
 declare -A REPOSITORYCOUNTER
 
@@ -18,10 +14,25 @@ COUNTER=0
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------\n"
 
+    VSCODE_REPOSITORY=$(echo $REPOSITORY | sed 's/VSCode-//g')
+
     # STATSDATA=($(curl https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats))
 
+    echo $VSCODE_REPOSITORY
+    echo $PAT
 
-    STATS=("$(cat ./.github/metrics/data/vscode-data.json | jq '.dailyStats')")
+    JSON=$(curl -u "$OWNER":"$PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/$VSCODE_REPOSITORY/stats)
+
+    NAME=$(echo "$JSON" | jq '.extensionName' | sed 's/\"//g')
+    mapfile -t STATS < <(echo "$JSON" | jq .dailyStats)
+
+
+    echo "NAME"
+    echo $NAME
+    echo "STATS"
+    echo $STATS
+
+    # STATS=("$(cat ./.github/metrics/data/vscode-data.json | jq '.dailyStats')")
 
     for DATA in "${STATS[@]}"; do
 
@@ -31,48 +42,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       echo '---'
     done
 
-
-    # echo $(jq '.dailyStats' ./.github/metrics/data/vscode-data.json) > ./.github/metrics/data/vscode.json
-    # echo $(jq '[.[] | .["date"] = .statisticDate | del(.statisticDate) ]' ./.github/metrics/data/vscode.json) > ./.github/metrics/data/vscode.json
-
-
-
-
-
-
-    # for DATA in $(echo "$STATS" ); do
-    # echo "$STATS" | jq '.dailyStats.[]' | while read -r repo; do
-        # echo "---";
-        # echo "do something with $DATA";
-        # echo "---";
-
-
-    #     if [ ${COUNTER} != 0 ]; then
-    #         JSON+=','
-    #     fi
-
-    # #     REPOSITORYCOUNTER[Total]=$(( REPOSITORYCOUNTER[Total] + 1 ));
-    # #     REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + 1 ));
-
-    #     DATE=$(echo $ITEM | jq '.statisticDate' | sed 's/\"//g')
-    #     COUNTS=$(echo $ITEM | jq '.counts' )
-
-    #     echo ${DATE}
-    #     echo ${COUNTS}
-
-    #     DATA=$(
-    #       jq --null-input \
-    #         --arg date "${DATE}" \
-    #         --arg total "${REPOSITORYCOUNTER[Total]}" \
-    #         --arg ${COUNTS} \
-    #         --arg $REPOSITORY "${REPOSITORYCOUNTER[$REPOSITORY]}" \
-    #         '$ARGS.named'
-    #     )
-
-    #     JSON+=$DATA
-    #     ((COUNTER+=1))
-
-    # done
 done
 JSON+=']'
 

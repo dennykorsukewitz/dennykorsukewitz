@@ -32,7 +32,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           jq --null-input \
             --arg date "${DATE}" \
             --arg user "${USER}" \
-            --arg $REPOSITORY "${REPOSITORYCOUNTER[$REPOSITORY]}" \
+            --arg "$REPOSITORY" "${REPOSITORYCOUNTER[$REPOSITORY]}" \
             '$ARGS.named'
         )
 
