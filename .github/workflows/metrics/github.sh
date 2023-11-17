@@ -19,10 +19,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     for STARGAZER in "${STARGAZERS[@]}"; do
 
-        if [ ${COUNTER} != 0 ]; then
-            JSON+=','
-        fi
-
         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + 1 ));
 
         DATE=$(echo "$STARGAZER" | jq '.starred_at' | sed 's/\"//g')
@@ -36,6 +32,9 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
             '$ARGS.named'
         )
 
+        if [ ${COUNTER} != 0 ]; then
+            JSON+=','
+        fi
         JSON+=$DATA
         ((COUNTER+=1))
 

@@ -1,45 +1,48 @@
 #!/usr/bin/env bash
 
 OWNER="dennykorsukewitz"
-PAT=hd4odfa2vbmztshgn5vaccrixp7brnfli5u7hmh5xvnovlqhucrq
 
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
-REPOSITORIES=('VSCode-Znuny')
-
 declare -A REPOSITORYCOUNTER
-
 JSON='['
 COUNTER=0
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------\n"
 
-    VSCODE_REPOSITORY=$(echo $REPOSITORY | sed 's/VSCode-//g')
+    VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
 
-    # STATSDATA=($(curl https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/Znuny/stats))
+    RESPONSE_JSON=$(curl -u "$OWNER":"$PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
+    # NAME=$(echo "$RESPONSE_JSON" | jq '.extensionName' | sed 's/\"//g')
 
-    echo $VSCODE_REPOSITORY
-    echo $PAT
+    readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats.[]')
 
-    JSON=$(curl -u "$OWNER":"$PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/$VSCODE_REPOSITORY/stats)
-
-    NAME=$(echo "$JSON" | jq '.extensionName' | sed 's/\"//g')
-    mapfile -t STATS < <(echo "$JSON" | jq .dailyStats)
+    for ROW in "${STATS[@]}"; do
 
 
-    echo "NAME"
-    echo $NAME
-    echo "STATS"
-    echo $STATS
+      DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
+      COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
-    # STATS=("$(cat ./.github/metrics/data/vscode-data.json | jq '.dailyStats')")
+      if [[ "$COUNT_INSTALL" == "null" ]] ; then
+        COUNT_INSTALL=0
+        continue
+      fi
 
-    for DATA in "${STATS[@]}"; do
+      REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
 
+      DATA=$(
+        jq --null-input \
+          --arg date "${DATE}" \
+          --arg "$REPOSITORY" "${REPOSITORYCOUNTER[$REPOSITORY]}" \
+          '$ARGS.named'
+      )
 
-      echo '---'
-      echo $DATA
-      echo '---'
+      if [ ${COUNTER} != 0 ]; then
+          JSON+=','
+      fi
+
+      JSON+=$DATA
+      ((COUNTER+=1))
     done
 
 done
@@ -48,11 +51,9 @@ JSON+=']'
 echo '------------------------------------'
 for key in "${!REPOSITORYCOUNTER[@]}"
 do
-  echo "| ${key} \t \n \s => ${REPOSITORYCOUNTER[${key}]}"
+  echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
 done
 echo '------------------------------------'
 
-# echo $JSON > ./.github/metrics/data/vscode-data.json
-
-# jq '[ .[] ] | sort_by(.date) | [ to_entries[]|.value.total=.key+1|.value ]' ./.github/metrics/data/vscode-data.json > ./.github/metrics/data/vscode.json
-
+echo "$JSON" > ./.github/metrics/data/vscode-data.json
+echo "$JSON" > ./.github/metrics/data/vscode.json
