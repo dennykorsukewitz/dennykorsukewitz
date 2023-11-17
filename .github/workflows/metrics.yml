@@ -98,6 +98,25 @@ jobs:
         with:
           message: 'Updated Metrics: GitHub Data.'
 
+  VSCode:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VSC_PAT: ${{ secrets.VSC_PAT }}
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Get VSCode data
+        run: ./.github/workflows/metrics/vscode.sh
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Updated Metrics: VSCode Data.'
+
   Stargazers:
     runs-on: ubuntu-latest
     permissions:

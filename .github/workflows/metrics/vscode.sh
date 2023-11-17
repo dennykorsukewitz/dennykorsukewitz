@@ -12,13 +12,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
 
-    RESPONSE_JSON=$(curl -u "$OWNER":"$PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
+    RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
     # NAME=$(echo "$RESPONSE_JSON" | jq '.extensionName' | sed 's/\"//g')
 
-    readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats.[]')
+    readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats.[] ')
 
     for ROW in "${STATS[@]}"; do
-
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
       COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
@@ -41,6 +40,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           JSON+=','
       fi
 
+      echo "$DATA"
+
       JSON+=$DATA
       ((COUNTER+=1))
     done
@@ -56,4 +57,5 @@ done
 echo '------------------------------------'
 
 echo "$JSON" > ./.github/metrics/data/vscode-data.json
-echo "$JSON" > ./.github/metrics/data/vscode.json
+jq '[ .[] ] | sort_by(.date) ' ./.github/metrics/data/vscode-data.json > ./.github/metrics/data/vscode.json
+
