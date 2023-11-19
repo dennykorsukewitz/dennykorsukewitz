@@ -40,8 +40,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           JSON+=','
       fi
 
-      echo "$DATA"
-
       JSON+=$DATA
       ((COUNTER+=1))
     done
