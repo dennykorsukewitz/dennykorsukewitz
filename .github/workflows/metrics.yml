@@ -110,7 +110,7 @@ jobs:
         env:
           fetch-depth: "1"
       - name: Get VSCode data
-        run: ./.github/workflows/metrics/vscode.sh
+        run: bash -eux ./.github/workflows/metrics/vscode.sh
         env:
           VSC_PAT: ${{ secrets.VSC_PAT }}
       - name: Add and Commit
