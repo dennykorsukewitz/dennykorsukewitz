@@ -104,7 +104,6 @@ jobs:
       contents: write
     env:
       GH_TOKEN: ${{ github.token }}
-      VSC_PAT: ${{ secrets.VSC_PAT }}
     steps:
       - name: Checkout dennykorsukewitz
         uses: actions/checkout@v4
@@ -112,6 +111,8 @@ jobs:
           fetch-depth: "1"
       - name: Get VSCode data
         run: ./.github/workflows/metrics/vscode.sh
+        env:
+          VSC_PAT: ${{ secrets.VSC_PAT }}
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
