@@ -14,7 +14,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     if [ -z "$VSC_PAT" ] ; then
       echo -e "❌ VSC PAT is not defined."
-      exit 0
+      exit 1
     fi
 
     RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
@@ -22,7 +22,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     if [ -z "$RESPONSE_JSON" ] ; then
       echo -e "❌ No RESPONSE_JSON received."
-      exit 0
+      exit 1
     fi
 
     readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats.[] ')
