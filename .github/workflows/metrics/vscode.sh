@@ -25,7 +25,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       exit 1
     fi
 
-    readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats.[] ')
+    readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats[]')
+
+    if [ -z "$STATS" ] ; then
+      echo -e "❌ No STATS."
+      exit 1
+    fi
 
     for ROW in "${STATS[@]}"; do
 

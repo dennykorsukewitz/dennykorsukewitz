@@ -110,6 +110,8 @@ jobs:
         uses: actions/checkout@v4
         env:
           fetch-depth: "1"
+      - name: Get jq version
+        run: jq --version
       - name: Get VSCode data
         run: bash -x ./.github/workflows/metrics/vscode.sh
       - name: Add and Commit
