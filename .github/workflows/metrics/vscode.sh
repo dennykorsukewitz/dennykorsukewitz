@@ -27,11 +27,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats[]')
 
-    if [ -z "$STATS" ] ; then
-      echo -e "❌ No STATS."
-      exit 1
-    fi
-
     for ROW in "${STATS[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')

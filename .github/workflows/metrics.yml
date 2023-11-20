@@ -113,7 +113,7 @@ jobs:
       - name: Get jq version
         run: jq --version
       - name: Get VSCode data
-        run: bash -x ./.github/workflows/metrics/vscode.sh
+        run: ./.github/workflows/metrics/vscode.sh
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
