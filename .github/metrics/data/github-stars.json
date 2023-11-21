@@ -2,7 +2,7 @@
   {
     "date": "2014-06-21T14:19:24Z",
     "user": "medfreeman",
-    "DK4Znuny-QuickDelete": "1",
+    "Znuny-QuickDelete": "1",
     "total": 1
   },
   {
@@ -20,19 +20,19 @@
   {
     "date": "2019-01-17T08:39:57Z",
     "user": "thorsteneckel",
-    "DK4Znuny-QuickDelete": "2",
+    "Znuny-QuickDelete": "2",
     "total": 4
   },
   {
     "date": "2019-01-26T11:28:22Z",
     "user": "genaumann",
-    "DK4OTRS-UBInventory": "1",
+    "Znuny-UBInventory": "1",
     "total": 5
   },
   {
     "date": "2019-01-28T15:10:07Z",
     "user": "genaumann",
-    "DK4Znuny-QuickDelete": "3",
+    "Znuny-QuickDelete": "3",
     "total": 6
   },
   {
@@ -74,7 +74,7 @@
   {
     "date": "2023-02-09T17:33:57Z",
     "user": "NiklasSchmitt",
-    "DK4Znuny-QuickDelete": "4",
+    "Znuny-QuickDelete": "4",
     "total": 13
   },
   {
@@ -128,7 +128,7 @@
   {
     "date": "2023-11-15T20:01:43Z",
     "user": "dennykorsukewitz",
-    "DK4OTRS-UBInventory": "2",
+    "Znuny-UBInventory": "2",
     "total": 22
   },
   {
@@ -150,7 +150,7 @@
     "total": 25
   },
   {
-    "date": "2023-11-15T20:03:14Z",
+    "date": "2023-11-20T13:12:28Z",
     "user": "dennykorsukewitz",
     "dennykorsukewitz.github.io": "2",
     "total": 26
