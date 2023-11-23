@@ -1,9 +1,9 @@
 # Visit https://github.com/lowlighter/metrics#-documentation for full reference
 name: Metrics
 on:
-  # Schedule updates (each hour)
+  # Schedule updates (“At 00:01.”)
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  '1 0 * * *'
   # push:
   #   branches: ["dev", "main"]
   workflow_dispatch:
@@ -118,6 +118,26 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: VSCode Data.'
+
+  Sublime:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Get jq version
+        run: jq --version
+      - name: Get Sublime data
+        run: ./.github/workflows/metrics/sublime.sh
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Updated Metrics: Sublime Data.'
 
   Stargazers:
     runs-on: ubuntu-latest
