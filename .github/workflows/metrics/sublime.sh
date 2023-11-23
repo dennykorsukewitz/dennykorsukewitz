@@ -9,8 +9,11 @@ REPOSITORIES=('Sublime-QuoteWithMarker')
 
 declare -A REPOSITORYCOUNTER
 JSON='['
-JSON_DATA=''
+JSON_DAILY=''
 COUNTER=0
+COUNT_INSTALL_TOTAL=0
+CURRENT_JSON=$(cat ./.github/metrics/data/sublime.json | jq)
+
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------\n"
 
@@ -24,8 +27,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       exit 1
     fi
 
-    readarray -t DATES < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.installs.daily.dates')
     DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
+    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
 
     COUNT_INSTALL=0
     for i in {0..2}
@@ -34,21 +37,28 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
     done
 
+    COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
+
     DATA=$(
+      jq --null-input \
+        --arg date "${DATE}" \
+        --arg "$REPOSITORY" "${COUNT_INSTALL_TOTAL}" \
+        '$ARGS.named'
+    )
+
+    DAILY_DATA=$(
       jq --null-input \
         --arg date "${DATE}" \
         --arg "$REPOSITORY" "${REPOSITORYCOUNTER[$REPOSITORY]}" \
         '$ARGS.named'
     )
 
-    echo $DATA
-
     if [ ${COUNTER} != 0 ]; then
         JSON+=','
     fi
 
     JSON+=$DATA
-    JSON_DATA+=$DATA
+    JSON_DAILY+=$DAILY_DATA
     ((COUNTER+=1))
 
 done
@@ -61,8 +71,7 @@ do
 done
 echo '------------------------------------'
 
-CURRENT_JSON=$(cat ./.github/metrics/data/sublime.json | jq)
 
-echo "$JSON_DATA" | jq --compact-output >> ./.github/metrics/data/sublime-data.json
+echo "$JSON_DAILY" | jq --compact-output >> ./.github/metrics/data/sublime-data.json
 jq --argjson arr1 "$JSON" --argjson arr2 "$CURRENT_JSON" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime.json
 
