@@ -97,6 +97,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: GitHub Data.'
+          pull: '--rebase'
 
   VSCode:
     runs-on: ubuntu-latest
@@ -118,6 +119,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: VSCode Data.'
+          pull: '--rebase'
 
   Sublime:
     runs-on: ubuntu-latest
@@ -138,6 +140,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: Sublime Data.'
+          pull: '--rebase'
 
   Stargazers:
     runs-on: ubuntu-latest
