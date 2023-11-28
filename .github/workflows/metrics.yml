@@ -93,11 +93,12 @@ jobs:
           fetch-depth: "1"
       - name: Get GitHub data
         run: ./.github/workflows/metrics/github.sh
+      - name: Git Pull
+        run: git pull
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: GitHub Data.'
-          pull: '--rebase'
 
   VSCode:
     runs-on: ubuntu-latest
@@ -115,11 +116,12 @@ jobs:
         run: jq --version
       - name: Get VSCode data
         run: ./.github/workflows/metrics/vscode.sh
+      - name: Git Pull
+        run: git pull
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: VSCode Data.'
-          pull: '--rebase'
 
   Sublime:
     runs-on: ubuntu-latest
@@ -136,11 +138,12 @@ jobs:
         run: jq --version
       - name: Get Sublime data
         run: ./.github/workflows/metrics/sublime.sh
+      - name: Git Pull
+        run: git pull
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updated Metrics: Sublime Data.'
-          pull: '--rebase'
 
   Stargazers:
     runs-on: ubuntu-latest
