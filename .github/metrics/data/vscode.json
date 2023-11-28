@@ -474,5 +474,41 @@
   {
     "date": "2023-11-21T00:00:00Z",
     "VSCode-Znuny": "61"
+  },
+  {
+    "date": "2023-11-23T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "37"
+  },
+  {
+    "date": "2023-11-23T00:00:00Z",
+    "VSCode-Znuny": "62"
+  },
+  {
+    "date": "2023-11-25T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "38"
+  },
+  {
+    "date": "2023-11-25T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "53"
+  },
+  {
+    "date": "2023-11-26T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "54"
+  },
+  {
+    "date": "2023-11-26T00:00:00Z",
+    "VSCode-QuoteWithMarker": "14"
+  },
+  {
+    "date": "2023-11-27T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "59"
+  },
+  {
+    "date": "2023-11-27T00:00:00Z",
+    "VSCode-QuoteWithMarker": "19"
+  },
+  {
+    "date": "2023-11-28T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "39"
   }
 ]
