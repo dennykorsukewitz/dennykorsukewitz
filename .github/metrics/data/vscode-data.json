@@ -104,6 +104,9 @@
   "date": "2023-11-29T00:00:00Z",
   "VSCode-AddFolderToWorkspace": "40"
 },{
+  "date": "2023-12-03T00:00:00Z",
+  "VSCode-AddFolderToWorkspace": "41"
+},{
   "date": "2023-08-24T00:00:00Z",
   "VSCode-GitHubFileFetcher": "1"
 },{
@@ -226,6 +229,9 @@
 },{
   "date": "2023-11-29T00:00:00Z",
   "VSCode-GitHubFileFetcher": "63"
+},{
+  "date": "2023-12-03T00:00:00Z",
+  "VSCode-GitHubFileFetcher": "64"
 },{
   "date": "2023-07-31T00:00:00Z",
   "VSCode-QuoteWithMarker": "1"
