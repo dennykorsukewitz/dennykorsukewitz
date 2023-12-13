@@ -8,44 +8,34 @@ on:
     inputs:
       VALIDATE_BASH:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_CSS:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_GITHUB_ACTIONS:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_HTML:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_JAVASCRIPT_ES:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_JAVASCRIPT_STANDARD:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_JSON:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_MARKDOWN:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_XML:
         required: false
-        type: boolean
-        default: false
+        type: string
       VALIDATE_YAML:
         required: false
-        type: boolean
-        default: false
+        type: string
 
 jobs:
   Lint:
