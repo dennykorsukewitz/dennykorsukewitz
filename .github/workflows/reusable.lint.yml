@@ -7,103 +7,78 @@ on:
       VALIDATE_ANSIBLE:
         required: false
         type: boolean
-        default: true
       VALIDATE_ARM:
         required: false
         type: boolean
-        default: true
       VALIDATE_BASH:
         required: false
         type: boolean
-        default: true
       VALIDATE_BASH_EXEC:
         required: false
         type: boolean
-        default: true
       VALIDATE_CPP:
         required: false
         type: boolean
-        default: true
       VALIDATE_CLANG_FORMAT:
         required: false
         type: boolean
-        default: true
       VALIDATE_CLOJURE:
         required: false
         type: boolean
-        default: true
       VALIDATE_CLOUDFORMATION:
         required: false
         type: boolean
-        default: true
       VALIDATE_COFFEESCRIPT:
         required: false
         type: boolean
-        default: true
       VALIDATE_CSHARP:
         required: false
         type: boolean
-        default: true
       VALIDATE_CSS:
         required: false
         type: boolean
-        default: true
       VALIDATE_DART:
         required: false
         type: boolean
-        default: true
       VALIDATE_DOCKERFILE_HADOLINT:
         required: false
         type: boolean
-        default: true
       VALIDATE_EDITORCONFIG:
         required: false
         type: boolean
-        default: true
       VALIDATE_ENV:
         required: false
         type: boolean
-        default: true
       VALIDATE_GHERKIN:
         required: false
         type: boolean
-        default: true
       VALIDATE_GITHUB_ACTIONS:
         required: false
         type: boolean
-        default: true
       VALIDATE_GITLEAKS:
         required: false
         type: boolean
-        default: true
       VALIDATE_GO:
         required: false
         type: boolean
-        default: true
       VALIDATE_GOOGLE_JAVA_FORMAT:
         required: false
         type: boolean
-        default: true
       VALIDATE_GROOVY:
         required: false
         type: boolean
-        default: true
       VALIDATE_HTML:
         required: false
         type: boolean
-        default: true
       VALIDATE_JAVA:
         required: false
         type: boolean
-        default: true
       VALIDATE_JAVASCRIPT_ES:
         required: false
         type: boolean
-        default: true
       VALIDATE_JAVASCRIPT_STANDARD:
         required: false
         type: boolean
-        default: true
       VALIDATE_JSCPD:
         required: false
         type: boolean
@@ -111,67 +86,51 @@ on:
       VALIDATE_JSON:
         required: false
         type: boolean
-        default: true
       VALIDATE_JSX:
         required: false
         type: boolean
-        default: true
       VALIDATE_KOTLIN:
         required: false
         type: boolean
-        default: true
       VALIDATE_KOTLIN_ANDROID:
         required: false
         type: boolean
-        default: true
       VALIDATE_KUBERNETES_KUBECONFORM:
         required: false
         type: boolean
-        default: true
       VALIDATE_LATEX:
         required: false
         type: boolean
-        default: true
       VALIDATE_LUA:
         required: false
         type: boolean
-        default: true
       VALIDATE_MARKDOWN:
         required: false
         type: boolean
-        default: true
       VALIDATE_NATURAL_LANGUAGE:
         required: false
         type: boolean
-        default: true
       VALIDATE_OPENAPI:
         required: false
         type: boolean
-        default: true
       VALIDATE_PERL:
         required: false
         type: boolean
-        default: true
       VALIDATE_PHP:
         required: false
         type: boolean
-        default: true
       VALIDATE_PHP_BUILTIN:
         required: false
         type: boolean
-        default: true
       VALIDATE_PHP_PHPCS:
         required: false
         type: boolean
-        default: true
       VALIDATE_PHP_PHPSTAN:
         required: false
         type: boolean
-        default: true
       VALIDATE_PHP_PSALM:
         required: false
         type: boolean
-        default: true
       VALIDATE_POWERSHELL:
         required: false
         type: boolean
@@ -179,23 +138,18 @@ on:
       VALIDATE_PROTOBUF:
         required: false
         type: boolean
-        default: true
       VALIDATE_PYTHON:
         required: false
         type: boolean
-        default: true
       VALIDATE_PYTHON_BLACK:
         required: false
         type: boolean
-        default: true
       VALIDATE_PYTHON_FLAKE8:
         required: false
         type: boolean
-        default: true
       VALIDATE_PYTHON_ISORT:
         required: false
         type: boolean
-        default: true
       VALIDATE_PYTHON_MYPY:
         required: false
         type: boolean
@@ -203,107 +157,81 @@ on:
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: boolean
-        default: true
       VALIDATE_R:
         required: false
         type: boolean
-        default: true
       VALIDATE_RAKU:
         required: false
         type: boolean
-        default: true
       VALIDATE_RENOVATE:
         required: false
         type: boolean
-        default: true
       VALIDATE_RUBY:
         required: false
         type: boolean
-        default: true
       VALIDATE_RUST_2015:
         required: false
         type: boolean
-        default: true
       VALIDATE_RUST_2018:
         required: false
         type: boolean
-        default: true
       VALIDATE_RUST_2021:
         required: false
         type: boolean
-        default: true
       VALIDATE_RUST_CLIPPY:
         required: false
         type: boolean
-        default: true
       VALIDATE_SCALAFMT:
         required: false
         type: boolean
-        default: true
       VALIDATE_SHELL_SHFMT:
         required: false
         type: boolean
-        default: true
       VALIDATE_SNAKEMAKE_LINT:
         required: false
         type: boolean
-        default: true
       VALIDATE_SNAKEMAKE_SNAKEFMT:
         required: false
         type: boolean
-        default: true
       VALIDATE_STATES:
         required: false
         type: boolean
-        default: true
       VALIDATE_SQL:
         required: false
         type: boolean
-        default: true
       VALIDATE_SQLFLUFF:
         required: false
         type: boolean
-        default: true
       VALIDATE_TEKTON:
         required: false
         type: boolean
-        default: true
       VALIDATE_TERRAFORM_FMT:
         required: false
         type: boolean
-        default: true
       VALIDATE_TERRAFORM_TERRASCAN:
         required: false
         type: boolean
-        default: true
       VALIDATE_TERRAFORM_TFLINT:
         required: false
         type: boolean
-        default: true
       VALIDATE_TERRAGRUNT:
         required: false
         type: boolean
-        default: true
       VALIDATE_TSX:
         required: false
         type: boolean
-        default: true
       VALIDATE_TYPESCRIPT_ES:
         required: false
         type: boolean
-        default: true
       VALIDATE_TYPESCRIPT_STANDARD:
         required: false
         type: boolean
-        default: true
       VALIDATE_XML:
         required: false
         type: boolean
-        default: true
       VALIDATE_YAML:
         required: false
         type: boolean
-        default: true
     # secrets:
     #   token:
     #     required: true
