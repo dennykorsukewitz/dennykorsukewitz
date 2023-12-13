@@ -7,19 +7,19 @@ on:
       VALIDATE_PYTHON_MYPY:
         required: false
         type: boolean
-        default: 'false'
+        default: false
       VALIDATE_JSCPD:
         required: false
         type: boolean
-        default: 'false'
+        default: false
       VALIDATE_POWERSHELL:
         required: false
         type: boolean
-        default: 'false'
+        default: false
       VALIDATE_JAVASCRIPT_STANDARD:
         required: false
         type: boolean
-        default: 'false'
+        default: false
 
     # secrets:
     #   token:
