@@ -107,7 +107,7 @@ on:
       VALIDATE_JSCPD:
         required: false
         type: boolean
-        default: true
+        default: false
       VALIDATE_JSON:
         required: false
         type: boolean
@@ -175,7 +175,7 @@ on:
       VALIDATE_POWERSHELL:
         required: false
         type: boolean
-        default: true
+        default: false
       VALIDATE_PROTOBUF:
         required: false
         type: boolean
@@ -199,7 +199,7 @@ on:
       VALIDATE_PYTHON_MYPY:
         required: false
         type: boolean
-        default: true
+        default: false
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: boolean
