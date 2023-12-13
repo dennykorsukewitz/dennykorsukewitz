@@ -331,10 +331,10 @@ jobs:
         with:
           repository: dennykorsukewitz/dennykorsukewitz
           ref: 'dev'
-          path: ./../dennykorsukewitz
+          path: dennykorsukewitz
 
       - name: Prepare linters config
-        run: cp -R "${GITHUB_WORKSPACE}"/../dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
+        run: cp -R "${GITHUB_WORKSPACE}"/dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"
