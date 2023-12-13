@@ -3,10 +3,24 @@ name: Lint
 
 on:
   workflow_call:
-    # inputs:
-    #   username:
-    #     required: true
-    #     type: string
+    inputs:
+      VALIDATE_PYTHON_MYPY
+        required: false
+        type: boolean
+        default: 'false'
+      VALIDATE_JSCPD
+        required: false
+        type: boolean
+        default: 'false'
+      VALIDATE_POWERSHELL
+        required: false
+        type: boolean
+        default: 'false'
+      VALIDATE_JAVASCRIPT_STANDARD
+        required: false
+        type: boolean
+        default: 'false'
+
     # secrets:
     #   token:
     #     required: true
@@ -30,10 +44,10 @@ jobs:
         with:
           repository: dennykorsukewitz/dennykorsukewitz
           ref: 'dev'
-          path: dennykorsukewitz
+          path: ./../dennykorsukewitz
 
       - name: Prepare linters config
-        run: cp -R "${GITHUB_WORKSPACE}"/dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
+        run: cp -R "${GITHUB_WORKSPACE}"/../dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"
@@ -52,8 +66,7 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
 
-
-          VALIDATE_PYTHON_MYPY: false
-          VALIDATE_JSCPD: false
-          VALIDATE_POWERSHELL: false
-          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_PYTHON_MYPY: ${{ inputs.VALIDATE_PYTHON_MYPY }}
+          VALIDATE_JSCPD: ${{ inputs.VALIDATE_JSCPD }}
+          VALIDATE_POWERSHELL: ${{ inputs.VALIDATE_POWERSHELL }}
+          VALIDATE_JAVASCRIPT_STANDARD: ${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}
