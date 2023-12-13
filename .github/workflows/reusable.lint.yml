@@ -268,7 +268,6 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo ${{ inputs.VALIDATE_ANSIBLE }}
           if [[ "${{ inputs.VALIDATE_ANSIBLE }}" == "false" ]]; then
             echo "VALIDATE_ANSIBLE=false" >> $GITHUB_ENV
           fi
