@@ -4,19 +4,19 @@ name: Lint
 on:
   workflow_call:
     inputs:
-      VALIDATE_PYTHON_MYPY
+      VALIDATE_PYTHON_MYPY:
         required: false
         type: boolean
         default: 'false'
-      VALIDATE_JSCPD
+      VALIDATE_JSCPD:
         required: false
         type: boolean
         default: 'false'
-      VALIDATE_POWERSHELL
+      VALIDATE_POWERSHELL:
         required: false
         type: boolean
         default: 'false'
-      VALIDATE_JAVASCRIPT_STANDARD
+      VALIDATE_JAVASCRIPT_STANDARD:
         required: false
         type: boolean
         default: 'false'
