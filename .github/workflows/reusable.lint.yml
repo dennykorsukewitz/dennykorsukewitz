@@ -274,6 +274,225 @@ jobs:
           if [[ "${{ inputs.VALIDATE_ARM }}" == "false" ]]; then
             echo "VALIDATE_ARM=false" >> $GITHUB_ENV
           fi
+          if [[ "${{ inputs.VALIDATE_BASH }}" == "false" ]]; then
+            echo "VALIDATE_BASH=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_BASH_EXEC }}" == "false" ]]; then
+            echo "VALIDATE_BASH_EXEC=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CPP }}" == "false" ]]; then
+            echo "VALIDATE_CPP=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CLANG_FORMAT }}" == "false" ]]; then
+            echo "VALIDATE_CLANG_FORMAT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CLOJURE }}" == "false" ]]; then
+            echo "VALIDATE_CLOJURE=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CLOUDFORMATION }}" == "false" ]]; then
+            echo "VALIDATE_CLOUDFORMATION=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_COFFEESCRIPT }}" == "false" ]]; then
+            echo "VALIDATE_COFFEESCRIPT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CSHARP }}" == "false" ]]; then
+            echo "VALIDATE_CSHARP=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_CSS }}" == "false" ]]; then
+            echo "VALIDATE_CSS=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_DART }}" == "false" ]]; then
+            echo "VALIDATE_DART=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}" == "false" ]]; then
+            echo "VALIDATE_DOCKERFILE_HADOLINT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_EDITORCONFIG }}" == "false" ]]; then
+            echo "VALIDATE_EDITORCONFIG=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_ENV }}" == "false" ]]; then
+            echo "VALIDATE_ENV=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GHERKIN }}" == "false" ]]; then
+            echo "VALIDATE_GHERKIN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS }}" == "false" ]]; then
+            echo "VALIDATE_GITHUB_ACTIONS=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GITLEAKS }}" == "false" ]]; then
+            echo "VALIDATE_GITLEAKS=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GO }}" == "false" ]]; then
+            echo "VALIDATE_GO=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "false" ]]; then
+            echo "VALIDATE_GOOGLE_JAVA_FORMAT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_GROOVY }}" == "false" ]]; then
+            echo "VALIDATE_GROOVY=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_HTML }}" == "false" ]]; then
+            echo "VALIDATE_HTML=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JAVA }}" == "false" ]]; then
+            echo "VALIDATE_JAVA=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_ES }}" == "false" ]]; then
+            echo "VALIDATE_JAVASCRIPT_ES=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}" == "false" ]]; then
+            echo "VALIDATE_JAVASCRIPT_STANDARD=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JSCPD }}" == "false" ]]; then
+            echo "VALIDATE_JSCPD=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JSON }}" == "false" ]]; then
+            echo "VALIDATE_JSON=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_JSX }}" == "false" ]]; then
+            echo "VALIDATE_JSX=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_KOTLIN }}" == "false" ]]; then
+            echo "VALIDATE_KOTLIN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_KOTLIN_ANDROID }}" == "false" ]]; then
+            echo "VALIDATE_KOTLIN_ANDROID=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_KUBERNETES_KUBECONFORM }}" == "false" ]]; then
+            echo "VALIDATE_KUBERNETES_KUBECONFORM=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_LATEX }}" == "false" ]]; then
+            echo "VALIDATE_LATEX=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_LUA }}" == "false" ]]; then
+            echo "VALIDATE_LUA=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_MARKDOWN }}" == "false" ]]; then
+            echo "VALIDATE_MARKDOWN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_NATURAL_LANGUAGE }}" == "false" ]]; then
+            echo "VALIDATE_NATURAL_LANGUAGE=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_OPENAPI }}" == "false" ]]; then
+            echo "VALIDATE_OPENAPI=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PERL }}" == "false" ]]; then
+            echo "VALIDATE_PERL=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PHP }}" == "false" ]]; then
+            echo "VALIDATE_PHP=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PHP_BUILTIN }}" == "false" ]]; then
+            echo "VALIDATE_PHP_BUILTIN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PHP_PHPCS }}" == "false" ]]; then
+            echo "VALIDATE_PHP_PHPCS=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PHP_PHPSTAN }}" == "false" ]]; then
+            echo "VALIDATE_PHP_PHPSTAN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PHP_PSALM }}" == "false" ]]; then
+            echo "VALIDATE_PHP_PSALM=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_POWERSHELL }}" == "false" ]]; then
+            echo "VALIDATE_POWERSHELL=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PROTOBUF }}" == "false" ]]; then
+            echo "VALIDATE_PROTOBUF=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_BLACK }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_BLACK=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_FLAKE8 }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_FLAKE8=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_ISORT }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_ISORT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_MYPY }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_MYPY=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_PYLINT }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_PYLINT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_R }}" == "false" ]]; then
+            echo "VALIDATE_R=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RAKU }}" == "false" ]]; then
+            echo "VALIDATE_RAKU=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RENOVATE }}" == "false" ]]; then
+            echo "VALIDATE_RENOVATE=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RUBY }}" == "false" ]]; then
+            echo "VALIDATE_RUBY=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RUST_2015 }}" == "false" ]]; then
+            echo "VALIDATE_RUST_2015=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RUST_2018 }}" == "false" ]]; then
+            echo "VALIDATE_RUST_2018=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RUST_2021 }}" == "false" ]]; then
+            echo "VALIDATE_RUST_2021=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_RUST_CLIPPY }}" == "false" ]]; then
+            echo "VALIDATE_RUST_CLIPPY=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SCALAFMT }}" == "false" ]]; then
+            echo "VALIDATE_SCALAFMT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SHELL_SHFMT }}" == "false" ]]; then
+            echo "VALIDATE_SHELL_SHFMT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_LINT }}" == "false" ]]; then
+            echo "VALIDATE_SNAKEMAKE_LINT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}" == "false" ]]; then
+            echo "VALIDATE_SNAKEMAKE_SNAKEFMT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_STATES }}" == "false" ]]; then
+            echo "VALIDATE_STATES=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SQL }}" == "false" ]]; then
+            echo "VALIDATE_SQL=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_SQLFLUFF }}" == "false" ]]; then
+            echo "VALIDATE_SQLFLUFF=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TEKTON }}" == "false" ]]; then
+            echo "VALIDATE_TEKTON=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_FMT }}" == "false" ]]; then
+            echo "VALIDATE_TERRAFORM_FMT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_TERRASCAN }}" == "false" ]]; then
+            echo "VALIDATE_TERRAFORM_TERRASCAN=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_TFLINT }}" == "false" ]]; then
+            echo "VALIDATE_TERRAFORM_TFLINT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TERRAGRUNT }}" == "false" ]]; then
+            echo "VALIDATE_TERRAGRUNT=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TSX }}" == "false" ]]; then
+            echo "VALIDATE_TSX=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_ES }}" == "false" ]]; then
+            echo "VALIDATE_TYPESCRIPT_ES=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}" == "false" ]]; then
+            echo "VALIDATE_TYPESCRIPT_STANDARD=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_XML }}" == "false" ]]; then
+            echo "VALIDATE_XML=false" >> $GITHUB_ENV
+          fi
+          if [[ "${{ inputs.VALIDATE_YAML }}" == "false" ]]; then
+            echo "VALIDATE_YAML=false" >> $GITHUB_ENV
+          fi
 
       - name: Lint Code Base
         uses: github/super-linter@v4
