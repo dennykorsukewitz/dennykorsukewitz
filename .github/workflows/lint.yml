@@ -5,6 +5,23 @@ on:
   push:
   pull_request:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      VALIDATE_PYTHON_MYPY:
+        required: false
+        type: boolean
+        default: false
+      VALIDATE_JSCPD:
+        required: false
+        type: boolean
+        default: false
+      VALIDATE_POWERSHELL:
+        required: false
+        type: boolean
+        default: false
+      VALIDATE_JAVASCRIPT_STANDARD:
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   Lint:
