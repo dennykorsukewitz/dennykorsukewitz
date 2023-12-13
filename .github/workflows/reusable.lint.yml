@@ -4,10 +4,6 @@ name: Lint
 on:
   workflow_call:
     inputs:
-      VALIDATE_JSCPD_ALL_CODEBASE:
-        required: false
-        type: boolean
-        default: true
       VALIDATE_ANSIBLE:
         required: false
         type: boolean
@@ -353,7 +349,6 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
 
-          VALIDATE_JSCPD_ALL_CODEBASE: ${{ inputs.VALIDATE_JSCPD_ALL_CODEBASE }}
           VALIDATE_ANSIBLE: ${{ inputs.VALIDATE_ANSIBLE }}
           VALIDATE_ARM: ${{ inputs.VALIDATE_ARM }}
           VALIDATE_BASH: ${{ inputs.VALIDATE_BASH }}
