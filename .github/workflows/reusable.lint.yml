@@ -271,7 +271,7 @@ jobs:
             echo "VALIDATE_ANSIBLE=false" >> $GITHUB_ENV
           fi
           if [[ "${{ inputs.VALIDATE_ARM }}" == "false" ]]; then
-            echo "VALIDATE_ANSIBLE=false" >> $GITHUB_ENV
+            echo "VALIDATE_ARM=false" >> $GITHUB_ENV
           fi
 
       - name: Lint Code Base
