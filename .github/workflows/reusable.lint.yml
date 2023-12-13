@@ -83,6 +83,7 @@ on:
       VALIDATE_JSCPD:
         required: false
         type: string
+        default: 'false'
       VALIDATE_JSON:
         required: false
         type: string
@@ -134,6 +135,7 @@ on:
       VALIDATE_POWERSHELL:
         required: false
         type: string
+        default: 'false'
       VALIDATE_PROTOBUF:
         required: false
         type: string
@@ -152,6 +154,7 @@ on:
       VALIDATE_PYTHON_MYPY:
         required: false
         type: string
+        default: 'false'
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: string
