@@ -10,7 +10,6 @@ on:
       VALIDATE_ARM:
         required: false
         type: string
-        default: 'false'
       VALIDATE_BASH:
         required: false
         type: string
