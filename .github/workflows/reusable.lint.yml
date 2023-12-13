@@ -82,7 +82,6 @@ on:
       VALIDATE_JSCPD:
         required: false
         type: boolean
-        default: false
       VALIDATE_JSON:
         required: false
         type: boolean
@@ -134,7 +133,6 @@ on:
       VALIDATE_POWERSHELL:
         required: false
         type: boolean
-        default: false
       VALIDATE_PROTOBUF:
         required: false
         type: boolean
@@ -153,7 +151,6 @@ on:
       VALIDATE_PYTHON_MYPY:
         required: false
         type: boolean
-        default: false
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: boolean
@@ -266,6 +263,13 @@ jobs:
       - name: Show linters config
         run: ls -alih "${GITHUB_WORKSPACE}/repository/.github/linters"
 
+      - name: Set environment variables
+        run: |
+        echo ${{ inputs.VALIDATE_ANSIBLE }}
+        if [[ ${{ inputs.VALIDATE_ANSIBLE }} == false ]]; then
+          echo "VALIDATE_ANSIBLE=false" >> $GITHUB_ENV
+        fi
+
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
@@ -277,78 +281,79 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
 
-          VALIDATE_ANSIBLE: ${{ inputs.VALIDATE_ANSIBLE }}
-          VALIDATE_ARM: ${{ inputs.VALIDATE_ARM }}
-          VALIDATE_BASH: ${{ inputs.VALIDATE_BASH }}
-          VALIDATE_BASH_EXEC: ${{ inputs.VALIDATE_BASH_EXEC }}
-          VALIDATE_CPP: ${{ inputs.VALIDATE_CPP }}
-          VALIDATE_CLANG_FORMAT: ${{ inputs.VALIDATE_CLANG_FORMAT }}
-          VALIDATE_CLOJURE: ${{ inputs.VALIDATE_CLOJURE }}
-          VALIDATE_CLOUDFORMATION: ${{ inputs.VALIDATE_CLOUDFORMATION }}
-          VALIDATE_COFFEESCRIPT: ${{ inputs.VALIDATE_COFFEESCRIPT }}
-          VALIDATE_CSHARP: ${{ inputs.VALIDATE_CSHARP }}
-          VALIDATE_CSS: ${{ inputs.VALIDATE_CSS }}
-          VALIDATE_DART: ${{ inputs.VALIDATE_DART }}
-          VALIDATE_DOCKERFILE_HADOLINT: ${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}
-          VALIDATE_EDITORCONFIG: ${{ inputs.VALIDATE_EDITORCONFIG }}
-          VALIDATE_ENV: ${{ inputs.VALIDATE_ENV }}
-          VALIDATE_GHERKIN: ${{ inputs.VALIDATE_GHERKIN }}
-          VALIDATE_GITHUB_ACTIONS: ${{ inputs.VALIDATE_GITHUB_ACTIONS }}
-          VALIDATE_GITLEAKS: ${{ inputs.VALIDATE_GITLEAKS }}
-          VALIDATE_GO: ${{ inputs.VALIDATE_GO }}
-          VALIDATE_GOOGLE_JAVA_FORMAT: ${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}
-          VALIDATE_GROOVY: ${{ inputs.VALIDATE_GROOVY }}
-          VALIDATE_HTML: ${{ inputs.VALIDATE_HTML }}
-          VALIDATE_JAVA: ${{ inputs.VALIDATE_JAVA }}
-          VALIDATE_JAVASCRIPT_ES: ${{ inputs.VALIDATE_JAVASCRIPT_ES }}
-          VALIDATE_JAVASCRIPT_STANDARD: ${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}
-          VALIDATE_JSCPD: ${{ inputs.VALIDATE_JSCPD }}
-          VALIDATE_JSON: ${{ inputs.VALIDATE_JSON }}
-          VALIDATE_JSX: ${{ inputs.VALIDATE_JSX }}
-          VALIDATE_KOTLIN: ${{ inputs.VALIDATE_KOTLIN }}
-          VALIDATE_KOTLIN_ANDROID: ${{ inputs.VALIDATE_KOTLIN_ANDROID }}
-          VALIDATE_KUBERNETES_KUBECONFORM: ${{ inputs.VALIDATE_KUBERNETES_KUBECONFORM }}
-          VALIDATE_LATEX: ${{ inputs.VALIDATE_LATEX }}
-          VALIDATE_LUA: ${{ inputs.VALIDATE_LUA }}
-          VALIDATE_MARKDOWN: ${{ inputs.VALIDATE_MARKDOWN }}
-          VALIDATE_NATURAL_LANGUAGE: ${{ inputs.VALIDATE_NATURAL_LANGUAGE }}
-          VALIDATE_OPENAPI: ${{ inputs.VALIDATE_OPENAPI }}
-          VALIDATE_PERL: ${{ inputs.VALIDATE_PERL }}
-          VALIDATE_PHP: ${{ inputs.VALIDATE_PHP }}
-          VALIDATE_PHP_BUILTIN: ${{ inputs.VALIDATE_PHP_BUILTIN }}
-          VALIDATE_PHP_PHPCS: ${{ inputs.VALIDATE_PHP_PHPCS }}
-          VALIDATE_PHP_PHPSTAN: ${{ inputs.VALIDATE_PHP_PHPSTAN }}
-          VALIDATE_PHP_PSALM: ${{ inputs.VALIDATE_PHP_PSALM }}
-          VALIDATE_POWERSHELL: ${{ inputs.VALIDATE_POWERSHELL }}
-          VALIDATE_PROTOBUF: ${{ inputs.VALIDATE_PROTOBUF }}
-          VALIDATE_PYTHON: ${{ inputs.VALIDATE_PYTHON }}
-          VALIDATE_PYTHON_BLACK: ${{ inputs.VALIDATE_PYTHON_BLACK }}
-          VALIDATE_PYTHON_FLAKE8: ${{ inputs.VALIDATE_PYTHON_FLAKE8 }}
-          VALIDATE_PYTHON_ISORT: ${{ inputs.VALIDATE_PYTHON_ISORT }}
-          VALIDATE_PYTHON_MYPY: ${{ inputs.VALIDATE_PYTHON_MYPY }}
-          VALIDATE_PYTHON_PYLINT: ${{ inputs.VALIDATE_PYTHON_PYLINT }}
-          VALIDATE_R: ${{ inputs.VALIDATE_R }}
-          VALIDATE_RAKU: ${{ inputs.VALIDATE_RAKU }}
-          VALIDATE_RENOVATE: ${{ inputs.VALIDATE_RENOVATE }}
-          VALIDATE_RUBY: ${{ inputs.VALIDATE_RUBY }}
-          VALIDATE_RUST_2015: ${{ inputs.VALIDATE_RUST_2015 }}
-          VALIDATE_RUST_2018: ${{ inputs.VALIDATE_RUST_2018 }}
-          VALIDATE_RUST_2021: ${{ inputs.VALIDATE_RUST_2021 }}
-          VALIDATE_RUST_CLIPPY: ${{ inputs.VALIDATE_RUST_CLIPPY }}
-          VALIDATE_SCALAFMT: ${{ inputs.VALIDATE_SCALAFMT }}
-          VALIDATE_SHELL_SHFMT: ${{ inputs.VALIDATE_SHELL_SHFMT }}
-          VALIDATE_SNAKEMAKE_LINT: ${{ inputs.VALIDATE_SNAKEMAKE_LINT }}
-          VALIDATE_SNAKEMAKE_SNAKEFMT: ${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}
-          VALIDATE_STATES: ${{ inputs.VALIDATE_STATES }}
-          VALIDATE_SQL: ${{ inputs.VALIDATE_SQL }}
-          VALIDATE_SQLFLUFF: ${{ inputs.VALIDATE_SQLFLUFF }}
-          VALIDATE_TEKTON: ${{ inputs.VALIDATE_TEKTON }}
-          VALIDATE_TERRAFORM_FMT: ${{ inputs.VALIDATE_TERRAFORM_FMT }}
-          VALIDATE_TERRAFORM_TERRASCAN: ${{ inputs.VALIDATE_TERRAFORM_TERRASCAN }}
-          VALIDATE_TERRAFORM_TFLINT: ${{ inputs.VALIDATE_TERRAFORM_TFLINT }}
-          VALIDATE_TERRAGRUNT: ${{ inputs.VALIDATE_TERRAGRUNT }}
-          VALIDATE_TSX: ${{ inputs.VALIDATE_TSX }}
-          VALIDATE_TYPESCRIPT_ES: ${{ inputs.VALIDATE_TYPESCRIPT_ES }}
-          VALIDATE_TYPESCRIPT_STANDARD: ${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}
-          VALIDATE_XML: ${{ inputs.VALIDATE_XML }}
-          VALIDATE_YAML: ${{ inputs.VALIDATE_YAML }}
+
+          # VALIDATE_ANSIBLE: ${{ inputs.VALIDATE_ANSIBLE }}
+          # VALIDATE_ARM: ${{ inputs.VALIDATE_ARM }}
+          # VALIDATE_BASH: ${{ inputs.VALIDATE_BASH }}
+          # VALIDATE_BASH_EXEC: ${{ inputs.VALIDATE_BASH_EXEC }}
+          # VALIDATE_CPP: ${{ inputs.VALIDATE_CPP }}
+          # VALIDATE_CLANG_FORMAT: ${{ inputs.VALIDATE_CLANG_FORMAT }}
+          # VALIDATE_CLOJURE: ${{ inputs.VALIDATE_CLOJURE }}
+          # VALIDATE_CLOUDFORMATION: ${{ inputs.VALIDATE_CLOUDFORMATION }}
+          # VALIDATE_COFFEESCRIPT: ${{ inputs.VALIDATE_COFFEESCRIPT }}
+          # VALIDATE_CSHARP: ${{ inputs.VALIDATE_CSHARP }}
+          # VALIDATE_CSS: ${{ inputs.VALIDATE_CSS }}
+          # VALIDATE_DART: ${{ inputs.VALIDATE_DART }}
+          # VALIDATE_DOCKERFILE_HADOLINT: ${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}
+          # VALIDATE_EDITORCONFIG: ${{ inputs.VALIDATE_EDITORCONFIG }}
+          # VALIDATE_ENV: ${{ inputs.VALIDATE_ENV }}
+          # VALIDATE_GHERKIN: ${{ inputs.VALIDATE_GHERKIN }}
+          # VALIDATE_GITHUB_ACTIONS: ${{ inputs.VALIDATE_GITHUB_ACTIONS }}
+          # VALIDATE_GITLEAKS: ${{ inputs.VALIDATE_GITLEAKS }}
+          # VALIDATE_GO: ${{ inputs.VALIDATE_GO }}
+          # VALIDATE_GOOGLE_JAVA_FORMAT: ${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}
+          # VALIDATE_GROOVY: ${{ inputs.VALIDATE_GROOVY }}
+          # VALIDATE_HTML: ${{ inputs.VALIDATE_HTML }}
+          # VALIDATE_JAVA: ${{ inputs.VALIDATE_JAVA }}
+          # VALIDATE_JAVASCRIPT_ES: ${{ inputs.VALIDATE_JAVASCRIPT_ES }}
+          # VALIDATE_JAVASCRIPT_STANDARD: ${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}
+          # VALIDATE_JSCPD: ${{ inputs.VALIDATE_JSCPD }}
+          # VALIDATE_JSON: ${{ inputs.VALIDATE_JSON }}
+          # VALIDATE_JSX: ${{ inputs.VALIDATE_JSX }}
+          # VALIDATE_KOTLIN: ${{ inputs.VALIDATE_KOTLIN }}
+          # VALIDATE_KOTLIN_ANDROID: ${{ inputs.VALIDATE_KOTLIN_ANDROID }}
+          # VALIDATE_KUBERNETES_KUBECONFORM: ${{ inputs.VALIDATE_KUBERNETES_KUBECONFORM }}
+          # VALIDATE_LATEX: ${{ inputs.VALIDATE_LATEX }}
+          # VALIDATE_LUA: ${{ inputs.VALIDATE_LUA }}
+          # VALIDATE_MARKDOWN: ${{ inputs.VALIDATE_MARKDOWN }}
+          # VALIDATE_NATURAL_LANGUAGE: ${{ inputs.VALIDATE_NATURAL_LANGUAGE }}
+          # VALIDATE_OPENAPI: ${{ inputs.VALIDATE_OPENAPI }}
+          # VALIDATE_PERL: ${{ inputs.VALIDATE_PERL }}
+          # VALIDATE_PHP: ${{ inputs.VALIDATE_PHP }}
+          # VALIDATE_PHP_BUILTIN: ${{ inputs.VALIDATE_PHP_BUILTIN }}
+          # VALIDATE_PHP_PHPCS: ${{ inputs.VALIDATE_PHP_PHPCS }}
+          # VALIDATE_PHP_PHPSTAN: ${{ inputs.VALIDATE_PHP_PHPSTAN }}
+          # VALIDATE_PHP_PSALM: ${{ inputs.VALIDATE_PHP_PSALM }}
+          # VALIDATE_POWERSHELL: ${{ inputs.VALIDATE_POWERSHELL }}
+          # VALIDATE_PROTOBUF: ${{ inputs.VALIDATE_PROTOBUF }}
+          # VALIDATE_PYTHON: ${{ inputs.VALIDATE_PYTHON }}
+          # VALIDATE_PYTHON_BLACK: ${{ inputs.VALIDATE_PYTHON_BLACK }}
+          # VALIDATE_PYTHON_FLAKE8: ${{ inputs.VALIDATE_PYTHON_FLAKE8 }}
+          # VALIDATE_PYTHON_ISORT: ${{ inputs.VALIDATE_PYTHON_ISORT }}
+          # VALIDATE_PYTHON_MYPY: ${{ inputs.VALIDATE_PYTHON_MYPY }}
+          # VALIDATE_PYTHON_PYLINT: ${{ inputs.VALIDATE_PYTHON_PYLINT }}
+          # VALIDATE_R: ${{ inputs.VALIDATE_R }}
+          # VALIDATE_RAKU: ${{ inputs.VALIDATE_RAKU }}
+          # VALIDATE_RENOVATE: ${{ inputs.VALIDATE_RENOVATE }}
+          # VALIDATE_RUBY: ${{ inputs.VALIDATE_RUBY }}
+          # VALIDATE_RUST_2015: ${{ inputs.VALIDATE_RUST_2015 }}
+          # VALIDATE_RUST_2018: ${{ inputs.VALIDATE_RUST_2018 }}
+          # VALIDATE_RUST_2021: ${{ inputs.VALIDATE_RUST_2021 }}
+          # VALIDATE_RUST_CLIPPY: ${{ inputs.VALIDATE_RUST_CLIPPY }}
+          # VALIDATE_SCALAFMT: ${{ inputs.VALIDATE_SCALAFMT }}
+          # VALIDATE_SHELL_SHFMT: ${{ inputs.VALIDATE_SHELL_SHFMT }}
+          # VALIDATE_SNAKEMAKE_LINT: ${{ inputs.VALIDATE_SNAKEMAKE_LINT }}
+          # VALIDATE_SNAKEMAKE_SNAKEFMT: ${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}
+          # VALIDATE_STATES: ${{ inputs.VALIDATE_STATES }}
+          # VALIDATE_SQL: ${{ inputs.VALIDATE_SQL }}
+          # VALIDATE_SQLFLUFF: ${{ inputs.VALIDATE_SQLFLUFF }}
+          # VALIDATE_TEKTON: ${{ inputs.VALIDATE_TEKTON }}
+          # VALIDATE_TERRAFORM_FMT: ${{ inputs.VALIDATE_TERRAFORM_FMT }}
+          # VALIDATE_TERRAFORM_TERRASCAN: ${{ inputs.VALIDATE_TERRAFORM_TERRASCAN }}
+          # VALIDATE_TERRAFORM_TFLINT: ${{ inputs.VALIDATE_TERRAFORM_TFLINT }}
+          # VALIDATE_TERRAGRUNT: ${{ inputs.VALIDATE_TERRAGRUNT }}
+          # VALIDATE_TSX: ${{ inputs.VALIDATE_TSX }}
+          # VALIDATE_TYPESCRIPT_ES: ${{ inputs.VALIDATE_TYPESCRIPT_ES }}
+          # VALIDATE_TYPESCRIPT_STANDARD: ${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}
+          # VALIDATE_XML: ${{ inputs.VALIDATE_XML }}
+          # VALIDATE_YAML: ${{ inputs.VALIDATE_YAML }}
