@@ -12,7 +12,7 @@ JSON='['
 JSON_DAILY=''
 COUNTER=0
 COUNT_INSTALL_TOTAL=0
-CURRENT_JSON=$(cat ./.github/metrics/data/sublime.json | jq)
+CURRENT_JSON=$(jq . ./.github/metrics/data/sublime.json)
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------\n"
