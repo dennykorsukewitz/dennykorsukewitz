@@ -3,9 +3,7 @@
 OWNER="dennykorsukewitz"
 
 # https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json
-mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "sublime-package" --jq '.[].name' --json name | sort)
-
-REPOSITORIES=('Sublime-QuoteWithMarker')
+mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
 JSON='['
