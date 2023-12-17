@@ -8,6 +8,8 @@ mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-su
 declare -A REPOSITORYCOUNTER
 JSON='['
 JSON_DAILY=''
+DATA='{}'
+
 COUNTER=0
 COUNT_INSTALL_TOTAL=0
 CURRENT_JSON=$(jq . ./.github/metrics/data/sublime.json)
@@ -38,10 +40,10 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
 
     DATA=$(
-      jq --null-input \
-        --arg date "${DATE}" \
-        --arg "$REPOSITORY" "${COUNT_INSTALL_TOTAL}" \
-        '$ARGS.named'
+      echo "$DATA" | jq ". + {\"date\": \"${DATE}\"}"
+    )
+    DATA=$(
+      echo "$DATA" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
     )
 
     DAILY_DATA=$(
@@ -51,15 +53,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         '$ARGS.named'
     )
 
-    if [ ${COUNTER} != 0 ]; then
-        JSON+=','
-    fi
-
-    JSON+=$DATA
     JSON_DAILY+=$DAILY_DATA
     ((COUNTER+=1))
 
 done
+
+JSON+=$DATA
 JSON+=']'
 
 echo '------------------------------------'
@@ -69,7 +68,5 @@ do
 done
 echo '------------------------------------'
 
-
 echo "$JSON_DAILY" | jq --compact-output >> ./.github/metrics/data/sublime-data.json
 jq --argjson arr1 "$JSON" --argjson arr2 "$CURRENT_JSON" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime.json
-
