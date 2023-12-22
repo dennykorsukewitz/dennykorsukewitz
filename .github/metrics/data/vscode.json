@@ -638,5 +638,13 @@
   {
     "date": "2023-12-20T00:00:00Z",
     "VSCode-GitHubFileFetcher": "83"
+  },
+  {
+    "date": "2023-12-21T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "53"
+  },
+  {
+    "date": "2023-12-21T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "84"
   }
 ]
