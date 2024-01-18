@@ -778,5 +778,13 @@
   {
     "date": "2024-01-16T00:00:00Z",
     "VSCode-Znuny": "64"
+  },
+  {
+    "date": "2024-01-17T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "62"
+  },
+  {
+    "date": "2024-01-17T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "109"
   }
 ]
