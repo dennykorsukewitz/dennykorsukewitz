@@ -4,6 +4,7 @@
   },
   "include": [
     "src",
+    "src/**/*",
     "tests",
     "tools",
     "/tmp/lint/.automation/test"
