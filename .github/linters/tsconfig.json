@@ -6,6 +6,8 @@
     "src",
     "src/**/*",
     "**/src/**/*",
+    "repository/src",
+    "repository/src/**/*",
     "tests",
     "tools",
     "/tmp/lint/.automation/test"
