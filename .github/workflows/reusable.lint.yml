@@ -79,11 +79,11 @@ on:
       VALIDATE_JAVASCRIPT_STANDARD:
         required: false
         type: string
-        default: 'false'
+        default: "false"
       VALIDATE_JSCPD:
         required: false
         type: string
-        default: 'false'
+        default: "false"
       VALIDATE_JSON:
         required: false
         type: string
@@ -135,7 +135,7 @@ on:
       VALIDATE_POWERSHELL:
         required: false
         type: string
-        default: 'false'
+        default: "false"
       VALIDATE_PROTOBUF:
         required: false
         type: string
@@ -154,7 +154,7 @@ on:
       VALIDATE_PYTHON_MYPY:
         required: false
         type: string
-        default: 'false'
+        default: "false"
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: string
@@ -255,7 +255,7 @@ jobs:
           fetch-depth: "1"
         with:
           repository: dennykorsukewitz/dennykorsukewitz
-          ref: 'dev'
+          ref: "dev"
           path: dennykorsukewitz
 
       - name: Prepare linters config
