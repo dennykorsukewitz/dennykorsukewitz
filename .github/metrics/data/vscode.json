@@ -865,6 +865,10 @@
   },
   {
     "date": "2024-01-31T00:00:00Z",
+    "VSCode-MyExtensionPack": "5"
+  },
+  {
+    "date": "2024-01-31T00:00:00Z",
     "VSCode-QuoteWithMarker": "47"
   },
   {
@@ -874,5 +878,17 @@
   {
     "date": "2024-02-01T00:00:00Z",
     "VSCode-AddFolderToWorkspace": "75"
+  },
+  {
+    "date": "2024-02-01T00:00:00Z",
+    "VSCode-RainbowColors": "1"
+  },
+  {
+    "date": "2024-02-01T00:00:00Z",
+    "VSCode-RainbowColors": "2"
+  },
+  {
+    "date": "2024-02-02T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "122"
   }
 ]
