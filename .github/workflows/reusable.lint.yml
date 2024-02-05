@@ -267,6 +267,9 @@ jobs:
       - name: Show linters config
         run: ls -alih "${GITHUB_WORKSPACE}/repository/.github/linters"
 
+      - name: Show linters config content
+        run: cat "${GITHUB_WORKSPACE}/repository/.github/linters/tsconfig.json"
+
       - name: Set environment variables
         run: |
           if [[ "${{ inputs.VALIDATE_ANSIBLE }}" == "false" ]]; then
