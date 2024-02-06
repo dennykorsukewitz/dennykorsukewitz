@@ -77,7 +77,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         "workflow_run"
     ],
     "config": {
-        "url": "https://discord.com/api/webhooks/1204360397554196500/uPegYZU5Di-90wtise5Qk4gclQFcc7Py3iTNTYd7GHf1UAgV1-_5QsG-Z6TF762nrlqO/github",
+        "url": "https://discord.com/api/webhooks/1157760136438362123/VqZ93Um98Bw5CSL9gAbNy662Ao0h6PDHfXJABahC6vtAB2DIuCSQevZojxNXfyATAMJj/github",
         "content_type": "json"
     }
 }')) > /dev/null 2>&1
