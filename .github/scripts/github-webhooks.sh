@@ -16,8 +16,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     echo -e "\n-----------$REPOSITORY-----------\n"
 
-    for id in $(gh api repos/"$OWNER"/"$REPOSITORY"/hooks -q '.[].id'); do
-        gh api -X DELETE repos/"$OWNER"/"$REPOSITORY"/hooks/$id  > /dev/null 2>&1
+    for ID in $(gh api repos/"$OWNER"/"$REPOSITORY"/hooks -q '.[].id'); do
+        gh api -X DELETE repos/"$OWNER"/"$REPOSITORY"/hooks/"$ID"  > /dev/null 2>&1
     done
 
     echo "all"
