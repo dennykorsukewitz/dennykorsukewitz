@@ -105,6 +105,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         }
     }')) > /dev/null 2>&1
 
-    echo $RESPONSE
+    echo "$RESPONSE"
 
 done
