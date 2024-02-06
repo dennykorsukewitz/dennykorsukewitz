@@ -16,12 +16,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     echo -e "\n-----------$REPOSITORY-----------\n"
 
-    for id in $(gh api repos/$OWNER/$REPOSITORY/hooks -q '.[].id'); do
-        gh api -X DELETE repos/$OWNER/$REPOSITORY/hooks/$id  > /dev/null 2>&1
+    for id in $(gh api repos/"$OWNER"/"$REPOSITORY"/hooks -q '.[].id'); do
+        gh api -X DELETE repos/"$OWNER"/"$REPOSITORY"/hooks/$id  > /dev/null 2>&1
     done
 
     echo "all"
-    response=$(gh api -X POST repos/$OWNER/$REPOSITORY/hooks --input <(cat <<< '{
+    response=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< '{
     "name": "web",
     "active": true,
     "events": [
@@ -84,7 +84,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
 
     echo "star"
-    response=$(gh api -X POST repos/$OWNER/$REPOSITORY/hooks --input <(cat <<< '{
+    response=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< '{
         "name": "web",
         "active": true,
         "events": ["star", "watch"],
@@ -95,7 +95,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     }')) > /dev/null 2>&1
 
     echo "release"
-    response=$(gh api -X POST repos/$OWNER/$REPOSITORY/hooks --input <(cat <<< '{
+    response=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< '{
         "name": "web",
         "active": true,
         "events": ["release"],
