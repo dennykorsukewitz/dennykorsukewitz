@@ -8,9 +8,9 @@ REPOSITORIES+=("DK4")
 REPOSITORIES+=("dennykorsukewitz.github.io")
 REPOSITORIES+=("dennykorsukewitz")
 
-# ANY https://discord.com/api/webhooks/1157760136438362123/VqZ93Um98Bw5CSL9gAbNy662Ao0h6PDHfXJABahC6vtAB2DIuCSQevZojxNXfyATAMJj/github
-# RELEASE https://discord.com/api/webhooks/1204360397554196500/uPegYZU5Di-90wtise5Qk4gclQFcc7Py3iTNTYd7GHf1UAgV1-_5QsG-Z6TF762nrlqO/github
-# STARS https://discord.com/api/webhooks/1204335792030228502/JMLHlmX-EdX-V1SBQpE745GsJfRES2nFVAKYO7R9Hp64bhPR4vTZ58ocfqxeMJdFkEnu/github
+# ANY       https://discord.com/api/webhooks/1157760136438362123/VqZ93Um98Bw5CSL9gAbNy662Ao0h6PDHfXJABahC6vtAB2DIuCSQevZojxNXfyATAMJj/github
+# RELEASE   https://discord.com/api/webhooks/1204360397554196500/uPegYZU5Di-90wtise5Qk4gclQFcc7Py3iTNTYd7GHf1UAgV1-_5QsG-Z6TF762nrlqO/github
+# STARS     https://discord.com/api/webhooks/1204335792030228502/JMLHlmX-EdX-V1SBQpE745GsJfRES2nFVAKYO7R9Hp64bhPR4vTZ58ocfqxeMJdFkEnu/github
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
 
