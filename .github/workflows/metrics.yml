@@ -59,18 +59,21 @@ jobs:
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
 
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - uses: lowlighter/metrics@latest
+      - name:
         run: |
           set +e
-          git checkout metrics-renders
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          sudo mv /metrics_renders/* ./
-          git add --all
-          git commit -m "chore: push metrics"
-          git push
+          git status
+          git reset --hard
+          sudo mv /metrics_renders/* .
 
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: '📊 Metrics: Personal'
 
   Languages:
     runs-on: ubuntu-latest
