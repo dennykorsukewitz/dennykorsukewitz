@@ -182,6 +182,9 @@
   "date": "2024-02-05T00:00:00Z",
   "VSCode-AddFolderToWorkspace": "79"
 },{
+  "date": "2024-02-06T00:00:00Z",
+  "VSCode-AddFolderToWorkspace": "80"
+},{
   "date": "2023-08-24T00:00:00Z",
   "VSCode-GitHubFileFetcher": "1"
 },{
@@ -428,6 +431,9 @@
   "date": "2024-02-02T00:00:00Z",
   "VSCode-GitHubFileFetcher": "122"
 },{
+  "date": "2024-02-06T00:00:00Z",
+  "VSCode-GitHubFileFetcher": "124"
+},{
   "date": "2024-01-31T00:00:00Z",
   "VSCode-MyExtensionPack": "5"
 },{
@@ -541,6 +547,9 @@
 },{
   "date": "2024-02-03T00:00:00Z",
   "VSCode-RainbowColors": "3"
+},{
+  "date": "2024-02-06T00:00:00Z",
+  "VSCode-RainbowColors": "5"
 },{
   "date": "2023-05-02T00:00:00Z",
   "VSCode-Znuny": "3"
@@ -682,4 +691,7 @@
 },{
   "date": "2024-01-31T00:00:00Z",
   "VSCode-Znuny": "73"
+},{
+  "date": "2024-02-06T00:00:00Z",
+  "VSCode-Znuny": "74"
 }]

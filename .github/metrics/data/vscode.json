@@ -910,5 +910,21 @@
   {
     "date": "2024-02-05T00:00:00Z",
     "VSCode-QuoteWithMarker": "48"
+  },
+  {
+    "date": "2024-02-06T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "80"
+  },
+  {
+    "date": "2024-02-06T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "124"
+  },
+  {
+    "date": "2024-02-06T00:00:00Z",
+    "VSCode-RainbowColors": "5"
+  },
+  {
+    "date": "2024-02-06T00:00:00Z",
+    "VSCode-Znuny": "74"
   }
 ]
