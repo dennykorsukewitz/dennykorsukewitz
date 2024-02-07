@@ -3,7 +3,7 @@ name: Metrics
 on:
   # Schedule updates (“At 00:01.”)
   schedule:
-    - cron: "0 0 * * *"
+    - cron:  '0 0 * * *'
   # push:
   #   branches: ["dev", "main"]
   workflow_dispatch:
@@ -18,7 +18,6 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          output_action: none
           filename: .github/metrics/personal.svg
 
           # Options
@@ -58,22 +57,6 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
-
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name:
-        run: |
-          set +e
-          git status
-          git reset --hard
-          sudo mv /metrics_renders/* .
-
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: '📊 Metrics: Personal'
 
   Languages:
     runs-on: ubuntu-latest
@@ -115,7 +98,7 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Updated Metrics: GitHub Data."
+          message: 'Updated Metrics: GitHub Data.'
 
   VSCode:
     runs-on: ubuntu-latest
@@ -138,7 +121,7 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Updated Metrics: VSCode Data."
+          message: 'Updated Metrics: VSCode Data.'
 
   Sublime:
     runs-on: ubuntu-latest
@@ -160,13 +143,14 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Updated Metrics: Sublime Data."
+          message: 'Updated Metrics: Sublime Data.'
 
   Stargazers:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+
       - name: Stargazers graph
         uses: lowlighter/metrics@latest
         with:
@@ -185,6 +169,7 @@ jobs:
     permissions:
       contents: write
     steps:
+
       - name: Comment Reactions
         uses: lowlighter/metrics@latest
         with:
@@ -205,6 +190,7 @@ jobs:
     permissions:
       contents: write
     steps:
+
       - name: Sponsors
         uses: lowlighter/metrics@latest
         with:
@@ -216,7 +202,7 @@ jobs:
           plugin_sponsors: yes
           plugin_sponsors_sections: goal, about, list
           plugin_sponsors_past: yes
-          plugin_sponsors_title: "Sponsor Me!"
+          plugin_sponsors_title: 'Sponsor Me!'
 
   Commit-Calendar-Isometric:
     runs-on: ubuntu-latest
@@ -237,6 +223,7 @@ jobs:
     permissions:
       contents: write
     steps:
+
       - name: Commit current year calendar
         uses: lowlighter/metrics@latest
         with:
