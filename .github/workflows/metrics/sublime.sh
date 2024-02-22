@@ -14,8 +14,8 @@ DATA_DAILY='{}'
 
 COUNT_INSTALL_TOTAL=0
 
-CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/sublime-daily.json)
-CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/sublime-total.json)
+CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/sublime-daily.json)
+CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/sublime-total.json)
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
@@ -71,7 +71,6 @@ do
 done
 echo '------------------------------------'
 
-# --compact-output
 jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-daily.json
 
 jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-total.json

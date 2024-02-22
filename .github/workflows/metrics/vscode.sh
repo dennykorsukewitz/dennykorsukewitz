@@ -5,8 +5,22 @@ OWNER="dennykorsukewitz"
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
-JSON='['
+
 COUNTER=0
+JSON_TOTAL='['
+JSON_DAILY='['
+
+DATA_TOTAL='{}'
+DATA_DAILY='{}'
+
+COUNT_INSTALL_TOTAL=0
+
+CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/vscode-daily.json)
+CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/vscode-total.json)
+
+CURRENT_TIMESTAMP=$(date -u +"%Y-%m-%dT00:00:00Z")
+echo "Current timestamp: $CURRENT_TIMESTAMP"
+
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
@@ -18,12 +32,15 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     fi
 
     RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
-    # NAME=$(echo "$RESPONSE_JSON" | jq '.extensionName' | sed 's/\"//g')
+
+    echo "$RESPONSE_JSON"
 
     if [ -z "$RESPONSE_JSON" ] ; then
       echo -e "❌ No RESPONSE_JSON received."
       exit 1
     fi
+
+    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
 
     readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats[]')
 
@@ -39,23 +56,30 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
       REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
 
-      DATA=$(
-        jq --null-input \
-          --arg date "${DATE}" \
-          --arg "$REPOSITORY" "${REPOSITORYCOUNTER[$REPOSITORY]}" \
-          '$ARGS.named'
+      COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
+
+      DATA_TOTAL=$(
+        echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
+      )
+      DATA_TOTAL=$(
+        echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
       )
 
-      if [ ${COUNTER} != 0 ]; then
-          JSON+=','
-      fi
-
-      JSON+=$DATA
-      ((COUNTER+=1))
+      DATA_DAILY=$(
+        echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
+      )
+      DATA_DAILY=$(
+        echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
+      )
     done
 
 done
-JSON+=']'
+
+JSON_TOTAL+=$DATA_TOTAL
+JSON_TOTAL+=']'
+
+JSON_DAILY+=$DATA_DAILY
+JSON_DAILY+=']'
 
 echo '------------------------------------'
 for key in "${!REPOSITORYCOUNTER[@]}"
@@ -64,6 +88,6 @@ do
 done
 echo '------------------------------------'
 
-echo "$JSON" > ./.github/metrics/data/vscode-data.json
-jq '[ .[] ] | sort_by(.date) ' ./.github/metrics/data/vscode-data.json > ./.github/metrics/data/vscode.json
+jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-daily.json
 
+jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-total.json
