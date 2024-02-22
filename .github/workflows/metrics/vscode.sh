@@ -18,8 +18,8 @@ COUNT_INSTALL_TOTAL=0
 CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/vscode-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/vscode-total.json)
 
-CURRENT_TIMESTAMP=$(date -u +"%Y-%m-%dT00:00:00Z")
-echo "Current timestamp: $CURRENT_TIMESTAMP"
+TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
+# TIMESTAMP="2024-02-20T00:00:00Z"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
@@ -33,7 +33,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
 
-    echo "$RESPONSE_JSON"
 
     if [ -z "$RESPONSE_JSON" ] ; then
       echo -e "❌ No RESPONSE_JSON received."
@@ -42,37 +41,40 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
 
+
     readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats[]')
+
 
     for ROW in "${STATS[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
-      COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
+      if [[ "$DATE" == "$TIMESTAMP" ]]; then
+        COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
-      if [[ "$COUNT_INSTALL" == "null" ]] ; then
-        COUNT_INSTALL=0
-        continue
+        if [[ "$COUNT_INSTALL" == "null" ]] ; then
+          COUNT_INSTALL=0
+          continue
+        fi
+
+        REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
+        COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
+
+        DATA_TOTAL=$(
+          echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
+        )
+        DATA_TOTAL=$(
+          echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
+        )
+
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
+        )
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
+        )
+        break
       fi
-
-      REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
-
-      COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
-
-      DATA_TOTAL=$(
-        echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
-      )
-      DATA_TOTAL=$(
-        echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
-      )
-
-      DATA_DAILY=$(
-        echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
-      )
-      DATA_DAILY=$(
-        echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
-      )
     done
-
 done
 
 JSON_TOTAL+=$DATA_TOTAL
@@ -88,6 +90,10 @@ do
 done
 echo '------------------------------------'
 
-jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-daily.json
+echo $JSON_DAILY
+echo $JSON_TOTAL
 
-jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-total.json
+
+jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-daily.json
+
+jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-total.json
