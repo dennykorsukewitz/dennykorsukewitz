@@ -3,7 +3,7 @@ name: Metrics
 on:
   # Schedule updates (“At 00:01.”)
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: "0 0 * * *"
   # push:
   #   branches: ["dev", "main"]
   workflow_dispatch:
@@ -98,7 +98,7 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'Updated Metrics: GitHub Data.'
+          message: "Updated Metrics: GitHub Data."
 
   VSCode:
     runs-on: ubuntu-latest
@@ -121,7 +121,7 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'Updated Metrics: VSCode Data.'
+          message: "Updated Metrics: VSCode Data."
 
   Sublime:
     runs-on: ubuntu-latest
@@ -143,14 +143,36 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'Updated Metrics: Sublime Data.'
+          message: "Updated Metrics: Sublime Data."
+
+  Daily:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VSC_PAT: ${{ secrets.VSC_PAT }}
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Get jq version
+        run: jq --version
+      - name: Get Daily data
+        run: ./.github/workflows/metrics/daily.sh
+      - name: Git Pull
+        run: git pull
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Updated Metrics: Daily Data."
 
   Stargazers:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-
       - name: Stargazers graph
         uses: lowlighter/metrics@latest
         with:
@@ -190,7 +212,6 @@ jobs:
     permissions:
       contents: write
     steps:
-
       - name: Sponsors
         uses: lowlighter/metrics@latest
         with:
@@ -202,7 +223,7 @@ jobs:
           plugin_sponsors: yes
           plugin_sponsors_sections: goal, about, list
           plugin_sponsors_past: yes
-          plugin_sponsors_title: 'Sponsor Me!'
+          plugin_sponsors_title: "Sponsor Me!"
 
   Commit-Calendar-Isometric:
     runs-on: ubuntu-latest
@@ -223,7 +244,6 @@ jobs:
     permissions:
       contents: write
     steps:
-
       - name: Commit current year calendar
         uses: lowlighter/metrics@latest
         with:

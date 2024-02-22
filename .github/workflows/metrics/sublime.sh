@@ -6,16 +6,19 @@ OWNER="dennykorsukewitz"
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
-JSON='['
-JSON_DAILY=''
-DATA='{}'
+JSON_TOTAL='['
+JSON_DAILY='['
 
-COUNTER=0
+DATA_TOTAL='{}'
+DATA_DAILY='{}'
+
 COUNT_INSTALL_TOTAL=0
-CURRENT_JSON=$(jq . ./.github/metrics/data/sublime.json)
+
+CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/sublime-daily.json)
+CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/sublime-total.json)
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
-  echo -e "\n-----------$REPOSITORY-----------\n"
+  echo -e "\n-----------$REPOSITORY-----------"
 
     SUBLIME_REPOSITORY=${REPOSITORY//Sublime-/}
     SUBLIME_REPOSITORY=$(echo "$SUBLIME_REPOSITORY" | sed 's/[A-Z]/ &/g' | xargs | sed 's/Git Hub/GitHub/g' | sed 's/ /%20/g')
@@ -28,7 +31,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     fi
 
     DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
-    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
+    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
 
     COUNT_INSTALL=0
     for i in {0..2}
@@ -39,27 +42,27 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
 
-    DATA=$(
-      echo "$DATA" | jq ". + {\"date\": \"${DATE}\"}"
+    DATA_TOTAL=$(
+      echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
     )
-    DATA=$(
-      echo "$DATA" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
-    )
-
-    DAILY_DATA=$(
-      jq --null-input \
-        --arg date "${DATE}" \
-        --arg "$REPOSITORY" "${REPOSITORYCOUNTER[$REPOSITORY]}" \
-        '$ARGS.named'
+    DATA_TOTAL=$(
+      echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
     )
 
-    JSON_DAILY+=$DAILY_DATA
-    ((COUNTER+=1))
+    DATA_DAILY=$(
+      echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
+    )
+    DATA_DAILY=$(
+      echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
+    )
 
 done
 
-JSON+=$DATA
-JSON+=']'
+JSON_TOTAL+=$DATA_TOTAL
+JSON_TOTAL+=']'
+
+JSON_DAILY+=$DATA_DAILY
+JSON_DAILY+=']'
 
 echo '------------------------------------'
 for key in "${!REPOSITORYCOUNTER[@]}"
@@ -68,5 +71,7 @@ do
 done
 echo '------------------------------------'
 
-echo "$JSON_DAILY" | jq --compact-output >> ./.github/metrics/data/sublime-data.json
-jq --argjson arr1 "$JSON" --argjson arr2 "$CURRENT_JSON" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime.json
+# --compact-output
+jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-daily.json
+
+jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-total.json

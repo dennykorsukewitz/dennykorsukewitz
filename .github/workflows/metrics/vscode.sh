@@ -8,7 +8,7 @@ declare -A REPOSITORYCOUNTER
 JSON='['
 COUNTER=0
 for REPOSITORY in "${REPOSITORIES[@]}"; do
-  echo -e "\n-----------$REPOSITORY-----------\n"
+  echo -e "\n-----------$REPOSITORY-----------"
 
     VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
 

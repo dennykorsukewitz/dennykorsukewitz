@@ -13,7 +13,7 @@ declare -A REPOSITORYCOUNTER
 JSON='['
 COUNTER=0
 for REPOSITORY in "${REPOSITORIES[@]}"; do
-  echo -e "\n-----------$REPOSITORY-----------\n"
+  echo -e "\n-----------$REPOSITORY-----------"
 
     mapfile -t STARGAZERS < <(gh api -H "Accept: application/vnd.github.v3.star+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/"$OWNER"/"$REPOSITORY"/stargazers --jq '.[]')
 
