@@ -32,6 +32,8 @@ jobs:
     name: List Workflow Runs
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'list' }}
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: List Workflow Runs
         run: |
@@ -45,6 +47,8 @@ jobs:
     name: List failed Workflow Runs
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'list_failed' }}
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: List failed Workflow Runs
         run: |
@@ -58,6 +62,8 @@ jobs:
     name: Delete Workflow Runs
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete' }}
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Delete Workflow Runs
         run: |
@@ -71,6 +77,8 @@ jobs:
     name: Delete failed Workflow Runs
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete_failed' }}
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Delete failed Workflow Runs
         run: |
