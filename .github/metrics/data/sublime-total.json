@@ -8,39 +8,11 @@
     "Sublime-QuoteWithMarker": "1"
   },
   {
-    "date": "2023-11-23T00:00:00Z",
-    "Sublime-QuoteWithMarker": "1"
-  },
-  {
     "date": "2023-11-24T00:00:00Z",
     "Sublime-QuoteWithMarker": "2"
   },
   {
     "date": "2023-11-25T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-11-27T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-11-28T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-11-29T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-11-30T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-12-01T00:00:00Z",
-    "Sublime-QuoteWithMarker": "3"
-  },
-  {
-    "date": "2023-12-02T00:00:00Z",
     "Sublime-QuoteWithMarker": "3"
   },
   {
@@ -56,10 +28,6 @@
     "Sublime-QuoteWithMarker": "8"
   },
   {
-    "date": "2023-12-06T00:00:00Z",
-    "Sublime-QuoteWithMarker": "8"
-  },
-  {
     "date": "2023-12-07T00:00:00Z",
     "Sublime-QuoteWithMarker": "10"
   },
@@ -69,10 +37,6 @@
   },
   {
     "date": "2023-12-09T00:00:00Z",
-    "Sublime-QuoteWithMarker": "14"
-  },
-  {
-    "date": "2023-12-10T00:00:00Z",
     "Sublime-QuoteWithMarker": "14"
   },
   {
@@ -115,27 +79,7 @@
     "Sublime-QuoteWithMarker": "15"
   },
   {
-    "date": "2023-12-19T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "8",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
     "date": "2023-12-20T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "9",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-21T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "9",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-22T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "9",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-23T00:00:00Z",
     "Sublime-GitHubFileFetcher": "9",
     "Sublime-QuoteWithMarker": "15"
   },
@@ -145,22 +89,7 @@
     "Sublime-QuoteWithMarker": "15"
   },
   {
-    "date": "2023-12-25T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "10",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
     "date": "2023-12-26T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "11",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-27T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "11",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-28T00:00:00Z",
     "Sublime-GitHubFileFetcher": "11",
     "Sublime-QuoteWithMarker": "15"
   },
@@ -171,16 +100,6 @@
   },
   {
     "date": "2023-12-30T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "13",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2023-12-31T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "13",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2024-01-01T00:00:00Z",
     "Sublime-GitHubFileFetcher": "13",
     "Sublime-QuoteWithMarker": "15"
   },
@@ -205,27 +124,12 @@
     "Sublime-QuoteWithMarker": "15"
   },
   {
-    "date": "2024-01-06T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "20",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2024-01-07T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "20",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
     "date": "2024-01-08T00:00:00Z",
     "Sublime-GitHubFileFetcher": "21",
     "Sublime-QuoteWithMarker": "15"
   },
   {
     "date": "2024-01-09T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "22",
-    "Sublime-QuoteWithMarker": "15"
-  },
-  {
-    "date": "2024-01-10T00:00:00Z",
     "Sublime-GitHubFileFetcher": "22",
     "Sublime-QuoteWithMarker": "15"
   },
@@ -260,22 +164,7 @@
     "Sublime-QuoteWithMarker": "19"
   },
   {
-    "date": "2024-01-17T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "31",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
     "date": "2024-01-18T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "32",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
-    "date": "2024-01-19T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "32",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
-    "date": "2024-01-20T00:00:00Z",
     "Sublime-GitHubFileFetcher": "32",
     "Sublime-QuoteWithMarker": "19"
   },
@@ -290,27 +179,12 @@
     "Sublime-QuoteWithMarker": "19"
   },
   {
-    "date": "2024-01-23T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "34",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
     "date": "2024-01-24T00:00:00Z",
     "Sublime-GitHubFileFetcher": "35",
     "Sublime-QuoteWithMarker": "19"
   },
   {
-    "date": "2024-01-25T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "35",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
     "date": "2024-01-26T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "36",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
-    "date": "2024-01-27T00:00:00Z",
     "Sublime-GitHubFileFetcher": "36",
     "Sublime-QuoteWithMarker": "19"
   },
@@ -325,16 +199,6 @@
     "Sublime-QuoteWithMarker": "19"
   },
   {
-    "date": "2024-01-30T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "38",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
-    "date": "2024-01-31T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "38",
-    "Sublime-QuoteWithMarker": "19"
-  },
-  {
     "date": "2024-02-01T00:00:00Z",
     "Sublime-GitHubFileFetcher": "40",
     "Sublime-QuoteWithMarker": "20"
@@ -343,11 +207,6 @@
     "date": "2024-02-02T00:00:00Z",
     "Sublime-GitHubFileFetcher": "41",
     "Sublime-QuoteWithMarker": "21"
-  },
-  {
-    "date": "2024-02-03T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "41",
-    "Sublime-QuoteWithMarker": "22"
   },
   {
     "date": "2024-02-04T00:00:00Z",
@@ -360,27 +219,7 @@
     "Sublime-QuoteWithMarker": "23"
   },
   {
-    "date": "2024-02-06T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "43",
-    "Sublime-QuoteWithMarker": "23"
-  },
-  {
-    "date": "2024-02-06T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "43",
-    "Sublime-QuoteWithMarker": "23"
-  },
-  {
     "date": "2024-02-07T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "46",
-    "Sublime-QuoteWithMarker": "24"
-  },
-  {
-    "date": "2024-02-08T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "46",
-    "Sublime-QuoteWithMarker": "24"
-  },
-  {
-    "date": "2024-02-09T00:00:00Z",
     "Sublime-GitHubFileFetcher": "46",
     "Sublime-QuoteWithMarker": "24"
   },
@@ -390,42 +229,7 @@
     "Sublime-QuoteWithMarker": "25"
   },
   {
-    "date": "2024-02-11T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "48",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-12T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "48",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
     "date": "2024-02-13T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "49",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-14T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "49",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-15T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "49",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-16T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "49",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-17T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "49",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-18T00:00:00Z",
     "Sublime-GitHubFileFetcher": "49",
     "Sublime-QuoteWithMarker": "25"
   },
@@ -436,11 +240,6 @@
   },
   {
     "date": "2024-02-20T00:00:00Z",
-    "Sublime-GitHubFileFetcher": "51",
-    "Sublime-QuoteWithMarker": "25"
-  },
-  {
-    "date": "2024-02-21T00:00:00Z",
     "Sublime-GitHubFileFetcher": "51",
     "Sublime-QuoteWithMarker": "25"
   },

@@ -52,11 +52,21 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
         if [[ "$COUNT_INSTALL" == "null" ]] ; then
           COUNT_INSTALL=0
-          continue
         fi
 
         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
         COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
+
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
+        )
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
+        )
+
+        if [[ "$COUNT_INSTALL" == "0" ]] ; then
+          continue
+        fi
 
         DATA_TOTAL=$(
           echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
@@ -65,12 +75,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
         )
 
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
-        )
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
-        )
         break
       fi
     done
