@@ -49,7 +49,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
     )
 
-    if [[ "$COUNT_INSTALL" == "0" ]] ; then
+    if [[ "${REPOSITORYCOUNTER[${REPOSITORY}]}" == "0" ]] ; then
       continue
     fi
 
