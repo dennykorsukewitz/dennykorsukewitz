@@ -6,7 +6,6 @@ mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq 
 
 declare -A REPOSITORYCOUNTER
 
-COUNTER=0
 JSON_TOTAL='['
 JSON_DAILY='['
 
@@ -89,10 +88,6 @@ do
   echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
 done
 echo '------------------------------------'
-
-echo $JSON_DAILY
-echo $JSON_TOTAL
-
 
 jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-daily.json
 
