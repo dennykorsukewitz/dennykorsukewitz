@@ -11,19 +11,19 @@ on:
       filename:
         required: false
         type: string
-        default: 'badge.json'
+        default: "badge.json"
       label:
         required: false
         type: string
-        default: 'DK4'
+        default: "DK4"
       message:
         required: false
         type: string
-        default: 'Rocks'
+        default: "Rocks"
       color:
         required: false
         type: string
-        default: 'green'
+        default: "green"
       valColorRange:
         required: false
         type: string

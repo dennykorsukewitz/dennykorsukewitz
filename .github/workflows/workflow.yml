@@ -1,0 +1,34 @@
+---
+name: Delete Workflow Runs
+
+on:
+  workflow_call:
+    inputs:
+      OWNER:
+        required: true
+        type: string
+        default: "dennykorsukewitz"
+      REPOSITORY:
+        required: true
+        type: string
+        default: "dennykorsukewitz"
+      WORKFLOW_NAME:
+        required: true
+        type: string
+        default: "Lint"
+
+jobs:
+  Lint:
+    name: Lint Code Base
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Variables
+        run: echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }}"
+
+      - name: Delete Workflow Runs
+        run: |
+          WORKFLOW_ID=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
+
+          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
+
+          gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
