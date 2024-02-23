@@ -2,7 +2,7 @@
 name: Delete Workflow Runs
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       OWNER:
         required: true
