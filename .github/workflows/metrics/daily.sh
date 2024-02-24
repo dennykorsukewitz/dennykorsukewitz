@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# SUBLIME
-
 OWNER="dennykorsukewitz"
+
+# ------------------------------------
+# SUBLIME
+# ------------------------------------
 
 # https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
@@ -51,11 +53,16 @@ do
 done
 echo '------------------------------------'
 
+# ------------------------------------
 # VSCODE
+# ------------------------------------
 
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
+
+JSON_DAILY='['
+DATA_DAILY='{}'
 
 TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
 # TIMESTAMP="2024-02-20T00:00:00Z"
@@ -84,12 +91,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
 
-
       if [[ "$DATE" == "$TIMESTAMP" ]]; then
+
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
-        if [[ "$COUNT_INSTALL" == "null" ]] ; then
-          COUNT_INSTALL=0
+        if [[ "$COUNT_INSTALL" == "null" || "$COUNT_INSTALL" == "0" ]]; then
           continue
         fi
 
@@ -99,8 +105,9 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
         )
         DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
+          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL}\"}"
         )
+
         break
       fi
     done

@@ -71,6 +71,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         DATA_DAILY=$(
           echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL}\"}"
         )
+
+        break
       fi
     done
 done
