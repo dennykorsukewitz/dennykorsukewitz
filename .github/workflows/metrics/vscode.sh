@@ -38,35 +38,25 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       exit 1
     fi
 
-    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '.[-1] | .[$REPOSITORY]'  | sed 's/"//g')
-
+    CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '[.[] | select(.[$REPOSITORY] != null)] | last | .[$REPOSITORY]' | sed 's/"//g')
 
     readarray -t STATS < <(echo "$RESPONSE_JSON" | jq --compact-output -r '.dailyStats |= sort_by(.statisticDate) | .dailyStats[]')
-
 
     for ROW in "${STATS[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
+
       if [[ "$DATE" == "$TIMESTAMP" ]]; then
+
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
-        if [[ "$COUNT_INSTALL" == "null" ]] ; then
-          COUNT_INSTALL=0
+        if [[ "$COUNT_INSTALL" == "null" || "$COUNT_INSTALL" == "0" ]]; then
+          continue
         fi
 
         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
+
         COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
-
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
-        )
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
-        )
-
-        if [[ "$COUNT_INSTALL" == "0" ]] ; then
-          continue
-        fi
 
         DATA_TOTAL=$(
           echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
@@ -75,7 +65,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
           echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
         )
 
-        break
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
+        )
+        DATA_DAILY=$(
+          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL}\"}"
+        )
       fi
     done
 done

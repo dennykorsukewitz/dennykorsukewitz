@@ -2,6 +2,14 @@
   {},
   {},
   {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
   {
     "date": "2023-05-02T00:00:00Z",
     "VSCode-Znuny": "1"
@@ -763,5 +771,12 @@
   {
     "date": "2024-02-21T00:00:00Z",
     "VSCode-GitHubFileFetcher": "2"
+  },
+  {
+    "date": "2024-02-23T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "1",
+    "VSCode-MyExtensionPack": "1",
+    "VSCode-QuoteWithMarker": "2",
+    "VSCode-RainbowColors": "3"
   }
 ]

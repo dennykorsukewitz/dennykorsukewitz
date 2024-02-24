@@ -83,6 +83,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     for ROW in "${STATS[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
+
+
       if [[ "$DATE" == "$TIMESTAMP" ]]; then
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
