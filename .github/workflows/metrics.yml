@@ -1,9 +1,10 @@
 # Visit https://github.com/lowlighter/metrics#-documentation for full reference
 name: Metrics
 on:
-  # Schedule updates (“At 00:01.”)
+  # Schedule updates (“At 00:00.”)
   schedule:
-    - cron: "0 0 * * *"
+    # "5 23 * * *" (UTC) = "5 0 * * *" (Germany)
+    - cron: "6 23 * * *"
   # push:
   #   branches: ["dev", "main"]
   workflow_dispatch:
