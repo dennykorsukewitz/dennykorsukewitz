@@ -28,6 +28,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     fi
 
     DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
+    TIMESTAMP=$(echo "${DATE}T00:00:00Z")
 
     COUNT_INSTALL=0
     for i in {0..2}
@@ -35,21 +36,21 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       COUNT_INSTALL=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.data[$i].totals[1]")
       REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
     done
-
-
-    DATA_DAILY=$(
-      echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}T00:00:00Z\"}"
-    )
-    DATA_DAILY=$(
-      echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[$REPOSITORY]}\"}"
-    )
-
 done
 
 echo '------------------------------------'
-for key in "${!REPOSITORYCOUNTER[@]}"
+for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
 do
-  echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
+
+  echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]}"
+
+  DATA_DAILY=$(
+    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
+  )
+  DATA_DAILY=$(
+    echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[${REPOSITORY}]}\"}"
+  )
+
 done
 echo '------------------------------------'
 
