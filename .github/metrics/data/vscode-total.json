@@ -1,5 +1,4 @@
 [
-  {},
   {
     "date": "2023-05-02T00:00:00Z",
     "VSCode-Znuny": "3"
@@ -758,12 +757,5 @@
   {
     "date": "2024-02-21T00:00:00Z",
     "VSCode-GitHubFileFetcher": "135"
-  },
-  {
-    "date": "2024-02-23T00:00:00Z",
-    "VSCode-AddFolderToWorkspace": "85",
-    "VSCode-MyExtensionPack": "7",
-    "VSCode-QuoteWithMarker": "54",
-    "VSCode-RainbowColors": "14"
   }
 ]

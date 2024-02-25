@@ -67,13 +67,12 @@ TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
-    VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
-    COUNT_INSTALL=0
-
     if [ -z "$VSC_PAT" ] ; then
       echo -e "❌ VSC PAT is not defined."
       exit 1
     fi
+
+    VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
 
     RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
 
@@ -87,6 +86,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     for ROW in "${STATS[@]}"; do
 
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
+      COUNT_INSTALL=0
 
       if [[ "$DATE" == "$TIMESTAMP" ]]; then
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
@@ -102,6 +102,7 @@ done
 echo '------------------------------------'
 for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
 do
+
   echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]}"
 
   DATA_DAILY=$(
