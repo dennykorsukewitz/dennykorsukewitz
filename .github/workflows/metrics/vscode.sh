@@ -50,26 +50,26 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
 
-        if [[ "$COUNT_INSTALL" == "null" || "$COUNT_INSTALL" == "0" ]]; then
-          continue
-        fi
-
         REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
 
         COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
-
-        DATA_TOTAL=$(
-          echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
-        )
-        DATA_TOTAL=$(
-          echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
-        )
 
         DATA_DAILY=$(
           echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
         )
         DATA_DAILY=$(
           echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL}\"}"
+        )
+
+        if [[ "$COUNT_INSTALL" == "null" || "$COUNT_INSTALL" == "0" ]]; then
+          continue
+        fi
+
+        DATA_TOTAL=$(
+          echo "$DATA_TOTAL" | jq ". + {\"date\": \"${DATE}\"}"
+        )
+        DATA_TOTAL=$(
+          echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
         )
 
         break

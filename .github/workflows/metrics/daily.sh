@@ -61,16 +61,14 @@ mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq 
 
 declare -A REPOSITORYCOUNTER
 
-JSON_DAILY='['
-DATA_DAILY='{}'
-
 TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
-# TIMESTAMP="2024-02-20T00:00:00Z"
+# TIMESTAMP="2024-02-24T00:00:00Z"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
     VSCODE_REPOSITORY=${REPOSITORY//VSCode-/}
+    COUNT_INSTALL=0
 
     if [ -z "$VSC_PAT" ] ; then
       echo -e "❌ VSC PAT is not defined."
@@ -78,7 +76,6 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     fi
 
     RESPONSE_JSON=$(curl -u "$OWNER":"$VSC_PAT" -X GET https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats)
-
 
     if [ -z "$RESPONSE_JSON" ] ; then
       echo -e "❌ No RESPONSE_JSON received."
@@ -92,35 +89,32 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
       DATE=$(echo "$ROW" | jq '.statisticDate' | sed 's/\"//g')
 
       if [[ "$DATE" == "$TIMESTAMP" ]]; then
-
         COUNT_INSTALL=$(echo "$ROW" | jq '.counts.installCount' | sed 's/\"//g')
-
-        if [[ "$COUNT_INSTALL" == "null" || "$COUNT_INSTALL" == "0" ]]; then
-          continue
+        if [[ "$COUNT_INSTALL" == "null" ]]; then
+          COUNT_INSTALL=0
         fi
-
-        REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
-
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"date\": \"${DATE}\"}"
-        )
-        DATA_DAILY=$(
-          echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL}\"}"
-        )
-
-        break
       fi
+
+      REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
     done
 done
 
-JSON_DAILY+=$DATA_DAILY
-JSON_DAILY+=']'
-
 echo '------------------------------------'
-for key in "${!REPOSITORYCOUNTER[@]}"
+for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
 do
-  echo "| ${key} => ${REPOSITORYCOUNTER[${key}]}"
+  echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]}"
+
+  DATA_DAILY=$(
+    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
+  )
+  DATA_DAILY=$(
+    echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[${REPOSITORY}]}\"}"
+  )
+
 done
 echo '------------------------------------'
+
+JSON_DAILY+=$DATA_DAILY
+JSON_DAILY+=']'
 
 jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/daily.json
