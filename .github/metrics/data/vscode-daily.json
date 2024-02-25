@@ -745,12 +745,10 @@
   },
   {
     "date": "2024-02-19T00:00:00Z",
-    "VSCode-GitHubFileFetcher": "1"
-  },
-  {
-    "date": "2024-02-19T00:00:00Z",
     "VSCode-RainbowColors": "1",
-    "VSCode-Znuny": "1"
+    "VSCode-Znuny": "1",
+    "Sublime-GitHubFileFetcher": "1",
+    "Sublime-QuoteWithMarker": "0"
   },
   {
     "date": "2024-02-20T00:00:00Z",
@@ -762,7 +760,13 @@
     "VSCode-GitHubFileFetcher": "2"
   },
   {
+    "date": "2024-02-22T00:00:00Z",
+    "Sublime-GitHubFileFetcher": "1"
+  },
+  {
     "date": "2024-02-23T00:00:00Z",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "0",
     "VSCode-QuoteWithMarker": "2",
     "VSCode-RainbowColors": "3",
     "VSCode-AddFolderToWorkspace": "1",
@@ -772,6 +776,8 @@
   },
   {
     "date": "2024-02-24T00:00:00Z",
+    "Sublime-GitHubFileFetcher": "0",
+    "Sublime-QuoteWithMarker": "0",
     "VSCode-QuoteWithMarker": "0",
     "VSCode-RainbowColors": "0",
     "VSCode-AddFolderToWorkspace": "0",

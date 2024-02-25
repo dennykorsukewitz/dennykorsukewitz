@@ -63,7 +63,7 @@ mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq 
 declare -A REPOSITORYCOUNTER
 
 TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
-# TIMESTAMP="2024-02-24T00:00:00Z"
+# TIMESTAMP="2024-02-23T00:00:00Z"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
