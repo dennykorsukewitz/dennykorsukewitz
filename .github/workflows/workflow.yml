@@ -10,9 +10,9 @@ on:
         default: "list_failed"
         type: choice
         options:
-          - "delete"
+          - "delete all"
           - "delete failed"
-          - "list"
+          - "list all"
           - "list failed"
       OWNER:
         description: "Owner"
@@ -31,10 +31,10 @@ on:
         default: "Lint"
 
 jobs:
-  List:
-    name: List workflow runs
+  List_All:
+    name: List all workflow runs
     runs-on: ubuntu-22.04
-    if: ${{ github.event.inputs.FUNCTION == 'list' }}
+    if: ${{ github.event.inputs.FUNCTION == 'list all' }}
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -42,7 +42,7 @@ jobs:
         run: |
           WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
+          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
           gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id'
 
@@ -57,22 +57,22 @@ jobs:
         run: |
           WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
+          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
           gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id'
 
-  Delete:
-    name: Delete workflow runs
+  Delete_All:
+    name: Delete all workflow runs
     runs-on: ubuntu-22.04
-    if: ${{ github.event.inputs.FUNCTION == 'delete' }}
+    if: ${{ github.event.inputs.FUNCTION == 'delete all' }}
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - name: Delete workflow runs
+      - name: Delete all workflow runs
         run: |
           WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
+          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
           gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
 
@@ -87,6 +87,6 @@ jobs:
         run: |
           WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
+          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
           gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
