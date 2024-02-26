@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: List workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id'))
+          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
 
@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: List failed workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id'))
+          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
           for WORKFLOW_ID in $WORKFLOW_IDs; do
@@ -73,7 +73,7 @@ jobs:
     steps:
       - name: Delete all workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id'))
+          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
 
@@ -90,7 +90,7 @@ jobs:
     steps:
       - name: Delete failed workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id'))
+          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
 
