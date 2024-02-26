@@ -37,11 +37,11 @@ jobs:
     steps:
       - name: List Workflow Runs
         run: |
-          WORKFLOW_ID=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
+          WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
-          gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id'
+          gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id'
 
   List_Failed:
     name: List failed Workflow Runs
@@ -52,11 +52,11 @@ jobs:
     steps:
       - name: List failed Workflow Runs
         run: |
-          WORKFLOW_ID=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
+          WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
-          gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id'
+          gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id'
 
   Delete:
     name: Delete Workflow Runs
@@ -67,11 +67,11 @@ jobs:
     steps:
       - name: Delete Workflow Runs
         run: |
-          WORKFLOW_ID=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
+          WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
-          gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
+          gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
 
   Delete_Failed:
     name: Delete failed Workflow Runs
@@ -82,8 +82,8 @@ jobs:
     steps:
       - name: Delete failed Workflow Runs
         run: |
-          WORKFLOW_ID=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
+          WORKFLOW_ID=$(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="'${{ inputs.WORKFLOW_NAME }}'") | .id')
 
           echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} Workflow ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_ID)"
 
-          gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
+          gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
