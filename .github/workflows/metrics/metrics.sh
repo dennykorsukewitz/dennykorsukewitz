@@ -12,6 +12,12 @@ echo -e "\n-----------START github-----------\n"
 /opt/homebrew/bin/bash .github/workflows/metrics/github.sh
 
 # ---
+# Step: Create daily metrics
+# ---
+echo -e "\n-----------START daily-----------\n"
+/opt/homebrew/bin/bash .github/workflows/metrics/daily.sh
+
+# ---
 # Step: Create sublime metrics
 # ---
 echo -e "\n-----------START sublime-----------\n"
@@ -22,9 +28,3 @@ echo -e "\n-----------START sublime-----------\n"
 # ---
 echo -e "\n-----------START vscode-----------\n"
 /opt/homebrew/bin/bash .github/workflows/metrics/vscode.sh
-
-# ---
-# Step: Create daily metrics
-# ---
-echo -e "\n-----------START daily-----------\n"
-/opt/homebrew/bin/bash .github/workflows/metrics/daily.sh
