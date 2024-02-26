@@ -31,7 +31,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   fi
 
   DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
-  TIMESTAMP=$(echo "${DATE}T00:00:00Z")
+  TIMESTAMP="${DATE}T00:00:00Z"
 
   COUNT_INSTALL=0
   for i in {0..2}
