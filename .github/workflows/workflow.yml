@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'list all' }}
     env:
-      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: List workflow runs
         run: |
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'list failed' }}
     env:
-      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: List failed workflow runs
         run: |
@@ -83,7 +83,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete all' }}
     env:
-      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Delete all workflow runs
         run: |
@@ -107,7 +107,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete failed' }}
     env:
-      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Delete failed workflow runs
         run: |
