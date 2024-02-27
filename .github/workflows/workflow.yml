@@ -28,7 +28,6 @@ on:
         description: "Workflow, if not specified all workflows will be used."
         required: false
         type: string
-        default: ""
 
 jobs:
   List_All:
