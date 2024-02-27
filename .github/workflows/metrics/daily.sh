@@ -14,6 +14,10 @@ JSON_DAILY='['
 DATA_DAILY='{}'
 CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/daily.json)
 
+TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
+# TIMESTAMP="2024-02-23T00:00:00Z"
+echo "TIMESTAMP: $TIMESTAMP"
+
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
@@ -61,9 +65,6 @@ echo '------------------------------------'
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
-
-TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
-# TIMESTAMP="2024-02-23T00:00:00Z"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"

@@ -19,6 +19,7 @@ CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/vscode-total.json)
 
 TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
 # TIMESTAMP="2024-02-24T00:00:00Z"
+echo "TIMESTAMP: $TIMESTAMP"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
