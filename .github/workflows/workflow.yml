@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: List workflow runs
         run: |
-          if [[ -z "${{ inputs.WORKFLOW_NAME }}" ]]; then
+          if [[ "${{ inputs.WORKFLOW_NAME }}" == "" ]]; then
 
             WORKFLOW_IDs=($(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id'))
             echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
@@ -62,7 +62,7 @@ jobs:
     steps:
       - name: List failed workflow runs
         run: |
-          if [[ -z "${{ inputs.WORKFLOW_NAME }}" ]]; then
+          if [[ "${{ inputs.WORKFLOW_NAME }}" == "" ]]; then
 
             WORKFLOW_IDs=($(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id'))
             echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
@@ -85,7 +85,7 @@ jobs:
     steps:
       - name: Delete all workflow runs
         run: |
-          if [[ -z "${{ inputs.WORKFLOW_NAME }}" ]]; then
+          if [[ "${{ inputs.WORKFLOW_NAME }}" == "" ]]; then
 
             WORKFLOW_IDs=($(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id'))
             echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
@@ -108,7 +108,7 @@ jobs:
     steps:
       - name: Delete failed workflow runs
         run: |
-          if [[ -z "${{ inputs.WORKFLOW_NAME }}" ]]; then
+          if [[ "${{ inputs.WORKFLOW_NAME }}" == "" ]]; then
 
             WORKFLOW_IDs=($(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id'))
             echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
