@@ -26,9 +26,9 @@ on:
         default: "dennykorsukewitz"
       WORKFLOW_NAME:
         description: "Workflow"
-        required: true
+        required: false
         type: string
-        default: "Lint"
+        default: ""
 
 jobs:
   List_All:
@@ -40,9 +40,15 @@ jobs:
     steps:
       - name: List workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+          if [[ -n "${{ inputs.WORKFLOW_NAME }}" ]]; then
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+          else
+
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
+          fi
 
           for WORKFLOW_ID in $WORKFLOW_IDs; do
             gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id'
@@ -57,9 +63,16 @@ jobs:
     steps:
       - name: List failed workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+          if [[ -n "${{ inputs.WORKFLOW_NAME }}" ]]; then
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+          else
+
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
+          fi
+
           for WORKFLOW_ID in $WORKFLOW_IDs; do
             gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id'
           done
@@ -73,9 +86,15 @@ jobs:
     steps:
       - name: Delete all workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+          if [[ -n "${{ inputs.WORKFLOW_NAME }}" ]]; then
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+          else
+
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
+          fi
 
           for WORKFLOW_ID in $WORKFLOW_IDs; do
             gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows/$WORKFLOW_ID/runs --paginate | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
@@ -90,9 +109,15 @@ jobs:
     steps:
       - name: Delete failed workflow runs
         run: |
-          WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+          if [[ -n "${{ inputs.WORKFLOW_NAME }}" ]]; then
 
-          echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ${{ inputs.WORKFLOW_NAME }} ($WORKFLOW_IDs)"
+          else
+
+            WORKFLOW_IDs=($(gh api -X GET /repos/"${{ inputs.OWNER }}"/"${{ inputs.REPOSITORY }}"/actions/workflows | jq '.workflows[] | .id'))
+            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }} ($WORKFLOW_IDs)"
+          fi
 
           for WORKFLOW_ID in $WORKFLOW_IDs; do
 
