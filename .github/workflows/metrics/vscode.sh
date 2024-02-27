@@ -17,7 +17,7 @@ COUNT_INSTALL_TOTAL=0
 CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/vscode-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/vscode-total.json)
 
-TIMESTAMP=$(date -u -v-1d +"%Y-%m-%dT00:00:00Z")
+TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%dT00:00:00Z")
 # TIMESTAMP="2024-02-24T00:00:00Z"
 echo "TIMESTAMP: $TIMESTAMP"
 

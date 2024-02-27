@@ -191,8 +191,6 @@ jobs:
         uses: actions/checkout@v4
         env:
           fetch-depth: "1"
-      - name: Get jq version
-        run: jq --version
       - name: Get Daily data
         run: ./.github/workflows/metrics/daily.sh
       - name: Git Pull
@@ -237,8 +235,6 @@ jobs:
         uses: actions/checkout@v4
         env:
           fetch-depth: "1"
-      - name: Get jq version
-        run: jq --version
       - name: Get Sublime data
         run: ./.github/workflows/metrics/sublime.sh
       - name: Git Pull
@@ -262,8 +258,6 @@ jobs:
         uses: actions/checkout@v4
         env:
           fetch-depth: "1"
-      - name: Get jq version
-        run: jq --version
       - name: Get VSCode data
         run: ./.github/workflows/metrics/vscode.sh
       - name: Git Pull
