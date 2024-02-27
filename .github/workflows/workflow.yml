@@ -25,7 +25,7 @@ on:
         type: string
         default: "dennykorsukewitz"
       WORKFLOW_NAME:
-        description: "Workflow"
+        description: "Workflow, if not specified all workflows will be used."
         required: false
         type: string
         default: ""
