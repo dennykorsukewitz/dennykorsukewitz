@@ -200,9 +200,31 @@ jobs:
         with:
           message: "Updated Metrics: Daily Data."
 
+  NPM:
+    runs-on: ubuntu-latest
+    needs: [Stargazers]
+    if: ${{ always() }}
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Get NPM data
+        run: ./.github/workflows/metrics/npm.sh
+      - name: Git Pull
+        run: git pull
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Updated Metrics: NPM Data."
+
   Stars:
     runs-on: ubuntu-latest
-    needs: [Daily]
+    needs: [NPM]
     if: ${{ always() }}
     permissions:
       contents: write

@@ -28,3 +28,9 @@ echo -e "\n-----------START sublime-----------\n"
 # ---
 echo -e "\n-----------START vscode-----------\n"
 /opt/homebrew/bin/bash .github/workflows/metrics/vscode.sh
+
+# ---
+# Step: Create npm metrics
+# ---
+echo -e "\n-----------START npm-----------\n"
+/opt/homebrew/bin/bash .github/workflows/metrics/npm.sh
