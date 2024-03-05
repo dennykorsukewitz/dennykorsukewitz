@@ -58,6 +58,11 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/personal.svg
 
   Languages:
     runs-on: ubuntu-latest
@@ -80,6 +85,11 @@ jobs:
           plugin_languages_details: lines, bytes-size, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 60
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/languages.indepth.svg
 
   Commit-Calendar-Isometric:
     runs-on: ubuntu-latest
@@ -94,6 +104,11 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/commit-calendar.isometric.svg
 
   Commit-Calendar-Flat:
     runs-on: ubuntu-latest
@@ -109,6 +124,11 @@ jobs:
           # Options
           base: ""
           plugin_calendar: yes
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/commit-calendar.current.svg
 
       - name: Commit current year calendar
         uses: lowlighter/metrics@latest
@@ -120,6 +140,11 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/commit-calendar.total.svg
 
   Comment-Reactions:
     runs-on: ubuntu-latest
@@ -140,6 +165,11 @@ jobs:
           plugin_reactions_limit_discussions: 1000
           plugin_reactions_limit_discussions_comments: 1000
           plugin_reactions_details: percentage
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/comment.reactions.svg
 
   Sponsors:
     runs-on: ubuntu-latest
@@ -158,6 +188,11 @@ jobs:
           plugin_sponsors_sections: goal, about, list
           plugin_sponsors_past: yes
           plugin_sponsors_title: "Sponsor Me!"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/comment.reactions.svg
 
   Stargazers:
     runs-on: ubuntu-latest
@@ -176,6 +211,11 @@ jobs:
           plugin_stargazers_charts: yes
           plugin_stargazers_days: 0
           plugin_stargazers_charts_type: graph
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: .github/metrics/comment.reactions.svg
 
   Daily:
     runs-on: ubuntu-latest
@@ -193,12 +233,11 @@ jobs:
           fetch-depth: "1"
       - name: Get Daily data
         run: ./.github/workflows/metrics/daily.sh
-      - name: Git Pull
-        run: git pull
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          message: "Updated Metrics: Daily Data."
+          name: metrics
+          path: .github/metrics/data/daily.json
 
   NPM:
     runs-on: ubuntu-latest
@@ -215,12 +254,13 @@ jobs:
           fetch-depth: "1"
       - name: Get NPM data
         run: ./.github/workflows/metrics/npm.sh
-      - name: Git Pull
-        run: git pull
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          message: "Updated Metrics: NPM Data."
+          name: metrics
+          path: |
+            .github/metrics/data/npm-total.json
+            .github/metrics/data/npm-daily.json
 
   Stars:
     runs-on: ubuntu-latest
@@ -237,12 +277,13 @@ jobs:
           fetch-depth: "1"
       - name: Get GitHub data
         run: ./.github/workflows/metrics/github.sh
-      - name: Git Pull
-        run: git pull
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          message: "Updated Metrics: GitHub Data."
+          name: metrics
+          path: |
+            .github/metrics/data/github-stars.json
+            .github/metrics/data/github-stars-data.json
 
   Sublime:
     runs-on: ubuntu-latest
@@ -259,12 +300,13 @@ jobs:
           fetch-depth: "1"
       - name: Get Sublime data
         run: ./.github/workflows/metrics/sublime.sh
-      - name: Git Pull
-        run: git pull
-      - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          message: "Updated Metrics: Sublime Data."
+          name: metrics
+          path: |
+            .github/metrics/data/sublime-total.json
+            .github/metrics/data/sublime-daily.json
 
   VSCode:
     runs-on: ubuntu-latest
@@ -282,9 +324,31 @@ jobs:
           fetch-depth: "1"
       - name: Get VSCode data
         run: ./.github/workflows/metrics/vscode.sh
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: |
+            .github/metrics/data/vscode-total.json
+            .github/metrics/data/vscode-daily.json
+
+  DownloadAndCommit:
+    name: "Download and Commit"
+    runs-on: ubuntu-latest
+    needs: [VSCode]
+    if: ${{ always() }}
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Git Pull
         run: git pull
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: metrics
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Updated Metrics: VSCode Data."
+          message: "Updated Metrics."
