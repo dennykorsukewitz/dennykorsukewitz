@@ -58,7 +58,7 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -90,7 +90,7 @@ jobs:
           plugin_languages_details: lines, bytes-size, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 60
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -114,7 +114,7 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -150,7 +150,7 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -182,7 +182,7 @@ jobs:
           plugin_reactions_limit_discussions: 1000
           plugin_reactions_limit_discussions_comments: 1000
           plugin_reactions_details: percentage
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -210,7 +210,7 @@ jobs:
           plugin_sponsors_sections: goal, about, list
           plugin_sponsors_past: yes
           plugin_sponsors_title: "Sponsor Me!"
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
@@ -238,7 +238,7 @@ jobs:
           plugin_stargazers_charts: yes
           plugin_stargazers_days: 0
           plugin_stargazers_charts_type: graph
-      - uses: lowlighter/metrics@latest
+      - name: Move Metrics Renders
         run: |
           set +e
           git checkout metrics-renders
