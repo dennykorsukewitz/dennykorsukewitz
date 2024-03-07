@@ -408,13 +408,13 @@ jobs:
           fetch-depth: "1"
       - name: Git Pull
         run: git pull
-      - name: Download artifact
+      - name: Download artifact metrics-svg
         uses: actions/download-artifact@v4
         with:
           pattern: metrics-svg-*
           path: .github/metrics/
           merge-multiple: true
-      - name: Download artifact
+      - name: Download artifact metrics-data
         uses: actions/download-artifact@v4
         with:
           pattern: metrics-data-*
