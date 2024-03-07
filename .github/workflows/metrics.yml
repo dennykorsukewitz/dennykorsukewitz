@@ -15,6 +15,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Personal
         uses: lowlighter/metrics@latest
         with:
@@ -74,6 +78,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Languages Indepth
         uses: lowlighter/metrics@latest
         with:
@@ -106,6 +114,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Full-year calendar
         uses: lowlighter/metrics@latest
         with:
@@ -130,6 +142,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Commit current year calendar
         uses: lowlighter/metrics@latest
         with:
@@ -168,6 +184,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Comment Reactions
         uses: lowlighter/metrics@latest
         with:
@@ -198,6 +218,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Sponsors
         uses: lowlighter/metrics@latest
         with:
@@ -226,6 +250,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
       - name: Stargazers graph
         uses: lowlighter/metrics@latest
         with:
