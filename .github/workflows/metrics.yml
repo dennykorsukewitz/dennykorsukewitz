@@ -58,10 +58,15 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Personal
+          name: metrics-svg-Personal
           path: .github/metrics/personal.svg
 
   Languages:
@@ -85,10 +90,15 @@ jobs:
           plugin_languages_details: lines, bytes-size, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 60
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Languages
+          name: metrics-svg-Languages
           path: .github/metrics/languages.indepth.svg
 
   Commit-Calendar-Isometric:
@@ -104,10 +114,15 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Commit-Calendar-Isometric
+          name: metrics-svg-Commit-Calendar-Isometric
           path: .github/metrics/commit-calendar.isometric.svg
 
   Commit-Calendar-Flat:
@@ -135,11 +150,15 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
-
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Commit-Calendar-Flat
+          name: metrics-svg-Commit-Calendar-Flat
           path: |
             .github/metrics/commit-calendar.current.svg
             .github/metrics/commit-calendar.total.svg
@@ -163,10 +182,15 @@ jobs:
           plugin_reactions_limit_discussions: 1000
           plugin_reactions_limit_discussions_comments: 1000
           plugin_reactions_details: percentage
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Comment-Reactions
+          name: metrics-svg-Comment-Reactions
           path: .github/metrics/comment.reactions.svg
 
   Sponsors:
@@ -186,10 +210,15 @@ jobs:
           plugin_sponsors_sections: goal, about, list
           plugin_sponsors_past: yes
           plugin_sponsors_title: "Sponsor Me!"
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Sponsors
+          name: metrics-svg-Sponsors
           path: .github/metrics/comment.reactions.svg
 
   Stargazers:
@@ -209,10 +238,15 @@ jobs:
           plugin_stargazers_charts: yes
           plugin_stargazers_days: 0
           plugin_stargazers_charts_type: graph
+      - uses: lowlighter/metrics@latest
+        run: |
+          set +e
+          git checkout metrics-renders
+          sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Stargazers
+          name: metrics-svg-Stargazers
           path: .github/metrics/comment.reactions.svg
 
   Daily:
@@ -232,7 +266,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Daily
+          name: metrics-data-Daily
           path: .github/metrics/data/daily.json
 
   NPM:
@@ -251,7 +285,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: NPM
+          name: metrics-data-NPM
           path: |
             .github/metrics/data/npm-total.json
             .github/metrics/data/npm-daily.json
@@ -272,7 +306,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Stars
+          name: metrics-data-Stars
           path: |
             .github/metrics/data/github-stars.json
             .github/metrics/data/github-stars-data.json
@@ -293,7 +327,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Sublime
+          name: metrics-data-Sublime
           path: |
             .github/metrics/data/sublime-total.json
             .github/metrics/data/sublime-daily.json
@@ -315,7 +349,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: VSCode
+          name: metrics-data-VSCode
           path: |
             .github/metrics/data/vscode-total.json
             .github/metrics/data/vscode-daily.json
@@ -349,6 +383,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
+          pattern: metrics-svg-*
+          path: .github/metrics/
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          pattern: metrics-data-*
           path: .github/metrics/data/
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
