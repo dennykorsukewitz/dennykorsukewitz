@@ -348,6 +348,8 @@ jobs:
         run: git pull
       - name: Download artifact
         uses: actions/download-artifact@v4
+        with:
+          path: .github/metrics/data/
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
