@@ -52,8 +52,11 @@ jobs:
 
           for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
             echo "Workflow ID: $WORKFLOW_ID"
-            gh repo set-default ${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}
-            gh workflow run "$WORKFLOW_ID"
+            curl -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: token ${{ secrets.github_token }}" \
+              https://api.github.com/repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/dispatches \
+              -d '{"ref":"dev"}'
           done
 
   List_All:
