@@ -87,10 +87,9 @@ JSON_DAILY+=']'
 echo "JSON_DAILY: $JSON_DAILY"
 echo "JSON_TOTAL: $JSON_TOTAL"
 
-# if [[ "$JSON_DAILY"  != "[{}]" ]]; then
-#   jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
-# fi
-# if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
-#   jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-total.json
-# fi
-
+if [[ "$JSON_DAILY"  != "[{}]" ]]; then
+  jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
+fi
+if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
+  jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-total.json
+fi
