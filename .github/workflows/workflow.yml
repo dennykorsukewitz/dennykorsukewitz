@@ -38,7 +38,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
-      - name: List workflow runs
+      - name: Run workflow
         run: |
           if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
 
