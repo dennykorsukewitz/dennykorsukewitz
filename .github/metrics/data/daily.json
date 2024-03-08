@@ -1,5 +1,4 @@
 [
-
   {
     "date": "2023-05-02T00:00:00Z",
     "VSCode-Znuny": "1"
@@ -1249,6 +1248,10 @@
     "VSCode-GitHubFileFetcher": "0",
     "VSCode-Znuny": "0",
     "VSCode-MyExtensionPack": "0",
+    "generator-sublime-package": "0"
+  },
+  {
+    "date": "T00:00:00Z",
     "generator-sublime-package": "0"
   }
 ]
