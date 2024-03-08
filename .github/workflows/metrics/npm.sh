@@ -10,18 +10,24 @@ JSON_DAILY='['
 DATA_TOTAL='{}'
 DATA_DAILY='{}'
 
-
 COUNT_INSTALL_TOTAL=0
 
 CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/npm-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/npm-total.json)
 
-
 # Get yesterday's date
-TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%dT00:00:00Z")
-# TIMESTAMP="2024-02-24T00:00:00Z
+TIMESTAMP=$(date -u -v -1d +"%Y-%m-%d")
+
+# TIMESTAMP="2024-03-07"
+START_TIMESTAMP=$TIMESTAMP
+END_TIMESTAMP=$TIMESTAMP
+
+# START_TIMESTAMP="2024-03-05"
+# END_TIMESTAMP="2024-03-05"
 
 echo "TIMESTAMP: $TIMESTAMP"
+echo "START_TIMESTAMP: $START_TIMESTAMP"
+echo "END_TIMESTAMP: $END_TIMESTAMP"
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
@@ -30,11 +36,14 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   NPM_REPOSITORY=$(echo "$NPM_REPOSITORY" | sed 's/[A-Z]/ &/g' | xargs | sed 's/Git Hub/GitHub/g' | sed 's/ /%20/g')
 
   # Get the download counts
-  RESPONSE_JSON=$(curl -s "https://api.npmjs.org/downloads/point/${TIMESTAMP}:${TIMESTAMP}/${NPM_REPOSITORY}")
+  RESPONSE_JSON=$(curl -s "https://api.npmjs.org/downloads/point/${START_TIMESTAMP}:${END_TIMESTAMP}/${NPM_REPOSITORY}")
 
   # Parse the download counts
   COUNT_INSTALL=0
   COUNT_INSTALL=$(echo "$RESPONSE_JSON" | jq '.downloads')
+
+  echo "$RESPONSE_JSON"
+  echo "COUNT_INSTALL: $COUNT_INSTALL"
 
   REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
 done
@@ -50,7 +59,7 @@ do
   echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]} / ${COUNT_INSTALL_TOTAL}"
 
   DATA_DAILY=$(
-    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
+    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}T00:00:00Z\"}"
   )
   DATA_DAILY=$(
     echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[${REPOSITORY}]}\"}"
@@ -61,7 +70,7 @@ do
   fi
 
   DATA_TOTAL=$(
-    echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
+    echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}T00:00:00Z\"}"
   )
   DATA_TOTAL=$(
     echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
@@ -75,10 +84,13 @@ JSON_TOTAL+=']'
 JSON_DAILY+=$DATA_DAILY
 JSON_DAILY+=']'
 
-if [[ "$JSON_DAILY"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
-fi
-if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-total.json
-fi
+echo "JSON_DAILY: $JSON_DAILY"
+echo "JSON_TOTAL: $JSON_TOTAL"
+
+# if [[ "$JSON_DAILY"  != "[{}]" ]]; then
+#   jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
+# fi
+# if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
+#   jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-total.json
+# fi
 
