@@ -277,26 +277,6 @@ jobs:
           name: metrics-svg-Stargazers
           path: .github/metrics/comment.reactions.svg
 
-  Daily:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    env:
-      GH_TOKEN: ${{ github.token }}
-      VSC_PAT: ${{ secrets.VSC_PAT }}
-    steps:
-      - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
-        env:
-          fetch-depth: "1"
-      - name: Get Daily data
-        run: ./.github/workflows/metrics/daily.sh
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: metrics-data-Daily
-          path: .github/metrics/data/daily.json
-
   NPM:
     runs-on: ubuntu-latest
     permissions:
@@ -381,6 +361,38 @@ jobs:
           path: |
             .github/metrics/data/vscode-total.json
             .github/metrics/data/vscode-daily.json
+
+  Daily:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VSC_PAT: ${{ secrets.VSC_PAT }}
+    needs:
+      [
+        NPM,
+        Sublime,
+        VSCode,
+      ]
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Download artifact metrics-data
+        uses: actions/download-artifact@v4
+        with:
+          pattern: metrics-data-*
+          path: .github/metrics/data/
+          merge-multiple: true
+      - name: Get Daily data
+        run: ./.github/workflows/metrics/daily.sh
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-data-Daily
+          path: .github/metrics/data/daily.json
 
   Download-And-Commit:
     name: "Download and Commit"
