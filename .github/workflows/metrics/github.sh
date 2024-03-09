@@ -17,7 +17,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 
     mapfile -t STARGAZERS < <(gh api -H "Accept: application/vnd.github.v3.star+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/"$OWNER"/"$REPOSITORY"/stargazers --jq '.[]')
 
-    if [ -z "$STARGAZERS" ] ; then
+    if [ -z "${STARGAZERS[0]}" ] ; then
       echo -e "❌ No STARGAZERS received."
       exit 1
     fi
