@@ -38,6 +38,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   # Get the download counts
   RESPONSE_JSON=$(curl -s "https://api.npmjs.org/downloads/point/${START_TIMESTAMP}:${END_TIMESTAMP}/${NPM_REPOSITORY}")
 
+  if [ -z "$RESPONSE_JSON" ] ; then
+    echo -e "❌ No RESPONSE_JSON received."
+    exit 1
+  fi
+
   # Parse the download counts
   COUNT_INSTALL=0
   COUNT_INSTALL=$(echo "$RESPONSE_JSON" | jq '.downloads')

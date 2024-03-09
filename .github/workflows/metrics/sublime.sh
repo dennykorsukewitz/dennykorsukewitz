@@ -30,6 +30,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     exit 1
   fi
 
+  if [ -z "$RESPONSE_JSON" ] ; then
+    echo -e "❌ No RESPONSE_JSON received."
+    exit 1
+  fi
+
   DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
   TIMESTAMP="${DATE}T00:00:00Z"
 
