@@ -1,1 +1,194 @@
-[]
+[
+  {
+    "date": "2014-06-21T14:19:24Z",
+    "user": "medfreeman",
+    "Znuny-QuickDelete": "1",
+    "total": 1
+  },
+  {
+    "date": "2016-06-03T17:24:07Z",
+    "user": "phalmeida",
+    "MRBS-OTRS": "1",
+    "total": 2
+  },
+  {
+    "date": "2016-11-15T17:30:22Z",
+    "user": "jhabrmall",
+    "MRBS-OTRS": "2",
+    "total": 3
+  },
+  {
+    "date": "2019-01-17T08:39:57Z",
+    "user": "thorsteneckel",
+    "Znuny-QuickDelete": "2",
+    "total": 4
+  },
+  {
+    "date": "2019-01-26T11:28:22Z",
+    "user": "genaumann",
+    "Znuny-UBInventory": "1",
+    "total": 5
+  },
+  {
+    "date": "2019-01-28T15:10:07Z",
+    "user": "genaumann",
+    "Znuny-QuickDelete": "3",
+    "total": 6
+  },
+  {
+    "date": "2019-07-18T19:13:01Z",
+    "user": "kawanjaberi",
+    "MRBS-OTRS": "3",
+    "total": 7
+  },
+  {
+    "date": "2023-01-31T07:27:23Z",
+    "user": "NiklasSchmitt",
+    "VSCode-Znuny": "1",
+    "total": 8
+  },
+  {
+    "date": "2023-02-02T19:27:59Z",
+    "user": "tipue-dev",
+    "VSCode-Znuny": "2",
+    "total": 9
+  },
+  {
+    "date": "2023-02-08T20:59:35Z",
+    "user": "jg-ggs",
+    "VSCode-Znuny": "3",
+    "total": 10
+  },
+  {
+    "date": "2023-02-08T21:34:32Z",
+    "user": "joserribeiro26",
+    "VSCode-Znuny": "4",
+    "total": 11
+  },
+  {
+    "date": "2023-02-09T17:33:57Z",
+    "user": "NiklasSchmitt",
+    "Znuny-QuickDelete": "4",
+    "total": 12
+  },
+  {
+    "date": "2023-02-14T01:05:55Z",
+    "user": "asimops0258",
+    "MRBS-OTRS": "4",
+    "total": 13
+  },
+  {
+    "date": "2023-02-28T10:20:09Z",
+    "user": "diffblogbot",
+    "dennykorsukewitz.github.io": "1",
+    "total": 14
+  },
+  {
+    "date": "2023-06-07T08:34:10Z",
+    "user": "jepf",
+    "VSCode-Znuny": "5",
+    "total": 15
+  },
+  {
+    "date": "2023-06-26T15:52:39Z",
+    "user": "karldaeubel",
+    "dennykorsukewitz": "1",
+    "total": 16
+  },
+  {
+    "date": "2023-09-25T08:14:10Z",
+    "user": "vimuthm",
+    "VSCode-AddFolderToWorkspace": "1",
+    "total": 17
+  },
+  {
+    "date": "2023-09-27T09:01:50Z",
+    "user": "futurist",
+    "VSCode-GitHubFileFetcher": "1",
+    "total": 18
+  },
+  {
+    "date": "2023-10-19T10:48:21Z",
+    "user": "PeppeOsmio",
+    "VSCode-Znuny": "6",
+    "total": 19
+  },
+  {
+    "date": "2023-10-19T16:39:46Z",
+    "user": "baltadlakd",
+    "VSCode-Znuny": "7",
+    "total": 20
+  },
+  {
+    "date": "2023-11-15T20:01:43Z",
+    "user": "dennykorsukewitz",
+    "Znuny-UBInventory": "2",
+    "total": 21
+  },
+  {
+    "date": "2023-11-15T20:01:59Z",
+    "user": "dennykorsukewitz",
+    "dennykorsukewitz": "2",
+    "total": 22
+  },
+  {
+    "date": "2023-11-20T13:12:28Z",
+    "user": "dennykorsukewitz",
+    "dennykorsukewitz.github.io": "2",
+    "total": 23
+  },
+  {
+    "date": "2023-12-13T19:18:38Z",
+    "user": "eradzh87",
+    "test": "1",
+    "total": 24
+  },
+  {
+    "date": "2023-12-26T09:21:55Z",
+    "user": "FourtyThree43",
+    "Sublime-GitHubFileFetcher": "1",
+    "total": 25
+  },
+  {
+    "date": "2024-02-03T13:14:05Z",
+    "user": "eyazi",
+    "VSCode-Znuny": "8",
+    "total": 26
+  },
+  {
+    "date": "2024-02-06T05:27:09Z",
+    "user": "fadrian06",
+    "Sublime-GitHubFileFetcher": "2",
+    "total": 27
+  },
+  {
+    "date": "2024-02-06T10:10:08Z",
+    "user": "dennykorsukewitz",
+    "VSCode-QuoteWithMarker": "1",
+    "total": 28
+  },
+  {
+    "date": "2024-02-06T10:10:53Z",
+    "user": "dennykorsukewitz",
+    "VSCode-GitHubFileFetcher": "2",
+    "total": 29
+  },
+  {
+    "date": "2024-02-07T16:54:10Z",
+    "user": "BirdMachine",
+    "VSCode-RainbowColors": "1",
+    "total": 30
+  },
+  {
+    "date": "2024-03-07T22:01:48Z",
+    "user": "dennykorsukewitz",
+    "VSCode-Znuny": "9",
+    "total": 31
+  },
+  {
+    "date": "2024-03-07T22:02:24Z",
+    "user": "dennykorsukewitz",
+    "VSCode-AddFolderToWorkspace": "2",
+    "total": 32
+  }
+]

@@ -809,5 +809,12 @@
   {
     "date": "2024-03-07T00:00:00Z",
     "VSCode-AddFolderToWorkspace": "95"
+  },
+  {
+    "date": "2024-03-08T00:00:00Z",
+    "VSCode-QuoteWithMarker": "59",
+    "VSCode-AddFolderToWorkspace": "100",
+    "VSCode-Znuny": "78",
+    "VSCode-MyExtensionPack": "10"
   }
 ]
