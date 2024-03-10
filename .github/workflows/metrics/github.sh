@@ -18,8 +18,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     mapfile -t STARGAZERS < <(gh api -H "Accept: application/vnd.github.v3.star+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/"$OWNER"/"$REPOSITORY"/stargazers --jq '.[]')
 
     if [ -z "${STARGAZERS[0]}" ] ; then
-      echo -e "❌ No STARGAZERS received."
-      exit 1
+      continue;
     fi
 
     for STARGAZER in "${STARGAZERS[@]}"; do
@@ -54,6 +53,6 @@ do
 done
 echo '------------------------------------'
 
-echo "$JSON" > ./.github/metrics/data/github-stars-data.json
+echo "$JSON" | jq '[ .[] ] | sort_by(.date)' > ./.github/metrics/data/github-stars-data.json
 
 jq '[ .[] ] | sort_by(.date) | [ to_entries[]|.value.total=.key+1|.value ]' ./.github/metrics/data/github-stars-data.json > ./.github/metrics/data/github-stars.json
