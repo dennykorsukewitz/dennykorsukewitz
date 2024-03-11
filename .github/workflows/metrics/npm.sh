@@ -53,6 +53,8 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
 done
 
+TIMESTAMP="${TIMESTAMP}T00:00:00Z"
+
 echo '------------------------------------'
 for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
 do
@@ -64,7 +66,7 @@ do
   echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]} / ${COUNT_INSTALL_TOTAL}"
 
   DATA_DAILY=$(
-    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}T00:00:00Z\"}"
+    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
   )
   DATA_DAILY=$(
     echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[${REPOSITORY}]}\"}"
@@ -75,7 +77,7 @@ do
   fi
 
   DATA_TOTAL=$(
-    echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}T00:00:00Z\"}"
+    echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
   )
   DATA_TOTAL=$(
     echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
@@ -91,6 +93,18 @@ JSON_DAILY+=']'
 
 echo "JSON_DAILY: $JSON_DAILY"
 echo "JSON_TOTAL: $JSON_TOTAL"
+
+# Check if the current JSON data contains an entry with the specified timestamp and delete it
+if [[ $(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
+  CURRENT_JSON_DAILY=$(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" 'del(.[].date | select(. == $TIMESTAMP))')
+  echo "Element with .date $TIMESTAMP deleted from \$CURRENT_JSON_DAILY"
+fi
+
+# Check if the current JSON data contains an entry with the specified timestamp and delete it
+if [[ $(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
+  CURRENT_JSON_TOTAL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" 'del(.[].date | select(. == $TIMESTAMP))')
+  echo "Element with .date $TIMESTAMP deleted from \$CURRENT_JSON_TOTAL"
+fi
 
 if [[ "$JSON_DAILY"  != "[{}]" ]]; then
   jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
