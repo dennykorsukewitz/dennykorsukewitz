@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 OWNER="dennykorsukewitz"
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-npm" --jq '.[].name' --json name | sort)
@@ -16,7 +16,7 @@ CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/npm-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/npm-total.json)
 
 # Get yesterday's date
-TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d")
+TIMESTAMP=$(date -v -1d +"%Y-%m-%d")
 
 # TIMESTAMP="2024-03-07"
 START_TIMESTAMP=$TIMESTAMP
