@@ -62,8 +62,12 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
-      - name: Move Metrics Renders
-        run: ls -alih metrics_renders
+      - name: DELETE ME
+        run: ls -alih
+      - name: DELETE ME
+        run: ls -alih /
+      - name: DELETE ME
+        run: ls -alih /metrics_renders
       - name: Move Metrics Renders
         run: |
           set +e
