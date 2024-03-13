@@ -18,7 +18,7 @@ CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/npm-total.json)
 # Get yesterday's date
 if [[ "$(uname)" == "Darwin" ]]; then
   # This is macOS
-  TIMESTAMP=$(date -v -1d +"%Y-%m-%dT00:00:00Z")
+  TIMESTAMP=$(date -v -1d +"%Y-%m-%d")
 else
   TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d")
 fi
