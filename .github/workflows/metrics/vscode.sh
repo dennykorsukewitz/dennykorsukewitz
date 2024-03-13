@@ -17,8 +17,13 @@ COUNT_INSTALL_TOTAL=0
 CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/vscode-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/vscode-total.json)
 
-TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%dT00:00:00Z")
-#TIMESTAMP_MAC=$(date -v -1d +"%Y-%m-%dT00:00:00Z")
+# Get yesterday's date
+if [[ "$(uname)" == "Darwin" ]]; then
+  # This is macOS
+  TIMESTAMP=$(date -v -1d +"%Y-%m-%dT00:00:00Z")
+else
+  TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d")
+fi
 
 # TIMESTAMP="2024-03-12T00:00:00Z"
 echo "TIMESTAMP: $TIMESTAMP"
