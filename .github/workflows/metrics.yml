@@ -107,7 +107,7 @@ jobs:
   #     - name: Move Metrics Renders
   #       run: |
   #         set +e
-  #         sudo cp -rf /metrics_renders/* ./
+  #         sudo cp -rf /metrics_renders/.github/* ./.github/
   #     - name: Upload artifacts
   #       uses: actions/upload-artifact@v4
   #       with:
@@ -136,7 +136,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
-          sudo cp -rf /metrics_renders/* ./
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -177,7 +177,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
-          sudo cp -rf /metrics_renders/* ./
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -213,7 +213,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
-          sudo cp -rf /metrics_renders/* ./
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -245,7 +245,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
-          sudo cp -rf /metrics_renders/* ./
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -277,7 +277,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
-          sudo cp -rf /metrics_renders/* ./
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
