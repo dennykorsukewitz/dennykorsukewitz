@@ -456,7 +456,7 @@ jobs:
     needs:
       [
         Personal,
-        Languages,
+        # Languages,
         Commit-Calendar-Isometric,
         Commit-Calendar-Flat,
         Comment-Reactions,
