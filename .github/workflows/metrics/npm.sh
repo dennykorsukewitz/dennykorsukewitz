@@ -16,7 +16,8 @@ CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/npm-daily.json)
 CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/npm-total.json)
 
 # Get yesterday's date
-TIMESTAMP=$(date -v -1d +"%Y-%m-%d")
+TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d")
+#TIMESTAMP_MAC=$(date -v -1d +"%Y-%m-%dT00:00:00Z")
 
 # TIMESTAMP="2024-03-07"
 START_TIMESTAMP=$TIMESTAMP
