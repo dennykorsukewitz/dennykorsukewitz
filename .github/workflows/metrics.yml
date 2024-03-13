@@ -73,6 +73,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          filename: .github/metrics/personal.svg
           output_action: none
 
           # Options
@@ -179,6 +180,8 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: none
+          filename: .github/metrics/commit-calendar.isometric.svg
+
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
@@ -431,6 +434,7 @@ jobs:
         Sublime,
         VSCode,
       ]
+    if: ${{ always() }}
     steps:
       - name: Checkout dennykorsukewitz
         uses: actions/checkout@v4
