@@ -71,7 +71,7 @@ jobs:
           ls -alih /metrics_renders/.github/
           ls -alih /metrics_renders/.github/metrics/
           ls -alih /metrics_renders/.github/metrics/personal.svg
-          sudo mv -f /metrics_renders/.github/* ./.github/
+          sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
