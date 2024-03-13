@@ -189,7 +189,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* ./
+          sudo mv /metrics_renders/.github ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -231,7 +231,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* ./
+          sudo mv /metrics_renders/.github ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
