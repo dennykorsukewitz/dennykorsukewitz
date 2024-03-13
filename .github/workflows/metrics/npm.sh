@@ -60,6 +60,18 @@ done
 
 TIMESTAMP="${TIMESTAMP}T00:00:00Z"
 
+# Check if the current JSON data contains an entry with the specified timestamp and delete it
+if [[ $(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
+  CURRENT_JSON_DAILY=$(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
+  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-daily.json"
+fi
+
+# Check if the current JSON data contains an entry with the specified timestamp and delete it
+if [[ $(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
+  CURRENT_JSON_TOTAL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
+  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-total.json"
+fi
+
 echo '------------------------------------'
 for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
 do
@@ -95,18 +107,6 @@ JSON_TOTAL+=']'
 
 JSON_DAILY+=$DATA_DAILY
 JSON_DAILY+=']'
-
-# Check if the current JSON data contains an entry with the specified timestamp and delete it
-if [[ $(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
-  CURRENT_JSON_DAILY=$(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-daily.json"
-fi
-
-# Check if the current JSON data contains an entry with the specified timestamp and delete it
-if [[ $(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
-  CURRENT_JSON_TOTAL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-total.json"
-fi
 
 if [[ "$JSON_DAILY"  != "[{}]" ]]; then
   jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/npm-daily.json
