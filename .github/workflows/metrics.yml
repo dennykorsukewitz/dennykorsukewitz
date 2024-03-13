@@ -123,7 +123,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -189,7 +189,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/commit-calendar.isometric.svg
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -210,6 +210,7 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: none
+          filename: .github/metrics/commit-calendar.current.svg
 
           # Options
           base: ""
@@ -220,6 +221,7 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: none
+          filename: .github/metrics/commit-calendar.total.svg
 
           # Options
           base: ""
@@ -229,7 +231,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -265,7 +267,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -297,7 +299,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -329,7 +331,7 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
-          sudo mv /metrics_renders/* .github/metrics/
+          sudo mv /metrics_renders/github-metrics.svg .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
