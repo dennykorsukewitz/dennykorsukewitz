@@ -22,7 +22,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   # This is macOS
   TIMESTAMP=$(date -v -1d +"%Y-%m-%dT00:00:00Z")
 else
-  TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d")
+  TIMESTAMP=$(date -u -d '1 day ago' +"%Y-%m-%d"T00:00:00Z)
 fi
 
 # TIMESTAMP="2024-03-12T00:00:00Z"
