@@ -157,7 +157,7 @@ jobs:
   #     - name: Move Metrics Renders
   #       run: |
   #         set +e
-  ls -alih /metrics_renders
+  #         ls -alih /metrics_renders
   #         sudo mv /metrics_renders/* .github/metrics/
   #     - name: Upload artifacts
   #       uses: actions/upload-artifact@v4
