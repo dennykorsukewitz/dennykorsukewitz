@@ -185,6 +185,11 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+      - name: Move Metrics Renders
+        run: |
+          set +e
+          ls -alih /metrics_renders
+          sudo mv /metrics_renders/* ./
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -222,6 +227,11 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
+      - name: Move Metrics Renders
+        run: |
+          set +e
+          ls -alih /metrics_renders
+          sudo mv /metrics_renders/* ./
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
