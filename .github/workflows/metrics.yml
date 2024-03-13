@@ -64,12 +64,6 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
           plugin_repositories_order: featured, pinned, starred, random
-      - name: DELETE ME
-        run: ls -alih
-      - name: DELETE ME
-        run: ls -alih /
-      - name: DELETE ME
-        run: ls -alih /metrics_renders
       - name: Move Metrics Renders
         run: |
           set +e
@@ -81,41 +75,42 @@ jobs:
           name: metrics-svg-Personal
           path: .github/metrics/personal.svg
 
-  # Languages:
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout dennykorsukewitz
-  #       uses: actions/checkout@v4
-  #       env:
-  #         fetch-depth: "1"
-  #     - name: Languages Indepth
-  #       uses: lowlighter/metrics@latest
-  #       with:
-  #         token: ${{ secrets.METRICS_TOKEN }}
-  #         output_action: none
+  Languages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Languages Indepth
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: .github/metrics/languages.indepth.svg
+          output_action: none
 
-  #         # Options
-  #         base: ""
-  #         plugin_languages: yes
-  #         plugin_languages_ignored: >-
-  #           tex, less, dockerfile, makefile, qmake, lex, cmake,
-  #           gnuplot
-  #         plugin_languages_indepth: yes
-  #         plugin_languages_details: lines, bytes-size, percentage
-  #         plugin_languages_limit: 8
-  #         plugin_languages_analysis_timeout: 60
-  #     - name: Move Metrics Renders
-  #       run: |
-          # set +e
-          # ls -alih /metrics_renders
-          # sudo mv /metrics_renders/.github ./.github/
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: metrics-svg-Languages
-  #         path: .github/metrics/languages.indepth.svg
+          # Options
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: >-
+            tex, less, dockerfile, makefile, qmake, lex, cmake,
+            gnuplot
+          plugin_languages_indepth: yes
+          plugin_languages_details: lines, bytes-size, percentage
+          plugin_languages_limit: 8
+          plugin_languages_analysis_timeout: 60
+      - name: Move Metrics Renders
+        run: |
+          set +e
+          ls -alih /metrics_renders
+          sudo mv /metrics_renders/.github ./.github/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-svg-Languages
+          path: .github/metrics/languages.indepth.svg
 
   Commit-Calendar-Isometric:
     runs-on: ubuntu-latest
@@ -204,6 +199,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          filename: .github/metrics/comment.reactions.svg
           output_action: none
 
           # Options
@@ -238,6 +234,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          filename: .github/metrics/sponsors.svg
           output_action: none
 
           # Options
@@ -255,7 +252,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: metrics-svg-Sponsors
-          path: .github/metrics/comment.reactions.svg
+          path: .github/metrics/sponsors.svg
 
   Stargazers:
     runs-on: ubuntu-latest
@@ -270,6 +267,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          filename: .github/metrics/stargazers.graph.svg
           output_action: none
 
           # Options
@@ -287,7 +285,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: metrics-svg-Stargazers
-          path: .github/metrics/comment.reactions.svg
+          path: .github/metrics/stargazers.graph.svg
 
   NPM:
     runs-on: ubuntu-latest
