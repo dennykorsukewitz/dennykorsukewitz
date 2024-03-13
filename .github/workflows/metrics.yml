@@ -74,6 +74,12 @@ jobs:
         with:
           name: metrics-svg-Personal
           path: .github/metrics/personal.svg
+      - name: Upload artifacts 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-svg-Personal2
+          path: /metrics_renders/.github/metrics/personal.svg
+          
 
   # Languages:
   #   runs-on: ubuntu-latest
