@@ -68,6 +68,9 @@ jobs:
         run: |
           set +e
           ls -alih /metrics_renders
+          ls -alih /metrics_renders/.github/
+          ls -alih /metrics_renders/.github/metrics/
+          ls -alih /metrics_renders/.github/metrics/personal.svg
           sudo mv /metrics_renders/.github ./.github/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
