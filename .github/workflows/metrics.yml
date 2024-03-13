@@ -126,12 +126,13 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
+          ls -alih /metrics_renders
           sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: metrics-svg-Personal
-          path: .github/metrics/personal2.svg
+          path: .github/metrics/personal.svg
 
   Languages:
     runs-on: ubuntu-latest
@@ -188,6 +189,7 @@ jobs:
       - name: Move Metrics Renders
         run: |
           set +e
+          ls -alih /metrics_renders
           sudo mv /metrics_renders/* .github/metrics/
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
