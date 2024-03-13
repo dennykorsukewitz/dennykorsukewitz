@@ -65,74 +65,73 @@ jobs:
           path: .github/metrics/personal.svg
 
 
-  # Personal:
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout dennykorsukewitz
-  #       uses: actions/checkout@v4
-  #       env:
-  #         fetch-depth: "1"
-  #     - name: Personal
-  #       uses: lowlighter/metrics@latest
-  #       with:
-  #         token: ${{ secrets.METRICS_TOKEN }}
-  #         output_action: none
+  Personal2:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout dennykorsukewitz
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+      - name: Personal
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          output_action: none
 
-  #         # Options
-  #         user: dennykorsukewitz
-  #         template: classic
-  #         base: header, activity, community, repositories, metadata
-  #         config_display: large
-  #         config_timezone: Europe/Berlin
-  #         plugin_habits: yes
-  #         plugin_habits_charts_type: classic
-  #         plugin_habits_days: 14
-  #         plugin_habits_facts: yes
-  #         plugin_habits_from: 200
-  #         plugin_habits_languages_limit: 8
-  #         plugin_habits_languages_threshold: 0%
-  #         plugin_introduction: yes
-  #         plugin_introduction_title: yes
-  #         # plugin_isocalendar: yes
-  #         # plugin_isocalendar_duration: full-year
-  #         plugin_calendar: yes
-  #         plugin_calendar_limit: 1
-  #         plugin_languages: yes
-  #         plugin_languages_analysis_timeout: 15
-  #         plugin_languages_analysis_timeout_repositories: 7.5
-  #         plugin_languages_categories: markup, programming
-  #         plugin_languages_colors: github
-  #         plugin_languages_limit: 8
-  #         plugin_languages_recent_categories: markup, programming
-  #         plugin_languages_recent_days: 14
-  #         plugin_languages_recent_load: 300
-  #         plugin_languages_sections: most-used
-  #         plugin_languages_threshold: 0%
-  #         plugin_people: yes
-  #         plugin_people_limit: 24
-  #         plugin_people_size: 28
-  #         plugin_people_types: followers, following
-  #         plugin_repositories: yes
-  #         plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
-  #         plugin_repositories_order: featured, pinned, starred, random
-  #     - name: DELETE ME
-  #       run: ls -alih
-  #     - name: DELETE ME
-  #       run: ls -alih /
-  #     - name: DELETE ME
-  #       run: ls -alih /metrics_renders
-  #     - name: Move Metrics Renders
-  #       run: |
-  #         set +e
-  #         git checkout metrics-renders
-  #         sudo mv /metrics_renders/* .github/metrics/
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: metrics-svg-Personal
-  #         path: .github/metrics/personal.svg
+          # Options
+          user: dennykorsukewitz
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_display: large
+          config_timezone: Europe/Berlin
+          plugin_habits: yes
+          plugin_habits_charts_type: classic
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_from: 200
+          plugin_habits_languages_limit: 8
+          plugin_habits_languages_threshold: 0%
+          plugin_introduction: yes
+          plugin_introduction_title: yes
+          # plugin_isocalendar: yes
+          # plugin_isocalendar_duration: full-year
+          plugin_calendar: yes
+          plugin_calendar_limit: 1
+          plugin_languages: yes
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_analysis_timeout_repositories: 7.5
+          plugin_languages_categories: markup, programming
+          plugin_languages_colors: github
+          plugin_languages_limit: 8
+          plugin_languages_recent_categories: markup, programming
+          plugin_languages_recent_days: 14
+          plugin_languages_recent_load: 300
+          plugin_languages_sections: most-used
+          plugin_languages_threshold: 0%
+          plugin_people: yes
+          plugin_people_limit: 24
+          plugin_people_size: 28
+          plugin_people_types: followers, following
+          plugin_repositories: yes
+          plugin_repositories_featured: znuny/znuny, karldaeubel/PenAndPaperFloorplanner, zammad/zammad
+          plugin_repositories_order: featured, pinned, starred, random
+      - name: DELETE ME
+        run: ls -alih
+      - name: DELETE ME
+        run: ls -alih /
+      - name: DELETE ME
+        run: ls -alih /metrics_renders
+      - name: Move Metrics Renders
+        run: |
+          set +e
+          sudo mv /metrics_renders/* .github/metrics/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-svg-Personal
+          path: .github/metrics/personal.svg
 
   Languages:
     runs-on: ubuntu-latest
