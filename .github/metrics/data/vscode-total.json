@@ -827,5 +827,9 @@
     "VSCode-AddFolderToWorkspace": "101",
     "VSCode-GitHubFileFetcher": "149",
     "VSCode-Znuny": "79"
+  },
+  {
+    "date": "2024-03-13T00:00:00Z",
+    "VSCode-GitHubFileFetcher": "150"
   }
 ]
