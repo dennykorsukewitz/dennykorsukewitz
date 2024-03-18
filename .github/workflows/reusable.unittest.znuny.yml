@@ -61,10 +61,9 @@ jobs:
           path: znuny
 
       - name: Install dependencies
-        run: cd znuny
-
-      - name: Install dependencies
-        run: .github/workflows/ci/dependencies.sh
+        run: |
+          cd znuny
+          .github/workflows/ci/dependencies.sh
 
       - name: Install Devel::Cover and Devel::Cover::Report::Clover
         run: |
@@ -72,10 +71,14 @@ jobs:
           cpanm -i Devel::Cover::Report::Coveralls
 
       - name: Install dependencies
-        run: .github/workflows/ci/dependencies.sh
+        run: |
+          cd znuny
+          .github/workflows/ci/dependencies.sh
 
       - name: Setup Znuny
-        run: .github/workflows/ci/setup.sh
+        run: |
+          cd znuny
+          .github/workflows/ci/setup.sh
 
       # - name: Setup Znuny
       #   run: |
