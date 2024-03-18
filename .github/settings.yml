@@ -45,101 +45,101 @@ repository:
 # Labels: define labels for Issues and Pull Requests
 labels:
   - name: Bug
-    color: '#FF0000'
+    color: "#FF0000"
     description: An issue with the system.
 
   - name: Documentation
-    color: '#EB9419'
+    color: "#EB9419"
     description: Improvements or additions to documentation.
 
   - name: Feature
-    color: '#428BCA'
+    color: "#428BCA"
     description: New functionality.
 
   - name: Duplicate
-    color: '#cfd3d7'
+    color: "#cfd3d7"
     description: This issue or pull request already exists.
 
   - name: Framework
-    color: '#AA0033'
+    color: "#AA0033"
     description: Framework.
 
   - name: Refactoring
-    color: '#7F8C8D'
+    color: "#7F8C8D"
     description: Refactoring is needed.
 
   - name: WontFix
-    color: '#000000'
+    color: "#000000"
     description: This will not be worked on.
 
   - name: Unit Test
-    color: '#2ea7b2'
+    color: "#2ea7b2"
     description: Unit Test.
 
   - name: Clarification
-    color: '#3399FF'
+    color: "#3399FF"
     description: Clarification of the current situation.
 
   - name: Verified
-    color: '#b8e550'
+    color: "#b8e550"
     description: This issue or pull request was verified.
 
   - name: Verification
-    color: '#e8dd45'
-    description:  This issue or pull request needs a verification.
+    color: "#e8dd45"
+    description: This issue or pull request needs a verification.
 
   - name: Progress
-    color: '#AD8D43'
+    color: "#AD8D43"
     description: This is in Progress.
 
   - name: dev
-    color: '#b8e550'
+    color: "#b8e550"
     description: dev.
 
   - name: OTRS 3
-    color: '#69BECC'
+    color: "#69BECC"
     description: OTRS 3.
 
   - name: OTRS 4
-    color: '#69BECC'
+    color: "#69BECC"
     description: OTRS 4.
 
   - name: OTRS 5
-    color: '#69BECC'
+    color: "#69BECC"
     description: OTRS 5.
 
   - name: OTRS 6
-    color: '#69BECC'
+    color: "#69BECC"
     description: OTRS 6.
 
   - name: Znuny 6.0
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.0.
 
   - name: Znuny 6.1
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.1.
 
   - name: Znuny 6.2
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.2.
 
   - name: Znuny 6.3
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.3.
 
   - name: Znuny 6.4
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.4.
 
   - name: Znuny 6.5
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 6.5.
 
   - name: Znuny 7.0
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 7.0.
 
   - name: Znuny 7.1
-    color: '#ff8a24'
+    color: "#ff8a24"
     description: Znuny 7.1.

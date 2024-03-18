@@ -6,6 +6,15 @@ on:
     secrets:
       GIST:
         required: false
+    inputs:
+      ZNUNY_REF:
+        required: true
+        type: string
+        default: dev
+      FRAMEWORK:
+        required: true
+        type: string
+        default: znuny
 
 jobs:
   UnitTest-MySQL:
@@ -14,20 +23,19 @@ jobs:
     container: debian:10-slim
     env:
       DB: mysql
-      MYSQL_USER: "otrs"
+      MYSQL_USER: "${{ inputs.FRAMEWORK }}"
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_PASSWORD: "secret"
-      MYSQL_DATABASE: "otrs"
+      MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
     services:
       mariadb:
         image: mariadb:10
         env:
-          MYSQL_USER: "otrs"
+          MYSQL_USER: "${{ inputs.FRAMEWORK }}"
           MYSQL_ROOT_PASSWORD: "secret"
           MYSQL_PASSWORD: "secret"
-          MYSQL_DATABASE: "otrs"
+          MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
     steps:
-
       - name: Check out repository code
         uses: actions/checkout@v3
         env:
@@ -44,61 +52,71 @@ jobs:
           path: module-tools
 
       - name: Check out Znuny
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
           repository: znuny/Znuny
+          ref: ${{ inputs.ZNUNY_REF }}
           path: znuny
 
       - name: Install dependencies
-        run: znuny/.github/workflows/ci/dependencies.sh
+        run: cd znuny
+
+      - name: Install dependencies
+        run: .github/workflows/ci/dependencies.sh
 
       - name: Install Devel::Cover and Devel::Cover::Report::Clover
         run: |
           apt-get install -y libdevel-cover-perl
           cpanm -i Devel::Cover::Report::Coveralls
 
+      - name: Install dependencies
+        run: .github/workflows/ci/dependencies.sh
+
       - name: Setup Znuny
-        run: |
-          cd znuny
+        run: .github/workflows/ci/setup.sh
 
-          a2dismod mpm_event mpm_worker
-          a2enmod perl deflate filter headers mpm_prefork
-          useradd -d /opt/otrs -c 'OTRS user' -g www-data -s /bin/bash -M otrs
+      # - name: Setup Znuny
+      #   run: |
+      #     cd znuny
 
-          # link and create files
-          ln -sf "$PWD" /opt/otrs
-          ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otrs.conf
-          cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
-          mkdir -p /opt/otrs/var/tmp
+      #     a2dismod mpm_event mpm_worker
+      #     a2enmod perl deflate filter headers mpm_prefork
+      #     useradd -d /opt/otrs -c 'OTRS user' -g www-data -s /bin/bash -M otrs
 
-          # start apache
-          apachectl start
+      #     # link and create files
+      #     ln -sf "$PWD" /opt/otrs
+      #     ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otrs.conf
+      #     cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
+      #     mkdir -p /opt/otrs/var/tmp
 
-          # MySQL
-          .github/workflows/ci/config-mysql.sh
+      #     # start apache
+      #     apachectl start
 
-          # run needed scripts
-          /opt/otrs/bin/otrs.SetPermissions.pl
-          su -c "bin/otrs.CheckSum.pl -a create" - otrs
-          touch /opt/otrs/installed
+      #     # MySQL
+      #     .github/workflows/ci/config-mysql.sh
 
-          # prepare Selenium tests
-          .github/workflows/ci/config-selenium.sh
+      #     # run needed scripts
+      #     /opt/otrs/bin/otrs.SetPermissions.pl
+      #     su -c "bin/otrs.CheckSum.pl -a create" - otrs
+      #     touch /opt/otrs/installed
 
-          su -c "bin/otrs.Console.pl Maint::Config::Rebuild" - otrs
-          su -c "bin/otrs.Console.pl Admin::Config::Update --setting-name CheckEmailAddresses --value 0" - otrs
+      #     # prepare Selenium tests
+      #     .github/workflows/ci/config-selenium.sh
+
+      #     su -c "bin/otrs.Console.pl Maint::Config::Rebuild" - otrs
+      #     su -c "bin/otrs.Console.pl Admin::Config::Update --setting-name CheckEmailAddresses --value 0" - otrs
 
       - name: Link repository
         run: |
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
-          su -c "$GITHUB_WORKSPACE/module-tools/bin/otrs.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - otrs
+          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - ${{ inputs.FRAMEWORK }}
           cd znuny
-          su -c "bin/otrs.Console.pl Maint::Cache::Delete" - otrs
-          su -c "bin/otrs.Console.pl Maint::Config::Rebuild --cleanup" - otrs
+          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Cache::Delete" - ${{ inputs.FRAMEWORK }}
+          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Config::Rebuild --cleanup" - ${{ inputs.FRAMEWORK }}
 
       - name: Run UnitTests with Coverage
         run: |
@@ -107,10 +125,10 @@ jobs:
           SELECTFILES=$(echo "$FILES" | grep "\.pm$"  | grep -v "Kernel/cpan-lib" | grep -v "Kernel/Language" | grep -v "Kernel/Modules" | grep -v "Kernel/Output" | sed -r "s|(.*)|,-select,&|g" | xargs | sed "s|[[:space:]]||g") && echo "$SELECTFILES"
           if [ -z "$SELECTFILES"  ]; then echo "No files found for coverage check." && exit 0 ;fi
 
-          su -c "bin/otrs.CheckSum.pl -a create" - otrs
-          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/otrs.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - otrs
+          su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - ${{ inputs.FRAMEWORK }}
+          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - ${{ inputs.FRAMEWORK }}
           cd znuny
-          su -c "cover >> coverage.txt" - otrs
+          su -c "cover >> coverage.txt" - ${{ inputs.FRAMEWORK }}
           COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
           echo "COVERAGE=$COVERAGE" >> "$GITHUB_ENV"
           echo "GITHUB_REF=${GITHUB_REF##*/}" >> "$GITHUB_ENV"
