@@ -41,7 +41,8 @@ jobs:
           # Default is true, can set to false to only get PDF files
           build_pdf: true
           build_html: false
-
+      - name: Git Pull
+        run: git pull
       - name: Add and Commit
         uses: EndBug/add-and-commit@v9
         with:
