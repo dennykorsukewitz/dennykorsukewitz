@@ -1,0 +1,55 @@
+---
+name: Documents
+
+on:
+  workflow_call:
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  Documents:
+    name: Create Documents
+    runs-on: ubuntu-22.04 # ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        env:
+          fetch-depth: "1"
+        with:
+          ref: ${{ github.ref }}
+      - name: Create Documents (de)
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: doc/de/
+          output_dir: doc/de/
+          images_dir: doc/de/images
+          # for example <img src="./images/file-name.png">
+          # image_import: ./images
+          # Default is true, can set to false to only get PDF files
+          build_pdf: true
+          build_html: true
+
+      - name: Create Documents (en)
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: doc/en/
+          output_dir: doc/en/
+          images_dir: doc/en/images
+          # for example <img src="./images/file-name.png">
+          # image_import: ./images
+          # Default is true, can set to false to only get PDF files
+          build_pdf: true
+          build_html: true
+
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Updated Documents."
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Documents
+          path: |
+            doc/de/
+            doc/en/
+

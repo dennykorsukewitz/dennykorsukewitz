@@ -100,10 +100,10 @@ jobs:
           SELECTFILES=$(echo "$FILES" | grep "\.pm$"  | grep -v "Kernel/cpan-lib" | grep -v "Kernel/Language" | grep -v "Kernel/Modules" | grep -v "Kernel/Output" | sed -r "s|(.*)|,-select,&|g" | xargs | sed "s|[[:space:]]||g") && echo "$SELECTFILES"
           if [ -z "$SELECTFILES"  ]; then echo "No files found for coverage check." && exit 0 ;fi
 
-          su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - "${{ inputs.FRAMEWORK }}"
-          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK }}"
+          su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - ${{ inputs.FRAMEWORK }}
+          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - ${{ inputs.FRAMEWORK }}
           cd znuny
-          su -c "cover >> coverage.txt" - "${{ inputs.FRAMEWORK }}"
+          su -c "cover >> coverage.txt" - ${{ inputs.FRAMEWORK }}
           COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
           echo "COVERAGE=$COVERAGE" >> "$GITHUB_ENV"
           echo "GITHUB_REF=${GITHUB_REF##*/}" >> "$GITHUB_ENV"
