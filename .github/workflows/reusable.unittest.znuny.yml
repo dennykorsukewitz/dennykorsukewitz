@@ -87,16 +87,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
-          ls -alhi $GITHUB_WORKSPACE
-          ls -alhi
-          ls -alhi module-tools
-          ls -alhi module-tools/bin/
-
-          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - ${{ inputs.FRAMEWORK }}
+          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK }}"
 
           cd znuny
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Cache::Delete" - ${{ inputs.FRAMEWORK }}
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Config::Rebuild --cleanup" - ${{ inputs.FRAMEWORK }}
+          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK }}"
+          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK }}"
 
       - name: Run UnitTests with Coverage
         run: |
