@@ -8,10 +8,12 @@ on:
         required: false
     inputs:
       ZNUNY_REF:
+        description: "The branch, tag or SHA to checkout."
         required: false
         type: string
         default: dev
       FRAMEWORK:
+        description: "otrs / znuny"
         required: false
         type: string
         default: znuny
@@ -80,42 +82,12 @@ jobs:
           cd znuny
           .github/workflows/ci/setup.sh
 
-      # - name: Setup Znuny
-      #   run: |
-      #     cd znuny
-
-      #     a2dismod mpm_event mpm_worker
-      #     a2enmod perl deflate filter headers mpm_prefork
-      #     useradd -d /opt/otrs -c 'OTRS user' -g www-data -s /bin/bash -M otrs
-
-      #     # link and create files
-      #     ln -sf "$PWD" /opt/otrs
-      #     ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otrs.conf
-      #     cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
-      #     mkdir -p /opt/otrs/var/tmp
-
-      #     # start apache
-      #     apachectl start
-
-      #     # MySQL
-      #     .github/workflows/ci/config-mysql.sh
-
-      #     # run needed scripts
-      #     /opt/otrs/bin/otrs.SetPermissions.pl
-      #     su -c "bin/otrs.CheckSum.pl -a create" - otrs
-      #     touch /opt/otrs/installed
-
-      #     # prepare Selenium tests
-      #     .github/workflows/ci/config-selenium.sh
-
-      #     su -c "bin/otrs.Console.pl Maint::Config::Rebuild" - otrs
-      #     su -c "bin/otrs.Console.pl Admin::Config::Update --setting-name CheckEmailAddresses --value 0" - otrs
-
       - name: Link repository
         run: |
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
+          ls -alhi $GITHUB_WORKSPACE
           ls -alhi
           ls -alhi module-tools
           ls -alhi module-tools/bin/
