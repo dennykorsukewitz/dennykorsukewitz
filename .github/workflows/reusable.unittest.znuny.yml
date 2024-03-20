@@ -72,11 +72,6 @@ jobs:
           apt-get install -y libdevel-cover-perl
           cpanm -i Devel::Cover::Report::Coveralls
 
-      - name: Install dependencies
-        run: |
-          cd znuny
-          .github/workflows/ci/dependencies.sh
-
       - name: Setup Znuny
         run: |
           cd znuny

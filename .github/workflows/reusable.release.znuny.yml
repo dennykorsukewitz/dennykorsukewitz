@@ -1,51 +1,51 @@
 ---
-name: UnitTest
+name: Release
 
 on:
-  workflow_call:
-    secrets:
-      GIST:
-        required: false
+  push:
+    tags:
+      - "*"
+    # branches: ["dev"]
+  workflow_dispatch:
     inputs:
       ZNUNY_REF:
-        description: "The branch, tag or SHA to checkout."
         required: false
         type: string
         default: dev
       FRAMEWORK:
-        description: "otrs / znuny"
         required: false
         type: string
         default: znuny
 
 jobs:
-  UnitTest-MySQL:
-    name: UnitTest:MySQL
+  Build:
+    name: Build
     runs-on: ubuntu-22.04 # ubuntu-latest
     container: debian:10-slim
     env:
       DB: mysql
-      MYSQL_USER: "${{ inputs.FRAMEWORK }}"
+      MYSQL_USER: "${{ inputs.FRAMEWORK || 'znuny' }}"
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_PASSWORD: "secret"
-      MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
+      MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     services:
       mariadb:
         image: mariadb:10
         env:
-          MYSQL_USER: "${{ inputs.FRAMEWORK }}"
+          MYSQL_USER: "${{ inputs.FRAMEWORK || 'znuny' }}"
           MYSQL_ROOT_PASSWORD: "secret"
           MYSQL_PASSWORD: "secret"
-          MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
+          MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     steps:
-      - name: Check out repository code
+      - name: Checkout repository
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
         with:
+          ref: ${{ github.ref }}
           path: repository
 
-      - name: Check out module-tools
+      - name: Checkout module-tools
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
@@ -53,7 +53,7 @@ jobs:
           repository: znuny/module-tools
           path: module-tools
 
-      - name: Check out Znuny
+      - name: Checkout Znuny
         uses: actions/checkout@v4
         env:
           fetch-depth: "1"
@@ -61,16 +61,6 @@ jobs:
           repository: znuny/Znuny
           ref: ${{ inputs.ZNUNY_REF }}
           path: znuny
-
-      - name: Install dependencies
-        run: |
-          cd znuny
-          .github/workflows/ci/dependencies.sh
-
-      - name: Install Devel::Cover and Devel::Cover::Report::Clover
-        run: |
-          apt-get install -y libdevel-cover-perl
-          cpanm -i Devel::Cover::Report::Coveralls
 
       - name: Install dependencies
         run: |
@@ -87,38 +77,47 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
-          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK }}"
+          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK || 'znuny' }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
           cd znuny
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK }}"
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
-      - name: Run UnitTests with Coverage
+      - name: Build OPM Package
         run: |
-          FILES=$(find repository -type f | sed -r "s|repository/||g" | grep -v '^.git' | grep -v '^doc') && echo "$FILES"
-
-          SELECTFILES=$(echo "$FILES" | grep "\.pm$"  | grep -v "Kernel/cpan-lib" | grep -v "Kernel/Language" | grep -v "Kernel/Modules" | grep -v "Kernel/Output" | sed -r "s|(.*)|,-select,&|g" | xargs | sed "s|[[:space:]]||g") && echo "$SELECTFILES"
-          if [ -z "$SELECTFILES"  ]; then echo "No files found for coverage check." && exit 0 ;fi
-
-          su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - ${{ inputs.FRAMEWORK }}
-          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - ${{ inputs.FRAMEWORK }}
           cd znuny
-          su -c "cover >> coverage.txt" - ${{ inputs.FRAMEWORK }}
-          COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
-          echo "COVERAGE=$COVERAGE" >> "$GITHUB_ENV"
-          echo "GITHUB_REF=${GITHUB_REF##*/}" >> "$GITHUB_ENV"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::Package::Build ${{ github.event.repository.name }}.sopm ./" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
-      - name: Dumper env
-        run: echo '${{ toJSON(env) }}'
-
-      - name: Create Coverage Badge
-        uses: schneegans/dynamic-badges-action@v1.6.0
+      - uses: actions/upload-artifact@v4
         with:
-          auth: ${{ secrets.GIST }}
-          gistID: e2729bfd9b81d9c032ded617a3f924e7
-          filename: ${{ github.event.repository.name }}:coverage:${{ env.GITHUB_REF }}.json
-          label: Coverage
-          message: ${{ env.COVERAGE }}%
-          valColorRange: ${{ env.COVERAGE }}
-          minColorRange: 0
-          maxColorRange: 100
+          name: OPM
+          path: "znuny/${{ github.event.repository.name }}*.opm"
+
+  Release:
+    needs: Build
+    environment:
+      name: Release
+      url: "https://github.com/dennykorsukewitz/${{ github.event.repository.name }}/releases/tag/${{ github.ref }}"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        env:
+          fetch-depth: "1"
+        with:
+          ref: ${{ github.ref }}
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: OPM
+      - name: Change RELEASE.md
+        run: sed -i '1,2d' RELEASE.md
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "${{ github.event.repository.name }}*.opm,doc/en/${{ github.event.repository.name }}.pdf"
+          bodyFile: "RELEASE.md"
+          draft: true
+          generateReleaseNotes: true
+          token: ${{ secrets.PAT }}

@@ -242,14 +242,14 @@ jobs:
     name: Lint Code Base
     runs-on: ubuntu-22.04 # ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Checkout repository
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
         with:
           path: repository
 
-      - name: Check out dennykorsukewitz
+      - name: Checkout dennykorsukewitz
         uses: actions/checkout@v3
         env:
           fetch-depth: "1"
