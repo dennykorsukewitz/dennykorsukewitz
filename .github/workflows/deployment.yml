@@ -119,7 +119,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
-      - name: Delete failed deployments
+      - name: Delete failed / inactive deployments
         run: |
 
           if [ "${{ inputs.ENVIRONMENT }}" = "" ]; then
