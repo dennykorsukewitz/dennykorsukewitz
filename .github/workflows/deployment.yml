@@ -113,13 +113,13 @@ jobs:
           done
 
   Delete_Failed:
-    name: Delete failed deployments
+    name: Delete failed and inactive deployments
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete failed' }}
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
-      - name: Delete failed / inactive deployments
+      - name: Delete failed and inactive deployments
         run: |
 
           if [ "${{ inputs.ENVIRONMENT }}" = "" ]; then
@@ -133,7 +133,7 @@ jobs:
           fi
 
           for DEPLOYMENT_ID in "${DEPLOYMENT_IDs[@]}"; do
-            STATUS_ID=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/dennykorsukewitz/Znuny-QuickDelete/deployments/"$DEPLOYMENT_ID"/statuses | jq '.[] | select(.state=="failure") | .id')
+            STATUS_ID=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/dennykorsukewitz/Znuny-QuickDelete/deployments/"$DEPLOYMENT_ID"/statuses | jq '.[] | select(.state=="failure" or .state=="inactive") | .id')
 
             if [ -n "$STATUS_ID" ]; then
               echo "DEPLOYMENT ID: $DEPLOYMENT_ID"
