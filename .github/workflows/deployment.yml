@@ -28,7 +28,6 @@ on:
         description: "Environment"
         required: false
         type: string
-        default: "Release"
 
 jobs:
   List_All:
