@@ -133,9 +133,10 @@ jobs:
       - uses: ncipollo/release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
         with:
+          token: ${{ secrets.PAT }}
           artifacts: "${{ github.event.repository.name }}*.opm,doc/en/${{ github.event.repository.name }}.pdf"
           bodyFile: "RELEASE.md"
           draft: true
           generateReleaseNotes: true
-          token: ${{ secrets.PAT }}
