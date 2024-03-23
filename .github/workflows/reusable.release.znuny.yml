@@ -107,7 +107,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: OPM
-          path: "znuny/${OPM_FILENAME}*.opm"
+          path: "znuny/*.opm"
 
   Release:
     needs: Build
