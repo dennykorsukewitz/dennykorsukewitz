@@ -25,18 +25,18 @@ jobs:
     container: debian:10-slim
     env:
       DB: mysql
-      MYSQL_USER: "${{ inputs.FRAMEWORK }}"
+      MYSQL_USER: "znuny"
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_PASSWORD: "secret"
-      MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
+      MYSQL_DATABASE: "znuny"
     services:
       mariadb:
         image: mariadb:10
         env:
-          MYSQL_USER: "${{ inputs.FRAMEWORK }}"
+          MYSQL_USER: "znuny"
           MYSQL_ROOT_PASSWORD: "secret"
           MYSQL_PASSWORD: "secret"
-          MYSQL_DATABASE: "${{ inputs.FRAMEWORK }}"
+          MYSQL_DATABASE: "znuny"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -82,11 +82,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
-          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK }}"
+          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK || 'znuny' }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
           cd znuny
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK }}"
-          su -c "bin/${{ inputs.FRAMEWORK }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
       - name: Run UnitTests with Coverage
         run: |
@@ -115,17 +115,17 @@ jobs:
             exit 0
           fi
 
-          su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - "${{ inputs.FRAMEWORK }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.CheckSum.pl -a create" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
           for UNITTEST in $UNITTESTS
           do
-            su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --test $UNITTEST" - "${{ inputs.FRAMEWORK }}"
+            su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::UnitTest::Run --test $UNITTEST" - "${{ inputs.FRAMEWORK || 'znuny' }}"
           done
 
-          # su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK }}"
+          # su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
           cd znuny
-          su -c "cover >> coverage.txt" - "${{ inputs.FRAMEWORK }}"
+          su -c "cover >> coverage.txt" - "${{ inputs.FRAMEWORK || 'znuny' }}"
           COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
           echo "COVERAGE=$COVERAGE" >> "$GITHUB_ENV"
           echo "GITHUB_REF=${GITHUB_REF##*/}" >> "$GITHUB_ENV"
