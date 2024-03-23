@@ -12,6 +12,9 @@ on:
         required: false
         type: string
         default: dev
+      FRAMEWORK:
+        required: false
+        type: string
 
 jobs:
   UnitTest-MySQL:
@@ -20,18 +23,17 @@ jobs:
     container: debian:10-slim
     env:
       DB: mysql
-      MYSQL_USER: "znuny"
-      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_USER: "${{ inputs.FRAMEWORK || 'znuny' }}"
       MYSQL_PASSWORD: "secret"
-      MYSQL_DATABASE: "znuny"
+      MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     services:
       mariadb:
         image: mariadb:10
         env:
-          MYSQL_USER: "znuny"
+          MYSQL_USER: "${{ inputs.FRAMEWORK || 'znuny' }}"
           MYSQL_ROOT_PASSWORD: "secret"
           MYSQL_PASSWORD: "secret"
-          MYSQL_DATABASE: "znuny"
+          MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -119,13 +121,8 @@ jobs:
           fi
 
           # get all linked files | grep only .t (UnitTests) | get path | without extension
-          UNITTESTS=$(find repository/scripts/test -type f -name \*.t | sed -e 's|.*scripts|scripts|' | sed -e 's|\.t$||') && echo "$UNITTESTS"
-
-          echo "$UNITTESTS"
-
+          UNITTESTS=$(find repository/scripts/test -type f -name \*.t | sed -e 's|.*scripts|scripts|' | sed -e 's|\.t$||')
           UNITTESTS=$(echo "$UNITTESTS" | grep -v "Selenium") && echo "$UNITTESTS"
-
-          echo "$UNITTESTS"
 
           if [ -z "$UNITTESTS"  ]
           then
