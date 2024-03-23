@@ -131,6 +131,8 @@ jobs:
       - name: Change RELEASE.md
         run: sed -i '1,2d' RELEASE.md
       - uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           artifacts: "${{ github.event.repository.name }}*.opm,doc/en/${{ github.event.repository.name }}.pdf"
           bodyFile: "RELEASE.md"
