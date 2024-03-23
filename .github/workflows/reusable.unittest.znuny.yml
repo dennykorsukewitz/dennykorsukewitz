@@ -8,15 +8,10 @@ on:
         required: false
     inputs:
       ZNUNY_REF:
-        description: "The branch, tag or SHA to checkout."
+        description: "The branch, tag or SHA to checkout. (e.g.: rel-6_5)"
         required: false
         type: string
         default: dev
-      FRAMEWORK:
-        description: "otrs / znuny"
-        required: false
-        type: string
-        default: znuny
 
 jobs:
   UnitTest-MySQL:
@@ -64,6 +59,7 @@ jobs:
 
       - name: Get Framework by Version
         run: |
+          FRAMEWORK='znuny'
           if [ -f "znuny/RELEASE" ]
           then
             FRAMEWORK_VERSION=$(grep VERSION "znuny"/RELEASE | sed -e 's/VERSION = //')
@@ -81,8 +77,8 @@ jobs:
             echo "FRAMEWORK_PATCH=$FRAMEWORK_PATCH" >> "$GITHUB_ENV"
           fi
 
-          echo "FRAMEWORK"
-          echo "FRAMEWORK_VERSION"
+          echo "$FRAMEWORK"
+          echo "$FRAMEWORK_VERSION"
 
       - name: Install dependencies
         run: |
