@@ -100,8 +100,9 @@ jobs:
           cd "$GITHUB_WORKSPACE/znuny"
           su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::Package::Build ${OPM_FILENAME}.sopm ./" - "${{ inputs.FRAMEWORK || 'znuny' }}"
 
+          ls -la
           ls -la "$GITHUB_WORKSPACE/repository"
-          ls -la "znuny/${OPM_FILENAME}*.opm"
+          ls -la "$GITHUB_WORKSPACE/znuny"
 
       - uses: actions/upload-artifact@v4
         with:
