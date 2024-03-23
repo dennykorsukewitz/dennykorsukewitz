@@ -16,6 +16,10 @@ on:
         required: false
         type: string
         default: znuny
+    secrets:
+      PAT:
+        required: true
+
   workflow_dispatch:
     inputs:
       ZNUNY_REF:
@@ -131,9 +135,6 @@ jobs:
       - name: Change RELEASE.md
         run: sed -i '1,2d' RELEASE.md
       - uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-          token: ${{ secrets.PAT }}
         with:
           token: ${{ secrets.PAT }}
           artifacts: "${{ github.event.repository.name }}*.opm,doc/en/${{ github.event.repository.name }}.pdf"
