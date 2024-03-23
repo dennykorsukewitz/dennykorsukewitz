@@ -101,7 +101,7 @@ jobs:
           fi
 
           # get all linked files | grep only .t (UnitTests) | get path | without extension
-          UNITTESTS=$(find znuny/scripts/test -type f -name \*.t | sed -e 's|.*scripts|scripts|' | sed -e 's|\.t$||') && echo "$UNITTESTS"
+          UNITTESTS=$(find repository/scripts/test -type f -name \*.t | sed -e 's|.*scripts|scripts|' | sed -e 's|\.t$||') && echo "$UNITTESTS"
 
           echo "$UNITTESTS"
 
