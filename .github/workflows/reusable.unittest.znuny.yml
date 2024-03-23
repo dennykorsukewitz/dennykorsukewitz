@@ -62,6 +62,28 @@ jobs:
           ref: ${{ inputs.ZNUNY_REF }}
           path: znuny
 
+      - name: Get Framework by Version
+        run: |
+          if [ -f "znuny/RELEASE" ]
+          then
+            FRAMEWORK_VERSION=$(grep VERSION "znuny"/RELEASE | sed -e 's/VERSION = //')
+            FRAMEWORK_MAJOR=$(echo "$FRAMEWORK_VERSION" | cut -d. -f1)
+            FRAMEWORK_MINOR=$(echo "$FRAMEWORK_VERSION" | cut -d. -f2)
+            FRAMEWORK_PATCH=$(echo "$FRAMEWORK_VERSION" | cut -d. -f3)
+            if [ "$FRAMEWORK_MAJOR" -lt 7 ]
+            then
+              FRAMEWORK='otrs'
+            fi
+            echo "FRAMEWORK=$FRAMEWORK" >> "$GITHUB_ENV"
+            echo "FRAMEWORK_VERSION=$FRAMEWORK_VERSION" >> "$GITHUB_ENV"
+            echo "FRAMEWORK_MAJOR=$FRAMEWORK_MAJOR" >> "$GITHUB_ENV"
+            echo "FRAMEWORK_MINOR=$FRAMEWORK_MINOR" >> "$GITHUB_ENV"
+            echo "FRAMEWORK_PATCH=$FRAMEWORK_PATCH" >> "$GITHUB_ENV"
+          fi
+
+          echo "FRAMEWORK"
+          echo "FRAMEWORK_VERSION"
+
       - name: Install dependencies
         run: |
           cd znuny
@@ -82,11 +104,11 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           apt-get install -y libdatetime-perl libgetopt-complete-perl libio-interactive-perl libstring-similarity-perl libxmlrpc-lite-perl
 
-          su -c "$GITHUB_WORKSPACE/module-tools/bin/${{ inputs.FRAMEWORK || 'znuny' }}.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "$GITHUB_WORKSPACE/module-tools/bin/$FRAMEWORK.ModuleTools.pl Module::File::Link $GITHUB_WORKSPACE/repository $GITHUB_WORKSPACE/znuny" - "$FRAMEWORK"
 
           cd znuny
-          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Cache::Delete" - "${{ inputs.FRAMEWORK || 'znuny' }}"
-          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Maint::Config::Rebuild --cleanup" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "bin/$FRAMEWORK.Console.pl Maint::Cache::Delete" - "$FRAMEWORK"
+          su -c "bin/$FRAMEWORK.Console.pl Maint::Config::Rebuild --cleanup" - "$FRAMEWORK"
 
       - name: Run UnitTests with Coverage
         run: |
@@ -115,17 +137,17 @@ jobs:
             exit 0
           fi
 
-          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.CheckSum.pl -a create" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "bin/$FRAMEWORK.CheckSum.pl -a create" - "$FRAMEWORK"
 
           for UNITTEST in $UNITTESTS
           do
-            su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::UnitTest::Run --test $UNITTEST" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+            su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/$FRAMEWORK.Console.pl Dev::UnitTest::Run --test $UNITTEST" - "$FRAMEWORK"
           done
 
-          # su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          # su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/$FRAMEWORK.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "$FRAMEWORK"
 
           cd znuny
-          su -c "cover >> coverage.txt" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "cover >> coverage.txt" - "$FRAMEWORK"
           COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
           echo "COVERAGE=$COVERAGE" >> "$GITHUB_ENV"
           echo "GITHUB_REF=${GITHUB_REF##*/}" >> "$GITHUB_ENV"
