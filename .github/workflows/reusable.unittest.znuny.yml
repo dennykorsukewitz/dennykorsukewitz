@@ -90,13 +90,40 @@ jobs:
 
       - name: Run UnitTests with Coverage
         run: |
+
           FILES=$(find repository -type f | sed -r "s|repository/||g" | grep -v '^.git' | grep -v '^doc') && echo "$FILES"
 
           SELECTFILES=$(echo "$FILES" | grep "\.pm$"  | grep -v "Kernel/cpan-lib" | grep -v "Kernel/Language" | grep -v "Kernel/Modules" | grep -v "Kernel/Output" | sed -r "s|(.*)|,-select,&|g" | xargs | sed "s|[[:space:]]||g") && echo "$SELECTFILES"
-          if [ -z "$SELECTFILES"  ]; then echo "No files found for coverage check." && exit 0 ;fi
+          if [ -z "$SELECTFILES"  ]
+          then
+            echo "No files found for coverage check."
+            exit 0
+          fi
+
+          # get all linked files | grep only .t (UnitTests) | get path | without extension
+          UNITTESTS=$(find znuny/scripts/test -type f -name \*.t | sed -e 's|.*scripts|scripts|' | sed -e 's|\.t$||') && echo "$UNITTESTS"
+
+          echo "$UNITTESTS"
+
+          UNITTESTS=$(echo "$UNITTESTS" | grep -v "Selenium") && echo "$UNITTESTS"
+
+          echo "$UNITTESTS"
+
+          if [ -z "$UNITTESTS"  ]
+          then
+            echo "No UnitTest found."
+            exit 0
+          fi
 
           su -c "bin/${{ inputs.FRAMEWORK }}.CheckSum.pl -a create" - "${{ inputs.FRAMEWORK }}"
-          su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK }}"
+
+          for UNITTEST in $UNITTESTS
+          do
+            su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --test $UNITTEST" - "${{ inputs.FRAMEWORK }}"
+          done
+
+          # su -c "perl -MDevel::Cover=-silent,1,+ignore,'.*'$SELECTFILES bin/${{ inputs.FRAMEWORK }}.Console.pl Dev::UnitTest::Run --sopm-file ${{ github.event.repository.name }}.sopm" - "${{ inputs.FRAMEWORK }}"
+
           cd znuny
           su -c "cover >> coverage.txt" - "${{ inputs.FRAMEWORK }}"
           COVERAGE=$(awk '$1 == "Total" {print $NF+0}' coverage.txt) && echo "COVERAGE: $COVERAGE"
