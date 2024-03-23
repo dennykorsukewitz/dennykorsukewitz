@@ -2,10 +2,6 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "*"
-    # branches: ["dev"]
   workflow_call:
     inputs:
       ZNUNY_REF:
@@ -113,7 +109,8 @@ jobs:
           name: OPM
           path: "znuny/*.opm"
 
-  Release:
+  Release-GitHub:
+    name: Release GitHub
     needs: Build
     environment:
       name: Release
