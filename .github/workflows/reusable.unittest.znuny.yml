@@ -68,15 +68,19 @@ jobs:
             FRAMEWORK_MAJOR=$(echo "$FRAMEWORK_VERSION" | cut -d. -f1)
             FRAMEWORK_MINOR=$(echo "$FRAMEWORK_VERSION" | cut -d. -f2)
             FRAMEWORK_PATCH=$(echo "$FRAMEWORK_VERSION" | cut -d. -f3)
+
             if [ "$FRAMEWORK_MAJOR" -lt 7 ]
             then
               FRAMEWORK='otrs'
             fi
-            echo "FRAMEWORK=$FRAMEWORK" >> "$GITHUB_ENV"
-            echo "FRAMEWORK_VERSION=$FRAMEWORK_VERSION" >> "$GITHUB_ENV"
-            echo "FRAMEWORK_MAJOR=$FRAMEWORK_MAJOR" >> "$GITHUB_ENV"
-            echo "FRAMEWORK_MINOR=$FRAMEWORK_MINOR" >> "$GITHUB_ENV"
-            echo "FRAMEWORK_PATCH=$FRAMEWORK_PATCH" >> "$GITHUB_ENV"
+
+            {
+              echo "FRAMEWORK=$FRAMEWORK"
+              echo "FRAMEWORK_VERSION=$FRAMEWORK_VERSION"
+              echo "FRAMEWORK_MAJOR=$FRAMEWORK_MAJOR"
+              echo "FRAMEWORK_MINOR=$FRAMEWORK_MINOR"
+              echo "FRAMEWORK_PATCH=$FRAMEWORK_PATCH"
+            } >> "$GITHUB_ENV"
           fi
 
           echo "$FRAMEWORK"
