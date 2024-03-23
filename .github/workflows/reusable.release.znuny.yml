@@ -98,12 +98,15 @@ jobs:
           cd "$GITHUB_WORKSPACE/repository"
           OPM_FILENAME=$(find . -name "*.sopm" -type f | sed 's/.\///' | sed 's/\.sopm$//')
           cd "$GITHUB_WORKSPACE/znuny"
-          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::Package::Build $OPM_FILENAME.sopm ./" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+          su -c "bin/${{ inputs.FRAMEWORK || 'znuny' }}.Console.pl Dev::Package::Build ${OPM_FILENAME}.sopm ./" - "${{ inputs.FRAMEWORK || 'znuny' }}"
+
+          ls -la "$GITHUB_WORKSPACE/repository"
+          ls -la "znuny/${OPM_FILENAME}*.opm"
 
       - uses: actions/upload-artifact@v4
         with:
           name: OPM
-          path: "znuny/$OPM_FILENAME*.opm"
+          path: "znuny/${OPM_FILENAME}*.opm"
 
   Release:
     needs: Build
