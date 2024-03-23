@@ -6,6 +6,16 @@ on:
     tags:
       - "*"
     # branches: ["dev"]
+  workflow_call:
+    inputs:
+      ZNUNY_REF:
+        required: false
+        type: string
+        default: dev
+      FRAMEWORK:
+        required: false
+        type: string
+        default: znuny
   workflow_dispatch:
     inputs:
       ZNUNY_REF:
