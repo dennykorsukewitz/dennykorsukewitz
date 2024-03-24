@@ -1426,7 +1426,8 @@
     "VSCode-AddFolderToWorkspace": "0",
     "VSCode-GitHubFileFetcher": "0",
     "VSCode-Znuny": "0",
-    "VSCode-MyExtensionPack": "0"
+    "VSCode-MyExtensionPack": "0",
+    "generator-sublime-package": "0"
   },
   {
     "date": "2024-03-23T00:00:00Z",
