@@ -25,133 +25,177 @@ on:
         required: true
         type: string
         default: "dennykorsukewitz"
-      WORKFLOW_NAME:
-        description: "Workflow, if not specified all workflows will be used."
+      WORKFLOW:
+        description: "Workflow (mame), if not specified all workflows will be used."
         required: false
         type: string
 
-jobs:
-  Run:
-    name: Run workflow
-    runs-on: ubuntu-22.04
-    if: ${{ github.event.inputs.FUNCTION == 'run' }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
-    steps:
-      - name: Run workflow
-        run: |
-          if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
+permissions:
+  actions: write
+  contents: write
 
+jobs:
+  Get_Workflow_IDs:
+    name: Get Workflow IDs
+    runs-on: ubuntu-22.04
+    outputs:
+      WORKFLOW_IDS: ${{ steps.get_ids.outputs.WORKFLOW_IDS }}
+    steps:
+      - name: Get Workflow IDs
+        id: get_ids
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          if [ "${{ inputs.WORKFLOW }}" = "" ]; then
             mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id')
             echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
           else
-
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}: ${{ inputs.WORKFLOW_NAME }}"
+            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW }}") | .id')
           fi
 
-          for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
-            echo "Workflow ID: $WORKFLOW_ID"
+          echo "::set-output name=WORKFLOW_IDS::$(printf '%s,' "${WORKFLOW_IDs[@]}")"
+
+          echo "---"
+          echo "Repository: ${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
+          echo "Workflow Name: ${{ inputs.WORKFLOW }}"
+          echo "Workflow IDs: ${WORKFLOW_IDs[@]}"
+          echo "---"
+
+  Run:
+    name: Run Workflow
+    needs: Get_Workflow_IDs
+    if: ${{ github.event.inputs.FUNCTION == 'run' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Run Workflow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
+
+          echo "---"
+          echo "Running Workflows:"
+          echo "---"
+
+          for WORKFLOW_ID in "${WORKFLOW_IDS[@]}"; do
+            echo -e "Workflow ID: $WORKFLOW_ID\n"
+
             curl -X POST \
               -H "Accept: application/vnd.github.v3+json" \
-              -H "Authorization: token ${{ secrets.github_token }}" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               https://api.github.com/repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/dispatches \
               -d '{"ref":"dev"}'
+
+            echo "Workflow $WORKFLOW_ID triggered successfully."
           done
 
   List_All:
-    name: List all workflow runs
-    runs-on: ubuntu-22.04
+    name: List All Workflow Runs
+    needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'list all' }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
+    runs-on: ubuntu-22.04
     steps:
-      - name: List workflow runs
+      - name: List All Workflow Runs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
+          IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
-          else
+          echo "---"
+          echo "All Workflow Runs:"
+          echo "---"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}: ${{ inputs.WORKFLOW_NAME }}"
-          fi
+          for WORKFLOW_ID in "${WORKFLOW_IDS[@]}"; do
+            echo -e "Workflow ID: $WORKFLOW_ID\n"
 
-          for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
-            echo "Workflow ID: $WORKFLOW_ID"
-            gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq '.workflow_runs[] | .id'
+            RUNS=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq -r '.workflow_runs[] | "ID: \(.id)\nName: \(.name)\nStatus: \(.status)\nConclusion: \(.conclusion)\nCreated at: \(.created_at)\n"')
+
+            echo "$RUNS"
+            echo "---"
           done
 
   List_Failed:
-    name: List failed workflow runs
-    runs-on: ubuntu-22.04
+    name: List Failed Workflow Runs
+    needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'list failed' }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
+    runs-on: ubuntu-22.04
     steps:
-      - name: List failed workflow runs
+      - name: List Failed Workflow Runs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
+          IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
-          else
+          echo "---"
+          echo "Failed Workflow Runs:"
+          echo "---"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}: ${{ inputs.WORKFLOW_NAME }}"
-          fi
+          for WORKFLOW_ID in "${WORKFLOW_IDS[@]}"; do
+            echo -e "Workflow ID: $WORKFLOW_ID\n"
 
-          for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
-            echo "Wor"
-            gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id'
+            FAILED_RUNS=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq -r '.workflow_runs[] | select(.conclusion=="failure") | "ID: \(.id)\nName: \(.name)\nStatus: \(.status)\nConclusion: \(.conclusion)\nCreated at: \(.created_at)\n"')
+
+            echo "$FAILED_RUNS"
+            echo "---"
           done
 
   Delete_All:
-    name: Delete all workflow runs
+    name: Delete All Workflow Runs
+    needs: Get_Workflow_IDs
     runs-on: ubuntu-22.04
     if: ${{ github.event.inputs.FUNCTION == 'delete all' }}
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
-      - name: Delete all workflow runs
+      - name: Delete All Workflow Runs
         run: |
-          if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
+          IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
-          else
+          echo "---"
+          echo "Deleting All Workflow Runs:"
+          echo "---"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}: ${{ inputs.WORKFLOW_NAME }}"
-          fi
+          for WORKFLOW_ID in "${WORKFLOW_IDS[@]}"; do
+            echo -e "Workflow ID: $WORKFLOW_ID\n"
 
-          for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
-            echo "Wor"
-            gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
+            RUN_IDS=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq -r '.workflow_runs[] | select(.conclusion!=null) | .id')
+
+            for RUN_ID in $RUN_IDS; do
+              gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/"$RUN_ID" --silent
+              echo "Failed run $RUN_ID deleted."
+            done
+
+            echo -e "\nAll runs for Workflow $WORKFLOW_ID deleted."
+            echo "---"
           done
 
   Delete_Failed:
-    name: Delete failed workflow runs
-    runs-on: ubuntu-22.04
+    name: Delete Failed Workflow Runs
+    needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'delete failed' }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
+    runs-on: ubuntu-22.04
     steps:
-      - name: Delete failed workflow runs
+      - name: Delete Failed Workflow Runs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ inputs.WORKFLOW_NAME }}" = "" ]; then
+          IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
-          else
+          echo "---"
+          echo "Deleting Failed Workflow Runs:"
+          echo "---"
 
-            mapfile -t WORKFLOW_IDs < <(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows | jq '.workflows[] | select(.name=="${{ inputs.WORKFLOW_NAME }}") | .id')
-            echo "${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}: ${{ inputs.WORKFLOW_NAME }}"
-          fi
+          for WORKFLOW_ID in "${WORKFLOW_IDS[@]}"; do
+            echo -e "Workflow ID: $WORKFLOW_ID\n"
 
-          for WORKFLOW_ID in "${WORKFLOW_IDs[@]}"; do
-            echo "Wor"
+            FAILED_RUN_IDS=$(gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq -r '.workflow_runs[] | select(.conclusion=="failure" and .conclusion!=null) | .id')
 
-            gh api -X GET /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/workflows/"$WORKFLOW_ID"/runs --paginate | jq '.workflow_runs[] | select(.conclusion=="failure") | .id' | xargs -I{} gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/{} --silent
+            for RUN_ID in $FAILED_RUN_IDS; do
+              gh api -X DELETE /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/actions/runs/"$RUN_ID" --silent
+              echo "Failed run $RUN_ID deleted."
+            done
+
+            echo -e "\nAll failed runs for Workflow $WORKFLOW_ID deleted."
+            echo "---"
           done
