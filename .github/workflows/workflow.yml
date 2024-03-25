@@ -40,11 +40,11 @@ jobs:
     runs-on: ubuntu-22.04
     outputs:
       WORKFLOW_IDS: ${{ steps.get_ids.outputs.WORKFLOW_IDS }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Get Workflow IDs
         id: get_ids
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
 
           if [ "${{ inputs.WORKFLOW }}" = "" ]; then
@@ -67,10 +67,10 @@ jobs:
     needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'run' }}
     runs-on: ubuntu-22.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Run Workflow
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
@@ -95,10 +95,10 @@ jobs:
     needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'list all' }}
     runs-on: ubuntu-22.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: List All Workflow Runs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
@@ -120,10 +120,10 @@ jobs:
     needs: Get_Workflow_IDs
     if: ${{ github.event.inputs.FUNCTION == 'list failed' }}
     runs-on: ubuntu-22.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: List Failed Workflow Runs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           IFS=',' read -ra WORKFLOW_IDS <<< "${{ needs.Get_Workflow_IDs.outputs.WORKFLOW_IDS }}"
 
