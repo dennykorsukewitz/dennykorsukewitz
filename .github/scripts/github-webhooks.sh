@@ -8,9 +8,9 @@ REPOSITORIES+=("DK4")
 REPOSITORIES+=("dennykorsukewitz.github.io")
 REPOSITORIES+=("dennykorsukewitz")
 
-# ANY       https://discord.com/api/webhooks/1157760136438362123/VqZ93Um98Bw5CSL9gAbNy662Ao0h6PDHfXJABahC6vtAB2DIuCSQevZojxNXfyATAMJj/github
-# RELEASE   https://discord.com/api/webhooks/1204360397554196500/uPegYZU5Di-90wtise5Qk4gclQFcc7Py3iTNTYd7GHf1UAgV1-_5QsG-Z6TF762nrlqO/github
-# STARS     https://discord.com/api/webhooks/1204335792030228502/JMLHlmX-EdX-V1SBQpE745GsJfRES2nFVAKYO7R9Hp64bhPR4vTZ58ocfqxeMJdFkEnu/github
+# DISCORD_WEBHOOK_ANY
+# DISCORD_WEBHOOK_STARS
+# DISCORD_WEBHOOK_RELEASE
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
 
@@ -77,11 +77,10 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         "workflow_run"
     ],
     "config": {
-        "url": "https://discord.com/api/webhooks/1157760136438362123/VqZ93Um98Bw5CSL9gAbNy662Ao0h6PDHfXJABahC6vtAB2DIuCSQevZojxNXfyATAMJj/github",
+        "url": "${{ secrets.DISCORD_WEBHOOK_ANY }}",
         "content_type": "json"
     }
 }')) > /dev/null 2>&1
-
 
     echo "star"
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< '{
@@ -89,8 +88,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         "active": true,
         "events": ["star", "watch"],
         "config": {
-            "url": "https://discord.com/api/webhooks/1204335792030228502/JMLHlmX-EdX-V1SBQpE745GsJfRES2nFVAKYO7R9Hp64bhPR4vTZ58ocfqxeMJdFkEnu/github",
-            "content_type": "json"
+            "url": "${{ secrets.DISCORD_WEBHOOK_STAR }}": "json"
         }
     }')) > /dev/null 2>&1
 
@@ -100,7 +98,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         "active": true,
         "events": ["release"],
         "config": {
-            "url": "https://discord.com/api/webhooks/1204360397554196500/uPegYZU5Di-90wtise5Qk4gclQFcc7Py3iTNTYd7GHf1UAgV1-_5QsG-Z6TF762nrlqO/github",
+            "url": "${{ secrets.DISCORD_WEDISCORD_WEBHOOK_RELEASEBHOOK_STAR }}",
             "content_type": "json"
         }
     }')) > /dev/null 2>&1

@@ -6,6 +6,7 @@ OWNER="dennykorsukewitz"
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
+
 JSON_TOTAL='['
 JSON_DAILY='['
 

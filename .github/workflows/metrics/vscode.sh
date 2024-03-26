@@ -2,6 +2,7 @@
 
 OWNER="dennykorsukewitz"
 
+#  https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER

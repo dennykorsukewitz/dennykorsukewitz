@@ -1,9 +1,12 @@
 #!/bin/bash
 
 OWNER="dennykorsukewitz"
+
+# https://api.npmjs.org/downloads/point/${START_TIMESTAMP}:${END_TIMESTAMP}/${NPM_REPOSITORY}
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-npm" --jq '.[].name' --json name | sort)
 
 declare -A REPOSITORYCOUNTER
+
 JSON_TOTAL='['
 JSON_DAILY='['
 
