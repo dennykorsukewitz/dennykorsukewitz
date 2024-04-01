@@ -888,5 +888,12 @@
   {
     "date": "2024-03-29T00:00:00Z",
     "VSCode-GitHubFileFetcher": "163"
+  },
+  {
+    "date": "2024-03-31T00:00:00Z",
+    "VSCode-QuoteWithMarker": "63",
+    "VSCode-AddFolderToWorkspace": "109",
+    "VSCode-Znuny": "81",
+    "VSCode-MyExtensionPack": "12"
   }
 ]
