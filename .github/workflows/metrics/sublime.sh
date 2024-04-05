@@ -24,6 +24,10 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   SUBLIME_REPOSITORY=${REPOSITORY//Sublime-/}
   SUBLIME_REPOSITORY=$(echo "$SUBLIME_REPOSITORY" | sed 's/[A-Z]/ &/g' | xargs | sed 's/Git Hub/GitHub/g' | sed 's/ /%20/g')
 
+  if [[ "$SUBLIME_REPOSITORY" == "AddFolderToProject" ]]; then
+    SUBLIME_REPOSITORY+="%202"
+  fi
+
   RESPONSE_JSON=$(curl https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json)
 
   if [ -z "$RESPONSE_JSON" ] ; then
