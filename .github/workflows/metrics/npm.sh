@@ -4,6 +4,10 @@ OWNER="dennykorsukewitz"
 
 # https://api.npmjs.org/downloads/point/${START_TIMESTAMP}:${END_TIMESTAMP}/${NPM_REPOSITORY}
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-npm" --jq '.[].name' --json name | sort)
+if [ -z "$REPOSITORIES" ] ; then
+  echo -e "❌ No REPOSITORIES received."
+  exit 1
+fi
 
 declare -A REPOSITORYCOUNTER
 

@@ -2,6 +2,10 @@
 
 OWNER="dennykorsukewitz"
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --jq '.[].name' --json name | sort)
+if [ -z "$REPOSITORIES" ] ; then
+  echo -e "❌ No REPOSITORIES received."
+  exit 1
+fi
 
 # curl -L \
 #   -H "Accept: Accept: application/vnd.github.v3.star+json" \
@@ -16,6 +20,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
     mapfile -t STARGAZERS < <(gh api -H "Accept: application/vnd.github.v3.star+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/"$OWNER"/"$REPOSITORY"/stargazers --jq '.[]')
+
+    if [ -z "$STARGAZERS" ] ; then
+      echo -e "❌ No STARGAZERS received."
+      exit 1
+    fi
 
     if [ -z "${STARGAZERS[0]}" ] ; then
       continue;

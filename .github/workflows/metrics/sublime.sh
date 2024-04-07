@@ -4,6 +4,10 @@ OWNER="dennykorsukewitz"
 
 # https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
+if [ -z "$REPOSITORIES" ] ; then
+  echo -e "❌ No REPOSITORIES received."
+  exit 1
+fi
 
 declare -A REPOSITORYCOUNTER
 
