@@ -4,7 +4,7 @@ name: Release
 on:
   workflow_call:
     inputs:
-      VSCODE_NAME:
+      VSC_NAME:
         description: "The name of the vscode extension. (package.json -> name)"
         required: false
         type: string
@@ -14,17 +14,44 @@ on:
 
   workflow_dispatch:
     inputs:
-      VSCODE_NAME:
+      VSC_NAME:
         description: "The name of the vscode extension. (package.json -> name)"
         required: false
         type: string
 
 jobs:
+  Release-GitHub:
+    name: Release GitHub
+    environment:
+      name: Release
+      url: "https://github.com/dennykorsukewitz/${{ github.event.repository.name }}/releases/tag/${{ github.ref }}"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        env:
+          fetch-depth: "1"
+        with:
+          ref: ${{ github.ref }}
+      - name: Build vsix Package
+        run: vsce package
+      - name: Change RELEASE.md
+        run: sed -i '1,2d' RELEASE.md
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.PAT }}
+          artifacts: "${{ github.event.repository.name }}*.vsix"
+          bodyFile: "RELEASE.md"
+          draft: true
+          generateReleaseNotes: true
+
   Release-VSCode:
     name: Release VSCode
     environment:
       name: Release VSCode
-      url: "https://marketplace.visualstudio.com/items?itemName=dennykorsukewitz.znuny"
+      url: "https://marketplace.visualstudio.com/items?itemName=dennykorsukewitz.${{ inputs.VSC_NAME }}"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
