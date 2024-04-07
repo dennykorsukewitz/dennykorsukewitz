@@ -21,6 +21,7 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     done
 
     echo "all"
+    DISCORD_WEBHOOK_ANY=${{ secrets.DISCORD_WEBHOOK_ANY }}
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
     'name': 'web',
     'active': true,
@@ -77,28 +78,31 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
         'workflow_run'
     ],
     'config': {
-        'url': '${{ secrets.DISCORD_WEBHOOK_ANY }}',
+        'url': '$DISCORD_WEBHOOK_ANY',
         'content_type': 'json'
     }
 }")) > /dev/null 2>&1
 
     echo "star"
+    DISCORD_WEBHOOK_STAR=${{ secrets.DISCORD_WEBHOOK_STAR }}
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
         'name': 'web',
         'active': true,
         'events': ['star', 'watch'],
         'config': {
-            'url': '${{ secrets.DISCORD_WEBHOOK_STAR }}': 'json'
+            'url': '$DISCORD_WEBHOOK_STAR',
+            'content_type': 'json'
         }
     }")) > /dev/null 2>&1
 
     echo "release"
+    DISCORD_WEBHOOK_RELEASE=${{ secrets.DISCORD_WEBHOOK_RELEASE }}
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
         'name': 'web',
         'active': true,
         'events': ['release'],
         'config': {
-            'url': '${{ secrets.DISCORD_WEDISCORD_WEBHOOK_RELEASEBHOOK_STAR }}',
+            'url': '$DISCORD_WEBHOOK_RELEASE',
             'content_type': 'json'
         }
     }")) > /dev/null 2>&1

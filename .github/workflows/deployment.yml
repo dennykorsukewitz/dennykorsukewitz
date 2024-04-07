@@ -56,7 +56,7 @@ jobs:
           echo "---"
           echo "Repository: ${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
           echo "Environment Name: ${{ inputs.ENVIRONMENT }}"
-          echo "Deployment IDs: ${DEPLOYMENT_IDS[@]}"
+          echo "Deployment IDs: ${DEPLOYMENT_IDS[*]}"
           echo "---"
 
   List_All:

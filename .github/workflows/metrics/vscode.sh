@@ -4,7 +4,7 @@ OWNER="dennykorsukewitz"
 
 #  https://marketplace.visualstudio.com/_apis/gallery/publishers/dennykorsukewitz/extensions/"$VSCODE_REPOSITORY"/stats
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "vsc" --jq '.[].name' --json name | sort)
-if [ -z "$REPOSITORIES" ] ; then
+if [ -z "${REPOSITORIES[0]}" ] ; then
   echo -e "❌ No REPOSITORIES received."
   exit 1
 fi
