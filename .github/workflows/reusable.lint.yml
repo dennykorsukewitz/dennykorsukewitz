@@ -261,7 +261,7 @@ jobs:
       - name: Prepare linters config
         run: cp -R "${GITHUB_WORKSPACE}"/dennykorsukewitz/.github/linters "${GITHUB_WORKSPACE}"/repository/.github/
 
-      - name: Prepare linters config
+      - name: Remove dennykorsukewitz directory
         run: rm -Rf "${GITHUB_WORKSPACE}"/dennykorsukewitz
 
       - name: Branch Name

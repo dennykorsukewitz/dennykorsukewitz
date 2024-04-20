@@ -11,6 +11,8 @@ on:
     secrets:
       VSC_PAT:
         required: true
+      PAT:
+        required: true
 
   workflow_dispatch:
     inputs:
