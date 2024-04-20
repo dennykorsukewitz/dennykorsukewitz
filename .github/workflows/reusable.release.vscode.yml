@@ -78,4 +78,4 @@ jobs:
         run: npm i -g vsce
 
       - name: Publish
-        run: vsce publish -p ${{ inputs.VSC_PAT }}
+        run: vsce publish -p "${{ secrets.VSC_PAT }}"
