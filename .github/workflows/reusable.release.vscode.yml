@@ -53,7 +53,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.PAT }}
-          artifacts: "${{ github.event.repository.name }}*.vsix"
+          artifacts: "${{ inputs.VSC_NAME }}*.vsix"
           bodyFile: "RELEASE.md"
           draft: true
           generateReleaseNotes: true
