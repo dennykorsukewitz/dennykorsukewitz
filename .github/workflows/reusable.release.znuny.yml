@@ -113,7 +113,7 @@ jobs:
     name: Release GitHub
     needs: Build
     environment:
-      name: Release
+      name: Release GitHub
       url: "https://github.com/dennykorsukewitz/${{ github.event.repository.name }}/releases/tag/${{ github.ref }}"
     runs-on: ubuntu-latest
     permissions:
