@@ -136,5 +136,5 @@ jobs:
           token: ${{ secrets.PAT }}
           artifacts: "${{ github.event.repository.name }}*.opm,doc/en/${{ github.event.repository.name }}.pdf"
           bodyFile: "RELEASE.md"
-          draft: true
+          draft: false
           generateReleaseNotes: true
