@@ -1838,6 +1838,8 @@
   },
   {
     "date": "2024-04-26T00:00:00Z",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "1",
     "VSCode-QuoteWithMarker": "1",
     "VSCode-RainbowColors": "1",
     "VSCode-AddFolderToWorkspace": "0",
