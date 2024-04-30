@@ -31,6 +31,6 @@ jobs:
     with:
       SOURCE_REPO: ${{ inputs.SOURCE_REPO || 'upptime/upptime' }}
       DESTINATION_REPO: ${{ inputs.DESTINATION_REPO || 'dennykorsukewitz/upptime' }}
-      BRANCH: ${{ inputs.DESTINATION_REPO || matrix.BRANCH }}
+      BRANCH: ${{ inputs.BRANCH || matrix.BRANCH }}
     secrets:
       PAT: ${{ secrets.PAT }}
