@@ -35,6 +35,9 @@ on:
         required: false
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   Sync:
     runs-on: ubuntu-latest
