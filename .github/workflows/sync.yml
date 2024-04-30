@@ -24,16 +24,13 @@ on:
 
 jobs:
   Upptime:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         BRANCH: [master, gh-pages]
-    steps:
-      - name: Sync repositories
-        uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/sync.yml@dev
-        with:
-          SOURCE_REPO: ${{ inputs.SOURCE_REPO || 'upptime/upptime' }}
-          DESTINATION_REPO: ${{ inputs.DESTINATION_REPO || 'dennykorsukewitz/upptime' }}
-          BRANCH: ${{ inputs.DESTINATION_REPO || matrix.BRANCH }}
-        secrets:
-          PAT: ${{ secrets.PAT }}
+    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/sync.yml@dev
+    with:
+      SOURCE_REPO: ${{ inputs.SOURCE_REPO || 'upptime/upptime' }}
+      DESTINATION_REPO: ${{ inputs.DESTINATION_REPO || 'dennykorsukewitz/upptime' }}
+      BRANCH: ${{ inputs.DESTINATION_REPO || matrix.BRANCH }}
+    secrets:
+      PAT: ${{ secrets.PAT }}
