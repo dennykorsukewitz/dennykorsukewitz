@@ -1,0 +1,51 @@
+---
+name: Sync Fork
+
+on:
+  workflow_call:
+    inputs:
+      SOURCE_REPO:
+        description: "Source repository. (e.g. upptime/upptime)"
+        required: false
+        type: string
+      DESTINATION_REPO:
+        description: "Destination repository. (e.g. dennykorsukewitz/upptime)"
+        required: false
+        type: string
+      BRANCH:
+        description: "Branch name. (e.g. main)"
+        required: false
+        type: string
+    secrets:
+      PAT:
+        required: true
+
+  workflow_dispatch:
+    inputs:
+      SOURCE_REPO:
+        description: "Source repository. (e.g. upptime/upptime)"
+        required: false
+        type: string
+      DESTINATION_REPO:
+        description: "Destination repository. (e.g. dennykorsukewitz/upptime)"
+        required: false
+        type: string
+      BRANCH:
+        description: "Branch name. (e.g. main)"
+        required: false
+        type: string
+
+jobs:
+  Sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Sync fork
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_REPO: ${{ inputs.SOURCE_REPO }}
+          DESTINATION_REPO: ${{ inputs.DESTINATION_REPO }}
+          BRANCH: ${{ inputs.BRANCH || 'main' }}
+        run: |
+          gh repo sync $SOURCE_REPO --source $DESTINATION_REPO --branch $BRANCH  --force
