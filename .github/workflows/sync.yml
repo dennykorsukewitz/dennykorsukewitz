@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         BRANCH: [master, gh-pages]
-    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/sync.yml@dev
+    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/reusable.sync.fork.yml@dev
     with:
       SOURCE_REPO: ${{ inputs.SOURCE_REPO || 'upptime/upptime' }}
       DESTINATION_REPO: ${{ inputs.DESTINATION_REPO || 'dennykorsukewitz/upptime' }}
