@@ -1021,5 +1021,14 @@
     "VSCode-QuoteWithMarker": "80",
     "VSCode-AddFolderToWorkspace": "128",
     "VSCode-GitHubFileFetcher": "198"
+  },
+  {
+    "date": "2024-05-01T00:00:00Z",
+    "VSCode-QuoteWithMarker": "81",
+    "VSCode-RainbowColors": "31",
+    "VSCode-AddFolderToWorkspace": "129",
+    "VSCode-GitHubFileFetcher": "199",
+    "VSCode-Znuny": "92",
+    "VSCode-MyExtensionPack": "15"
   }
 ]
