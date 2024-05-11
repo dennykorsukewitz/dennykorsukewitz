@@ -2003,5 +2003,11 @@
     "VSCode-Znuny": "0",
     "VSCode-MyExtensionPack": "0",
     "generator-sublime-package": "1"
+  },
+  {
+    "date": "2024-05-10T00:00:00Z",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "0",
+    "generator-sublime-package": "0"
   }
 ]
