@@ -42,11 +42,20 @@ jobs:
   Sync:
     runs-on: ubuntu-latest
     steps:
+      # - name: github-sync
+      #   uses: repo-sync/github-sync@v2
+      #   with:
+      #     source_repo: "upptime/upptime"
+      #     source_branch: "master"
+      #     destination_repo: "dennykorsukewitz/upptime"
+      #     destination_branch: "master"
+      #     github_token: ${{ secrets.PAT }}
+
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Sync fork
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
           SOURCE_REPO: ${{ inputs.SOURCE_REPO }}
           DESTINATION_REPO: ${{ inputs.DESTINATION_REPO }}
           BRANCH: ${{ inputs.BRANCH || 'main' }}
