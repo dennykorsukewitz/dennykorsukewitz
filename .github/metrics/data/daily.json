@@ -2305,11 +2305,14 @@
   },
   {
     "date": "2024-06-04T00:00:00Z",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "0",
     "VSCode-QuoteWithMarker": "1",
     "VSCode-RainbowColors": "1",
     "VSCode-AddFolderToWorkspace": "1",
     "VSCode-GitHubFileFetcher": "4",
     "VSCode-Znuny": "1",
-    "VSCode-MyExtensionPack": "1"
+    "VSCode-MyExtensionPack": "1",
+    "generator-sublime-package": "0"
   }
 ]
