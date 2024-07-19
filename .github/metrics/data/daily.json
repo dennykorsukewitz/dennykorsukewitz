@@ -2833,6 +2833,12 @@
     "date": "2024-07-18T00:00:00Z",
     "Sublime-QuoteWithMarker": "0",
     "Sublime-GitHubFileFetcher": "0",
+    "VSCode-QuoteWithMarker": "1",
+    "VSCode-RainbowColors": "1",
+    "VSCode-AddFolderToWorkspace": "2",
+    "VSCode-GitHubFileFetcher": "7",
+    "VSCode-Znuny": "0",
+    "VSCode-MyExtensionPack": "0",
     "generator-sublime-package": "0"
   }
 ]
