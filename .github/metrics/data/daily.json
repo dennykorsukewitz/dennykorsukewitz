@@ -3072,6 +3072,7 @@
   },
   {
     "date": "2024-08-07T00:00:00Z",
+    "Sublime-AddFolderToProject": "1",
     "Sublime-QuoteWithMarker": "1",
     "Sublime-GitHubFileFetcher": "1",
     "VSCode-QuoteWithMarker": "0",
