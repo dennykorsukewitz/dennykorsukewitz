@@ -1500,5 +1500,10 @@
   {
     "date": "2024-08-11T00:00:00Z",
     "VSCode-GitHubFileFetcher": "539"
+  },
+  {
+    "date": "2024-08-13T00:00:00Z",
+    "VSCode-QuoteWithMarker": "98",
+    "VSCode-AddFolderToWorkspace": "172"
   }
 ]
