@@ -3489,6 +3489,13 @@
     "date": "2024-09-08T00:00:00Z",
     "Sublime-AddFolderToProject": "3",
     "Sublime-QuoteWithMarker": "1",
-    "Sublime-GitHubFileFetcher": "0"
+    "Sublime-GitHubFileFetcher": "0",
+    "VSCode-QuoteWithMarker": "0",
+    "VSCode-RainbowColors": "0",
+    "VSCode-AddFolderToWorkspace": "1",
+    "VSCode-GitHubFileFetcher": "1",
+    "VSCode-Znuny": "0",
+    "VSCode-MyExtensionPack": "0",
+    "generator-sublime-package": "0"
   }
 ]
