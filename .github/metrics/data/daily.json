@@ -3729,6 +3729,7 @@
     "VSCode-AddFolderToWorkspace": "1",
     "VSCode-GitHubFileFetcher": "1",
     "VSCode-Znuny": "0",
-    "VSCode-MyExtensionPack": "0"
+    "VSCode-MyExtensionPack": "0",
+    "generator-sublime-package": "1"
   }
 ]
