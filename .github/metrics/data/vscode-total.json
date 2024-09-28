@@ -1706,5 +1706,9 @@
     "VSCode-RainbowColors": "163",
     "VSCode-AddFolderToWorkspace": "196",
     "VSCode-GitHubFileFetcher": "565"
+  },
+  {
+    "date": "2024-09-27T00:00:00Z",
+    "VSCode-QuoteWithMarker": "108"
   }
 ]
