@@ -3796,5 +3796,9 @@
     "VSCode-Znuny": "1",
     "VSCode-MyExtensionPack": "1",
     "generator-sublime-package": "0"
+  },
+  {
+    "date": "2024-10-02T00:00:00Z",
+    "generator-sublime-package": "0"
   }
 ]
