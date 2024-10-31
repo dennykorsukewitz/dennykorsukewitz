@@ -25,24 +25,19 @@
     "MRBS-OTRS": "3"
   },
   {
-    "date": "2023-01-31T07:27:23Z",
-    "user": "NiklasSchmitt",
-    "VSCode-Znuny": "1"
-  },
-  {
     "date": "2023-02-02T19:27:59Z",
     "user": "tipue-dev",
-    "VSCode-Znuny": "2"
+    "VSCode-Znuny": "1"
   },
   {
     "date": "2023-02-08T20:59:35Z",
     "user": "jg-ggs",
-    "VSCode-Znuny": "3"
+    "VSCode-Znuny": "2"
   },
   {
     "date": "2023-02-08T21:34:32Z",
     "user": "joserribeiro26",
-    "VSCode-Znuny": "4"
+    "VSCode-Znuny": "3"
   },
   {
     "date": "2023-02-09T17:33:57Z",
@@ -58,11 +53,6 @@
     "date": "2023-02-28T10:20:09Z",
     "user": "diffblogbot",
     "dennykorsukewitz.github.io": "1"
-  },
-  {
-    "date": "2023-06-07T08:34:10Z",
-    "user": "jepf",
-    "VSCode-Znuny": "5"
   },
   {
     "date": "2023-06-26T15:52:39Z",
@@ -82,12 +72,12 @@
   {
     "date": "2023-10-19T10:48:21Z",
     "user": "PeppeOsmio",
-    "VSCode-Znuny": "6"
+    "VSCode-Znuny": "4"
   },
   {
     "date": "2023-10-19T16:39:46Z",
     "user": "baltadlakd",
-    "VSCode-Znuny": "7"
+    "VSCode-Znuny": "5"
   },
   {
     "date": "2023-12-13T19:18:38Z",
@@ -102,7 +92,7 @@
   {
     "date": "2024-02-03T13:14:05Z",
     "user": "eyazi",
-    "VSCode-Znuny": "8"
+    "VSCode-Znuny": "6"
   },
   {
     "date": "2024-02-06T05:27:09Z",
@@ -128,5 +118,30 @@
     "date": "2024-08-26T08:04:01Z",
     "user": "dennykorsukewitz",
     "Sublime-AddFolderToProject": "1"
+  },
+  {
+    "date": "2024-10-30T10:46:19Z",
+    "user": "jepf",
+    "VSCode-Znuny": "7"
+  },
+  {
+    "date": "2024-10-30T10:46:36Z",
+    "user": "jepf",
+    "VSCode-AddFolderToWorkspace": "3"
+  },
+  {
+    "date": "2024-10-30T10:46:38Z",
+    "user": "jepf",
+    "VSCode-GitHubFileFetcher": "2"
+  },
+  {
+    "date": "2024-10-30T10:46:39Z",
+    "user": "jepf",
+    "Sublime-GitHubFileFetcher": "3"
+  },
+  {
+    "date": "2024-10-30T10:57:21Z",
+    "user": "jepf",
+    "VSCode-RainbowColors": "2"
   }
 ]
