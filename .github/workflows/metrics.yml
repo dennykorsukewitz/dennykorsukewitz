@@ -172,7 +172,7 @@ jobs:
           # Options
           base: ""
           plugin_calendar: yes
-          plugin_calendar_limit: 0
+          plugin_calendar_limit: 2
       - name: Move Metrics Renders
         run: |
           set +e
