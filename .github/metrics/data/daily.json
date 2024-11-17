@@ -4375,5 +4375,12 @@
     "Sublime-QuoteWithMarker": "0",
     "Sublime-GitHubFileFetcher": "0",
     "generator-sublime-package": "0"
+  },
+  {
+    "date": "2024-11-16T00:00:00Z",
+    "Sublime-AddFolderToProject": "1",
+    "Sublime-QuoteWithMarker": "1",
+    "Sublime-GitHubFileFetcher": "1",
+    "generator-sublime-package": "0"
   }
 ]
