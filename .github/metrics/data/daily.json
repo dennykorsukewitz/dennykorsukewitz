@@ -4374,6 +4374,12 @@
     "Sublime-AddFolderToProject": "2",
     "Sublime-QuoteWithMarker": "0",
     "Sublime-GitHubFileFetcher": "0",
+    "VSCode-QuoteWithMarker": "1",
+    "VSCode-RainbowColors": "1",
+    "VSCode-AddFolderToWorkspace": "1",
+    "VSCode-GitHubFileFetcher": "0",
+    "VSCode-Znuny": "1",
+    "VSCode-MyExtensionPack": "1",
     "generator-sublime-package": "0"
   },
   {
