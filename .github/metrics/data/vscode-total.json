@@ -1933,19 +1933,25 @@
     "VSCode-Znuny": "126"
   },
   {
-    "date": "2024-11-15T00:00:00Z",
-    "VSCode-QuoteWithMarker": "120",
+    "date": "2024-11-14T00:00:00Z",
     "VSCode-RainbowColors": "205",
     "VSCode-AddFolderToWorkspace": "235",
     "VSCode-Znuny": "127",
     "VSCode-MyExtensionPack": "25"
   },
   {
-    "date": "2024-11-16T00:00:00Z",
-    "VSCode-QuoteWithMarker": "121",
+    "date": "2024-11-15T00:00:00Z",
     "VSCode-RainbowColors": "206",
-    "VSCode-AddFolderToWorkspace": "236",
-    "VSCode-Znuny": "128",
-    "VSCode-MyExtensionPack": "26"
+    "VSCode-AddFolderToWorkspace": "235",
+    "VSCode-Znuny": "127",
+    "VSCode-MyExtensionPack": "25"
+  },
+  {
+    "date": "2024-11-16T00:00:00Z",
+    "VSCode-QuoteWithMarker": "120",
+    "VSCode-RainbowColors": "207",
+    "VSCode-AddFolderToWorkspace": "237",
+    "VSCode-Znuny": "129",
+    "VSCode-MyExtensionPack": "25"
   }
 ]
