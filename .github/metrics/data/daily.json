@@ -4423,6 +4423,9 @@
   },
   {
     "date": "2024-11-19T00:00:00Z",
+    "Sublime-AddFolderToProject": "0",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "0",
     "VSCode-QuoteWithMarker": "0",
     "VSCode-RainbowColors": "1",
     "VSCode-AddFolderToWorkspace": "0",
