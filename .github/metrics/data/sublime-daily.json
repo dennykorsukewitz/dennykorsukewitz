@@ -1932,5 +1932,11 @@
     "Sublime-AddFolderToProject": "2",
     "Sublime-QuoteWithMarker": "0",
     "Sublime-GitHubFileFetcher": "1"
+  },
+  {
+    "date": "2024-11-29T00:00:00Z",
+    "Sublime-AddFolderToProject": "2",
+    "Sublime-QuoteWithMarker": "0",
+    "Sublime-GitHubFileFetcher": "0"
   }
 ]
