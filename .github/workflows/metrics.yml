@@ -5,6 +5,7 @@ on:
   schedule:
     # "0 0 * * *" (UTC) = "0 1 * * *" (Germany)
     - cron: "0 1 * * *"
+    - cron: "0 6 * * *"
   # push:
   #   branches: ["dev", "main"]
   workflow_dispatch:
