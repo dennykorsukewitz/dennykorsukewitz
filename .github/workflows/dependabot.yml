@@ -3,8 +3,8 @@ name: Update Dependabot
 on:
   workflow_dispatch:
   push:
-    branches:
-      - dev
+    paths:
+      - .github/dependabot/**  # Trigger on changes in the .github/dependabot directory
 
 jobs:
   Update-Dependabot:
@@ -43,7 +43,6 @@ jobs:
             { repo: 'dennykorsukewitz/Znuny-Agent-Notice', path: '.github/dependabot/dependabot.yml' },
             { repo: 'dennykorsukewitz/Znuny-QuickDelete', path: '.github/dependabot/dependabot.yml' },
             { repo: 'dennykorsukewitz/Znuny-UBInventory', path: '.github/dependabot/dependabot.yml' },
-
             { repo: 'dennykorsukewitz/generator-sublime-package', path: '.github/dependabot/dependabot.npm.yml' },
             { repo: 'dennykorsukewitz/Node-Kimai-APIClient', path: '.github/dependabot/dependabot.npm.yml' },
             { repo: 'dennykorsukewitz/Node-MyPlayground', path: '.github/dependabot/dependabot.npm.yml' },
@@ -68,14 +67,14 @@ jobs:
                 const { data: { sha } } = await octokit.repos.getContent({
                   owner,
                   repo: repoName,
-                  path: path,
+                  path: '.github/dependabot.yml',
                 });
 
                 // Update the file
                 await octokit.repos.createOrUpdateFileContents({
                   owner,
                   repo: repoName,
-                  path: path,
+                  path: '.github/dependabot.yml',
                   message: 'Update dependabot.yml',
                   content: base64.encode(dependabotContent),
                   sha,
@@ -86,7 +85,7 @@ jobs:
                   await octokit.repos.createOrUpdateFileContents({
                     owner,
                     repo: repoName,
-                    path: path,
+                    path: '.github/dependabot.yml',
                     message: 'Create dependabot.yml',
                     content: base64.encode(dependabotContent),
                   });
