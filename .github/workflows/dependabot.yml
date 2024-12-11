@@ -21,6 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          npm install base-64
           npm install @actions/github
           npm install @octokit/rest@18.0.0
           npm install @actions/core
