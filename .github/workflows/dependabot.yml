@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install @actions/github
-          npm install @octokit/rest
+          npm install @octokit/rest@18.0.0
           npm install @actions/core
 
       - name: Run dependabot.js script to update dependabot.yml in target repositories
