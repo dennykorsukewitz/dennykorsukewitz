@@ -12,14 +12,14 @@ jobs:
     steps:
 
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
           path: repository
 
       - name: Check out Znuny
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
@@ -27,7 +27,7 @@ jobs:
           path: znuny
 
       - name: Check out ZnunyCodePolicy
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:

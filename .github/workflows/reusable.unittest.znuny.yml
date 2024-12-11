@@ -36,14 +36,14 @@ jobs:
           MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
           path: repository
 
       - name: Check out module-tools
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
