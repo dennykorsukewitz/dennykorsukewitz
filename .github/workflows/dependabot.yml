@@ -3,8 +3,8 @@ name: Update Dependabot
 on:
   workflow_dispatch:
   push:
-    paths:
-      - .github/dependabot/**  # Trigger on changes in the .github/dependabot directory
+    # paths:
+    #   - .github/dependabot/**  # Trigger on changes in the .github/dependabot directory
 
 jobs:
   Update-Dependabot:
