@@ -31,5 +31,5 @@ jobs:
 
       - name: Run dependabot.js script to update dependabot.yml in target repositories
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Ensure the token is available
+          GITHUB_TOKEN: ${{ secrets.PAT }}  # Ensure the token is available
         run: node .github/scripts/dependabot.js
