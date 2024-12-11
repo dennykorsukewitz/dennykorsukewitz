@@ -20,7 +20,10 @@ jobs:
           node-version: '16'  # or another version you need
 
       - name: Install dependencies
-        run: npm install @actions/github @actions/core
+        run: |
+          npm install @actions/github
+          npm install @octokit/rest
+          npm install @actions/core
 
       - name: Run dependabot.js script to update dependabot.yml in target repositories
         env:
