@@ -32,7 +32,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:

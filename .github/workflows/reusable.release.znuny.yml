@@ -48,7 +48,7 @@ jobs:
           MYSQL_DATABASE: "${{ inputs.FRAMEWORK || 'znuny' }}"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
@@ -56,7 +56,7 @@ jobs:
           path: repository
 
       - name: Checkout module-tools
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
@@ -120,7 +120,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           fetch-depth: "1"
         with:
