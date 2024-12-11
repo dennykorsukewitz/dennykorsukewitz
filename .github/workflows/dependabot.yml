@@ -6,6 +6,9 @@ on:
     # paths:
     #   - .github/dependabot/**  # Trigger on changes in the .github/dependabot directory
 
+permissions:
+  contents: write
+
 jobs:
   Update-Dependabot:
     runs-on: ubuntu-latest
