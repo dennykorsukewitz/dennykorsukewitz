@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Create Documents (de)
-        uses: baileyjm02/markdown-to-pdf@v1
+        uses: baileyjm02/markdown-to-pdf@v2
         with:
           input_dir: doc/de/
           output_dir: doc/de/
@@ -31,7 +31,7 @@ jobs:
           build_html: false
 
       - name: Create Documents (en)
-        uses: baileyjm02/markdown-to-pdf@v1
+        uses: baileyjm02/markdown-to-pdf@v2
         with:
           input_dir: doc/en/
           output_dir: doc/en/
