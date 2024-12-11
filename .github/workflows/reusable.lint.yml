@@ -499,7 +499,7 @@ jobs:
           fi
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter@v7
         env:
           DEFAULT_BRANCH: "${GITHUB_REF##*/}"
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
