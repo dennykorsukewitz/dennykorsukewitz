@@ -251,7 +251,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         env:
-          fetch-depth: "1"
+          fetch-depth: 0
         with:
           path: repository
 
