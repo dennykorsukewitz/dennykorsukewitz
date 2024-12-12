@@ -338,7 +338,6 @@ jobs:
           if [[ "${{ inputs.VALIDATE_GO_RELEASER }}" == "false" ]]; then
             echo "VALIDATE_GO_RELEASER=false" >> "$GITHUB_ENV"
           fi
-          echo "VALIDATE_GO_RELEASER=false" >> "$GITHUB_ENV"
           if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "false" ]]; then
             echo "VALIDATE_GOOGLE_JAVA_FORMAT=false" >> "$GITHUB_ENV"
           fi
@@ -509,7 +508,7 @@ jobs:
           fi
 
       - name: Lint Code Base
-        uses: github/super-linter@v7
+        uses: github/super-linter@v5
         env:
           DEFAULT_BRANCH: "${GITHUB_REF##*/}"
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
