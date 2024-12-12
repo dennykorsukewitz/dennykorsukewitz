@@ -237,6 +237,9 @@ on:
     #   token:
     #     required: true
 
+env:
+  GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
+
 jobs:
   Lint:
     name: Lint Code Base
