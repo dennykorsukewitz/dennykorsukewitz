@@ -61,6 +61,9 @@ on:
       VALIDATE_GO:
         required: false
         type: string
+      VALIDATE_GO_RELEASER:
+        required: false
+        type: string
       VALIDATE_GOOGLE_JAVA_FORMAT:
         required: false
         type: string
@@ -331,6 +334,9 @@ jobs:
           fi
           if [[ "${{ inputs.VALIDATE_GO }}" == "false" ]]; then
             echo "VALIDATE_GO=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_GO_RELEASER }}" == "false" ]]; then
+            echo "VALIDATE_GO_RELEASER=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "false" ]]; then
             echo "VALIDATE_GOOGLE_JAVA_FORMAT=false" >> "$GITHUB_ENV"
