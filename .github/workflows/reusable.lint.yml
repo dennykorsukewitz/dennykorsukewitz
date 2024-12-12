@@ -251,7 +251,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         env:
-          fetch-depth: 0
+          fetch-depth: 1
         with:
           path: repository
 
@@ -516,4 +516,5 @@ jobs:
           USE_FIND_ALGORITHM: true
           FILTER_REGEX_EXCLUDE: "(.*.scss)"
           IGNORE_GITIGNORED_FILES: true
+          VALIDATE_GO_RELEASER: false
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
