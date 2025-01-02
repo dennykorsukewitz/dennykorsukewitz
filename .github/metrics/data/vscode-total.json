@@ -2130,5 +2130,13 @@
   {
     "date": "2024-12-31T00:00:00Z",
     "VSCode-RainbowColors": "237"
+  },
+  {
+    "date": "2025-01-01T00:00:00Z",
+    "VSCode-QuoteWithMarker": "126",
+    "VSCode-RainbowColors": "238",
+    "VSCode-AddFolderToWorkspace": "262",
+    "VSCode-Znuny": "137",
+    "VSCode-MyExtensionPack": "26"
   }
 ]
