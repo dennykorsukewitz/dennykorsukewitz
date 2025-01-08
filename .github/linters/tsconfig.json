@@ -10,6 +10,6 @@
     "**/repository/src/*",
     "**/repository/src/**/*",
     "tests",
-    "tools",
+    "tools"
   ]
 }
