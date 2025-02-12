@@ -172,5 +172,41 @@
     "user": "vancaem",
     "VSCode-AddFolderToWorkspace": "4",
     "total": 29
+  },
+  {
+    "date": "2025-02-12T09:52:01Z",
+    "user": "vancaem",
+    "VSCode-GitHubFileFetcher": "3",
+    "total": 30
+  },
+  {
+    "date": "2025-02-12T09:52:25Z",
+    "user": "vancaem",
+    "VSCode-MyPlayground": "1",
+    "total": 31
+  },
+  {
+    "date": "2025-02-12T09:52:32Z",
+    "user": "vancaem",
+    "VSCode-MyExtensionPack": "1",
+    "total": 32
+  },
+  {
+    "date": "2025-02-12T09:53:03Z",
+    "user": "vancaem",
+    "Sublime-AddFolderToProject": "2",
+    "total": 33
+  },
+  {
+    "date": "2025-02-12T09:53:03Z",
+    "user": "vancaem",
+    "Sublime-GitHubFileFetcher": "4",
+    "total": 34
+  },
+  {
+    "date": "2025-02-12T09:53:13Z",
+    "user": "vancaem",
+    "MyPlayground": "1",
+    "total": 35
   }
 ]
