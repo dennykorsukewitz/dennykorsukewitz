@@ -2621,5 +2621,13 @@
   {
     "date": "2025-05-11T00:00:00Z",
     "VSCode-GitHubFileFetcher": "709"
+  },
+  {
+    "date": "2025-05-13T00:00:00Z",
+    "VSCode-QuoteWithMarker": "140",
+    "VSCode-RainbowColors": "321",
+    "VSCode-AddFolderToWorkspace": "317",
+    "VSCode-Znuny": "155",
+    "VSCode-MyExtensionPack": "31"
   }
 ]
