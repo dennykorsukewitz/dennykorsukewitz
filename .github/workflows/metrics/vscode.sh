@@ -120,14 +120,17 @@ JSON_TOTAL+=']'
 JSON_DAILY+=$DATA_DAILY
 JSON_DAILY+=']'
 
+if [[ "$JSON_DAILY"  != "[{}]" ]]; then
+  echo "$JSON_DAILY" > temp_daily.json
+  jq --argjson arr1 "$(cat temp_daily.json)" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-daily.json
+  rm temp_daily.json
+fi
+
+if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
+  echo "$JSON_TOTAL" > temp_total.json
+  jq --argjson arr1 "$(cat temp_total.json)" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-total.json
+  rm temp_total.json
+fi
+
 echo "JSON_DAILY: $JSON_DAILY"
 echo "CURRENT_JSON_DAILY: $CURRENT_JSON_DAILY"
-
-if [[ "$JSON_DAILY"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-daily.json
-fi
-if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-total.json
-fi
-
-
