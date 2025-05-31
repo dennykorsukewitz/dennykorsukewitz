@@ -120,7 +120,8 @@ JSON_TOTAL+=']'
 JSON_DAILY+=$DATA_DAILY
 JSON_DAILY+=']'
 
-
+echo "JSON_DAILY: $JSON_DAILY"
+echo "CURRENT_JSON_DAILY: $CURRENT_JSON_DAILY"
 
 if [[ "$JSON_DAILY"  != "[{}]" ]]; then
   jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/vscode-daily.json
