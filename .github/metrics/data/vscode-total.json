@@ -2693,5 +2693,10 @@
   {
     "date": "2025-05-31T00:00:00Z",
     "VSCode-RainbowColors": "331"
+  },
+  {
+    "date": "2025-06-01T00:00:00Z",
+    "VSCode-RainbowColors": "332",
+    "VSCode-AddFolderToWorkspace": "327"
   }
 ]
