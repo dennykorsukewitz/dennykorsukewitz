@@ -2846,5 +2846,10 @@
     "date": "2025-08-01T00:00:00Z",
     "VSCode-GitHubFileFetcher": "733",
     "VSCode-Znuny": "166"
+  },
+  {
+    "date": "2025-08-02T00:00:00Z",
+    "VSCode-RainbowColors": "346",
+    "VSCode-AddFolderToWorkspace": "344"
   }
 ]
