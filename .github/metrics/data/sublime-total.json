@@ -1540,5 +1540,10 @@
   {
     "date": "2025-08-10T00:00:00Z",
     "Sublime-AddFolderToProject": "388"
+  },
+  {
+    "date": "2025-08-12T00:00:00Z",
+    "Sublime-AddFolderToProject": "390",
+    "Sublime-GitHubFileFetcher": "174"
   }
 ]
