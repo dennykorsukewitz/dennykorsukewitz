@@ -519,6 +519,7 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v7
         env:
+          DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
           DEFAULT_BRANCH: "${GITHUB_REF##*/}"
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
           LINTER_RULES_PATH: "./repository/.github/linters"
