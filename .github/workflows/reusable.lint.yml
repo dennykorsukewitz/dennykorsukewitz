@@ -274,7 +274,7 @@ jobs:
         run: |
           ls -alih "${GITHUB_WORKSPACE}"
           ls -alih "${GITHUB_WORKSPACE}"/repository/
-          mv -R "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
+          mv -r "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
           ls -alih
 
       - name: Initialize Git repository
