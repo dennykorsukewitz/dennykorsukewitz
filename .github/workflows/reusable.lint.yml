@@ -254,7 +254,6 @@ jobs:
           fetch-depth: 1
         with:
           path: repository
-          fetch-depth: 0
 
       - name: Checkout dennykorsukewitz
         uses: actions/checkout@v4
@@ -271,17 +270,20 @@ jobs:
       - name: Remove dennykorsukewitz directory
         run: rm -Rf "${GITHUB_WORKSPACE}"/dennykorsukewitz
 
-      - name: Initialize Git repository
-        run: |
-          cd "${GITHUB_WORKSPACE}/repository"
-          git config --global user.email "dennykorsukewitz@gmail.com"
-          git config --global user.name "Denny Korsukéwitz"
-          git status
-          git --no-pager log -1
-          git add .
-          git commit -m "Initialize repository for linting" || true
-          git status
-          git --no-pager log -1
+      - name: Copy repository directory
+        run: cp -R "${GITHUB_WORKSPACE}"/repository "${GITHUB_WORKSPACE}"/
+
+      # - name: Initialize Git repository
+      #   run: |
+      #     cd "${GITHUB_WORKSPACE}/repository"
+      #     git config --global user.email "dennykorsukewitz@gmail.com"
+      #     git config --global user.name "Denny Korsukéwitz"
+      #     git status
+      #     git --no-pager log -1
+      #     git add .
+      #     git commit -m "Initialize repository for linting" || true
+      #     git status
+      #     git --no-pager log -1
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"
