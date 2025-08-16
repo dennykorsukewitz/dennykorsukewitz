@@ -3,7 +3,7 @@ name: Sync Fork
 
 on:
   # Schedule updates (“At 00:00.”)
-  schedule:
+  # schedule:
     # "0 0 * * *" (UTC) = "0 1 * * *" (Germany)
     # - cron: "0 0 * * *"
 
