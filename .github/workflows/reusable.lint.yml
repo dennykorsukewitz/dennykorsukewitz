@@ -271,7 +271,9 @@ jobs:
         run: rm -Rf "${GITHUB_WORKSPACE}"/dennykorsukewitz
 
       - name: Copy repository directory to workspace root
-        run: cp -R "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
+        run: |
+          cp -R "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
+          ls -alih
 
       - name: Initialize Git repository
         run: |
