@@ -270,8 +270,8 @@ jobs:
       - name: Remove dennykorsukewitz directory
         run: rm -Rf "${GITHUB_WORKSPACE}"/dennykorsukewitz
 
-      - name: Copy repository directory
-        run: cp -R "${GITHUB_WORKSPACE}"/repository "${GITHUB_WORKSPACE}"/
+      - name: Copy repository directory to workspace root
+        run: cp -R "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
 
       # - name: Initialize Git repository
       #   run: |
