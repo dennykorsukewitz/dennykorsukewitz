@@ -273,17 +273,13 @@ jobs:
       - name: Copy repository directory to workspace root
         run: cp -R "${GITHUB_WORKSPACE}"/repository/* "${GITHUB_WORKSPACE}"/
 
-      # - name: Initialize Git repository
-      #   run: |
-      #     cd "${GITHUB_WORKSPACE}/repository"
-      #     git config --global user.email "dennykorsukewitz@gmail.com"
-      #     git config --global user.name "Denny Korsukéwitz"
-      #     git status
-      #     git --no-pager log -1
-      #     git add .
-      #     git commit -m "Initialize repository for linting" || true
-      #     git status
-      #     git --no-pager log -1
+      - name: Initialize Git repository
+        run: |
+          cd "${GITHUB_WORKSPACE}"
+          git config --global user.email "dennykorsukewitz@gmail.com"
+          git config --global user.name "Denny Korsukéwitz"
+          git status
+          git --no-pager log -1
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"
@@ -531,4 +527,4 @@ jobs:
           USE_FIND_ALGORITHM: true
           FILTER_REGEX_EXCLUDE: "(.*.scss)"
           IGNORE_GITIGNORED_FILES: true
-          DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
+          # DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}/repository"
