@@ -250,16 +250,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        env:
-          fetch-depth: 1
         with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
           path: repository
 
       - name: Checkout dennykorsukewitz
         uses: actions/checkout@v4
-        env:
-          fetch-depth: "1"
         with:
+          fetch-depth: "1"
           repository: dennykorsukewitz/dennykorsukewitz
           ref: "dev"
           path: dennykorsukewitz
