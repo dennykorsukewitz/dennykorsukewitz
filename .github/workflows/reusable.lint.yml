@@ -276,8 +276,12 @@ jobs:
           cd "${GITHUB_WORKSPACE}/repository"
           git config --global user.email "dennykorsukewitz@gmail.com"
           git config --global user.name "Denny Korsukéwitz"
+          git status
+          git --no-pager log -1
           git add .
           git commit -m "Initialize repository for linting" || true
+          git status
+          git --no-pager log -1
 
       - name: Branch Name
         run: echo running on branch "${GITHUB_REF##*/}"
