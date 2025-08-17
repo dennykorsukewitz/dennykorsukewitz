@@ -17,7 +17,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Personal
@@ -84,7 +84,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Languages Indepth
@@ -120,7 +120,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Full-year calendar
@@ -149,7 +149,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Commit current year calendar
@@ -192,7 +192,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Comment Reactions
@@ -226,7 +226,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Sponsors
@@ -258,7 +258,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Stargazers graph
@@ -292,7 +292,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Get NPM data
@@ -313,7 +313,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Get GitHub data
@@ -334,7 +334,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Get Sublime data
@@ -356,7 +356,7 @@ jobs:
       VSC_PAT: ${{ secrets.VSC_PAT }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Get VSCode data
@@ -380,7 +380,7 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Download artifact metrics-data
@@ -417,7 +417,7 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Checkout dennykorsukewitz
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
       - name: Git Pull
