@@ -32,7 +32,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         env:
           fetch-depth: "1"
         with:
@@ -65,7 +65,7 @@ jobs:
       url: "https://marketplace.visualstudio.com/items?itemName=dennykorsukewitz.${{ inputs.VSC_NAME }}"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: 20
