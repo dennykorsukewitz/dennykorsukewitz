@@ -34,7 +34,7 @@
 
 ## My Work
 
-<img align="right" width="50" height="50" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
+<img align="right" width="50" height="50" alt="VSCode-Znuny Znuny Logo" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
 
 Currently I am working on the ticket system [Znuny](https://www.znuny.org/).
 

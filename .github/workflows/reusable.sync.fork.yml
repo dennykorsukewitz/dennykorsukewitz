@@ -60,4 +60,4 @@ jobs:
           DESTINATION_REPO: ${{ inputs.DESTINATION_REPO }}
           BRANCH: ${{ inputs.BRANCH || 'main' }}
         run: |
-          gh repo sync $DESTINATION_REPO --source $SOURCE_REPO --branch $BRANCH  --force
+          gh repo sync "$DESTINATION_REPO" --source "$SOURCE_REPO" --branch "$BRANCH" --force

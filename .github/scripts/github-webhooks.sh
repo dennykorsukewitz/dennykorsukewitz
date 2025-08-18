@@ -21,7 +21,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     done
 
     echo "all"
-    DISCORD_WEBHOOK_ANY=${{ secrets.DISCORD_WEBHOOK_ANY }}
+    # DISCORD_WEBHOOK_ANY should be passed as environment variable from the workflow
+    if [ -z "${DISCORD_WEBHOOK_ANY}" ]; then
+        echo "Error: DISCORD_WEBHOOK_ANY environment variable is not set"
+        exit 1
+    fi
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
     'name': 'web',
     'active': true,
@@ -84,7 +88,11 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
 }")) > /dev/null 2>&1
 
     echo "star"
-    DISCORD_WEBHOOK_STAR=${{ secrets.DISCORD_WEBHOOK_STAR }}
+    # DISCORD_WEBHOOK_STAR should be passed as environment variable from the workflow
+    if [ -z "${DISCORD_WEBHOOK_STAR}" ]; then
+        echo "Error: DISCORD_WEBHOOK_STAR environment variable is not set"
+        exit 1
+    fi
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
         'name': 'web',
         'active': true,
@@ -96,7 +104,12 @@ for REPOSITORY in "${REPOSITORIES[@]}"; do
     }")) > /dev/null 2>&1
 
     echo "release"
-    DISCORD_WEBHOOK_RELEASE=${{ secrets.DISCORD_WEBHOOK_RELEASE }}
+
+    # DISCORD_WEBHOOK_RELEASE should be passed as environment variable from the workflow
+    if [ -z "${DISCORD_WEBHOOK_RELEASE}" ]; then
+        echo "Error: DISCORD_WEBHOOK_RELEASE environment variable is not set"
+        exit 1
+    fi
     RESPONSE=$(gh api -X POST repos/"$OWNER"/"$REPOSITORY"/hooks --input <(cat <<< "{
         'name': 'web',
         'active': true,

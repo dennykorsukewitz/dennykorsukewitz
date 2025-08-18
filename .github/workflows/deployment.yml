@@ -51,7 +51,7 @@ jobs:
             mapfile -t DEPLOYMENT_IDS < <(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}/deployments | jq '.[] | select(.environment=="${{ inputs.ENVIRONMENT }}") | .id')
           fi
 
-          echo "::set-output name=DEPLOYMENT_IDS::$(printf '%s,' "${DEPLOYMENT_IDS[@]}")"
+          echo "DEPLOYMENT_IDS=$(printf '%s,' "${DEPLOYMENT_IDS[@]}")" >> "$GITHUB_OUTPUT"
 
           echo "---"
           echo "Repository: ${{ inputs.OWNER }}/${{ inputs.REPOSITORY }}"
