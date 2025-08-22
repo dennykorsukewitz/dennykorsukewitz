@@ -39,4 +39,4 @@ on:
 
 jobs:
   Lint:
-    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/reusable.lint.yml@dev-lint-workflow
+    uses: dennykorsukewitz/dennykorsukewitz/.github/workflows/reusable.lint.yml@dev
