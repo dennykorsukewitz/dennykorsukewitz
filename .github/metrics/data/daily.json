@@ -8514,5 +8514,18 @@
     "VSCode-Znuny": "1",
     "VSCode-MyExtensionPack": "0",
     "generator-sublime-package": "0"
+  },
+  {
+    "date": "2025-09-30T00:00:00Z",
+    "Sublime-AddFolderToProject": "1",
+    "Sublime-QuoteWithMarker": "1",
+    "Sublime-GitHubFileFetcher": "1",
+    "VSCode-QuoteWithMarker": "1",
+    "VSCode-RainbowColors": "1",
+    "VSCode-AddFolderToWorkspace": "1",
+    "VSCode-GitHubFileFetcher": "0",
+    "VSCode-Znuny": "1",
+    "VSCode-MyExtensionPack": "1",
+    "generator-sublime-package": "0"
   }
 ]
