@@ -47,7 +47,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: "Updated Documents."
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: Documents
           path: |
