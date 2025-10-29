@@ -104,7 +104,7 @@ jobs:
           ls -la "$GITHUB_WORKSPACE/repository"
           ls -la "$GITHUB_WORKSPACE/znuny"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: OPM
           path: "znuny/*.opm"
