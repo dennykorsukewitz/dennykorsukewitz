@@ -3343,5 +3343,10 @@
   {
     "date": "2025-12-16T00:00:00Z",
     "VSCode-Znuny": "184"
+  },
+  {
+    "date": "2025-12-17T00:00:00Z",
+    "VSCode-AddFolderToWorkspace": "388",
+    "VSCode-GitHubFileFetcher": "802"
   }
 ]
