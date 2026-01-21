@@ -3458,5 +3458,10 @@
     "date": "2026-01-19T00:00:00Z",
     "VSCode-AddFolderToWorkspace": "404",
     "VSCode-GitHubFileFetcher": "819"
+  },
+  {
+    "date": "2026-01-20T00:00:00Z",
+    "VSCode-QuoteWithMarker": "161",
+    "VSCode-GitHubFileFetcher": "820"
   }
 ]
