@@ -553,7 +553,7 @@ jobs:
           cat "$GITHUB_ENV"
 
       - name: Lint Code Base
-        uses: super-linter/super-linter@v8.3.2
+        uses: super-linter/super-linter@v8.4.0
         env:
           DEFAULT_BRANCH: "${GITHUB_REF##*/}"
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
