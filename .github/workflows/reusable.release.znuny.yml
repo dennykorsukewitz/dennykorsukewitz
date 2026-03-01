@@ -126,7 +126,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: OPM
       - name: Change RELEASE.md
