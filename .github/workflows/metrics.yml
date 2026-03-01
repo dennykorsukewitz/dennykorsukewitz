@@ -73,7 +73,7 @@ jobs:
           ls -alih /metrics_renders/.github/metrics/personal.svg
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Personal
           path: .github/metrics/personal.svg
@@ -109,7 +109,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Languages
           path: .github/metrics/languages.indepth.svg
@@ -138,7 +138,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Commit-Calendar-Isometric
           path: .github/metrics/commit-calendar.isometric.svg
@@ -179,7 +179,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Commit-Calendar-Flat
           path: |
@@ -215,7 +215,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Comment-Reactions
           path: .github/metrics/comment.reactions.svg
@@ -247,7 +247,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Sponsors
           path: .github/metrics/sponsors.svg
@@ -279,7 +279,7 @@ jobs:
           set +e
           sudo cp -rf /metrics_renders/.github/* ./.github/
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-svg-Stargazers
           path: .github/metrics/stargazers.graph.svg
@@ -298,7 +298,7 @@ jobs:
       - name: Get NPM data
         run: ./.github/workflows/metrics/npm.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-data-NPM
           path: |
@@ -319,7 +319,7 @@ jobs:
       - name: Get GitHub data
         run: ./.github/workflows/metrics/github.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-data-Stars
           path: |
@@ -340,7 +340,7 @@ jobs:
       - name: Get Sublime data
         run: ./.github/workflows/metrics/sublime.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-data-Sublime
           path: |
@@ -362,7 +362,7 @@ jobs:
       - name: Get VSCode data
         run: ./.github/workflows/metrics/vscode.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-data-VSCode
           path: |
@@ -392,7 +392,7 @@ jobs:
       - name: Get Daily data
         run: ./.github/workflows/metrics/daily.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: metrics-data-Daily
           path: .github/metrics/data/daily.json
