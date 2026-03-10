@@ -555,7 +555,6 @@ jobs:
       - name: Lint Code Base
         uses: super-linter/super-linter@v8.5.0
         env:
-          DEFAULT_BRANCH: "${GITHUB_REF##*/}"
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
           LINTER_RULES_PATH: "./.github/linters"
           USE_FIND_ALGORITHM: true
