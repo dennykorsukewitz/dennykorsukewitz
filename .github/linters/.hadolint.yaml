@@ -6,3 +6,6 @@
 failure-threshold: warning
 
 ignored:
+# DL3008: Pin versions in apt-get - disabled; pinning 50+ packages is high-maintenance
+# and can break when Ubuntu mirrors update. Use a fixed base image (e.g. ubuntu:24.04) for reproducibility.
+  - DL3008
