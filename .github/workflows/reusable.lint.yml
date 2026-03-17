@@ -1,5 +1,7 @@
 ---
 name: Lint
+# v8.5.0
+# https://github.com/github/super-linter/releases/tag/v8.5.0
 
 on:
   workflow_call:
@@ -14,6 +16,12 @@ on:
         required: false
         type: string
       VALIDATE_BASH_EXEC:
+        required: false
+        type: string
+      VALIDATE_BIOME_FORMAT:
+        required: false
+        type: string
+      VALIDATE_BIOME_LINT:
         required: false
         type: string
       VALIDATE_CPP:
@@ -41,10 +49,22 @@ on:
       VALIDATE_CSS:
         required: false
         type: string
+      VALIDATE_CSS_PRETTIER:
+        required: false
+        type: string
       VALIDATE_DART:
         required: false
         type: string
       VALIDATE_DOCKERFILE_HADOLINT:
+        required: false
+        type: string
+      VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS:
+        required: false
+        type: string
+      VALIDATE_DOTNET_SLN_FORMAT_STYLE:
+        required: false
+        type: string
+      VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE:
         required: false
         type: string
       VALIDATE_EDITORCONFIG:
@@ -53,10 +73,19 @@ on:
       VALIDATE_ENV:
         required: false
         type: string
+      VALIDATE_GIT_COMMITLINT:
+        required: false
+        type: string
+      VALIDATE_GIT_MERGE_CONFLICT_MARKERS:
+        required: false
+        type: string
       VALIDATE_GHERKIN:
         required: false
         type: string
       VALIDATE_GITHUB_ACTIONS:
+        required: false
+        type: string
+      VALIDATE_GITHUB_ACTIONS_ZIZMOR:
         required: false
         type: string
       VALIDATE_GITLEAKS:
@@ -65,16 +94,25 @@ on:
       VALIDATE_GO:
         required: false
         type: string
+      VALIDATE_GO_MODULES:
+        required: false
+        type: string
       VALIDATE_GO_RELEASER:
         required: false
         type: string
       VALIDATE_GOOGLE_JAVA_FORMAT:
         required: false
         type: string
+      VALIDATE_GRAPHQL_PRETTIER:
+        required: false
+        type: string
       VALIDATE_GROOVY:
         required: false
         type: string
       VALIDATE_HTML:
+        required: false
+        type: string
+      VALIDATE_HTML_PRETTIER:
         required: false
         type: string
       VALIDATE_JAVA:
@@ -102,7 +140,34 @@ on:
         required: false
         type: string
         default: "false"
+      VALIDATE_JSONC:
+        required: false
+        type: string
+      VALIDATE_JSONC_PRETTIER:
+        required: false
+        type: string
       VALIDATE_JSX:
+        required: false
+        type: string
+      VALIDATE_JSX_PRETTIER:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_BLACK:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_FLAKE8:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_ISORT:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_MYPY:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_PYLINT:
+        required: false
+        type: string
+      VALIDATE_JUPYTER_NBQA_RUFF:
         required: false
         type: string
       VALIDATE_KOTLIN:
@@ -151,6 +216,9 @@ on:
       VALIDATE_PHP_PSALM:
         required: false
         type: string
+      VALIDATE_PRE_COMMIT:
+        required: false
+        type: string
       VALIDATE_POWERSHELL:
         required: false
         type: string
@@ -177,6 +245,12 @@ on:
       VALIDATE_PYTHON_PYLINT:
         required: false
         type: string
+      VALIDATE_PYTHON_RUFF:
+        required: false
+        type: string
+      VALIDATE_PYTHON_RUFF_FORMAT:
+        required: false
+        type: string
       VALIDATE_R:
         required: false
         type: string
@@ -198,6 +272,9 @@ on:
       VALIDATE_RUST_2021:
         required: false
         type: string
+      VALIDATE_RUST_2024:
+        required: false
+        type: string
       VALIDATE_RUST_CLIPPY:
         required: false
         type: string
@@ -212,6 +289,9 @@ on:
         required: false
         type: string
       VALIDATE_SNAKEMAKE_SNAKEFMT:
+        required: false
+        type: string
+      VALIDATE_SPELL_CODESPELL:
         required: false
         type: string
       VALIDATE_STATES:
@@ -238,6 +318,9 @@ on:
       VALIDATE_TERRAGRUNT:
         required: false
         type: string
+      VALIDATE_TRIVY:
+        required: false
+        type: string
       VALIDATE_TSX:
         required: false
         type: string
@@ -245,6 +328,15 @@ on:
         required: false
         type: string
       VALIDATE_TYPESCRIPT_STANDARD:
+        required: false
+        type: string
+      VALIDATE_TYPESCRIPT_PRETTIER:
+        required: false
+        type: string
+      VALIDATE_VUE:
+        required: false
+        type: string
+      VALIDATE_VUE_PRETTIER:
         required: false
         type: string
       VALIDATE_XML:
@@ -257,6 +349,9 @@ on:
         required: false
         type: string
         default: "false"
+      VALIDATE_ALL_CODEBASE:
+        required: false
+        type: string
     # secrets:
     #   token:
     #     required: true
@@ -317,6 +412,12 @@ jobs:
           if [[ "${{ inputs.VALIDATE_BASH_EXEC }}" == "false" ]]; then
             echo "VALIDATE_BASH_EXEC=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_BIOME_FORMAT }}" == "false" ]]; then
+            echo "VALIDATE_BIOME_FORMAT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_BIOME_LINT }}" == "false" ]]; then
+            echo "VALIDATE_BIOME_LINT=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_CPP }}" == "false" ]]; then
             echo "VALIDATE_CPP=false" >> "$GITHUB_ENV"
           fi
@@ -341,11 +442,23 @@ jobs:
           if [[ "${{ inputs.VALIDATE_CSS }}" == "false" ]]; then
             echo "VALIDATE_CSS=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_CSS_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_CSS_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_DART }}" == "false" ]]; then
             echo "VALIDATE_DART=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}" == "false" ]]; then
             echo "VALIDATE_DOCKERFILE_HADOLINT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS }}" == "false" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_STYLE }}" == "false" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_STYLE=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE }}" == "false" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_EDITORCONFIG }}" == "false" ]]; then
             echo "VALIDATE_EDITORCONFIG=false" >> "$GITHUB_ENV"
@@ -353,11 +466,20 @@ jobs:
           if [[ "${{ inputs.VALIDATE_ENV }}" == "false" ]]; then
             echo "VALIDATE_ENV=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_GIT_COMMITLINT }}" == "false" ]]; then
+            echo "VALIDATE_GIT_COMMITLINT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_GIT_MERGE_CONFLICT_MARKERS }}" == "false" ]]; then
+            echo "VALIDATE_GIT_MERGE_CONFLICT_MARKERS=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_GHERKIN }}" == "false" ]]; then
             echo "VALIDATE_GHERKIN=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS }}" == "false" ]]; then
             echo "VALIDATE_GITHUB_ACTIONS=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS_ZIZMOR }}" == "false" ]]; then
+            echo "VALIDATE_GITHUB_ACTIONS_ZIZMOR=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_GITLEAKS }}" == "false" ]]; then
             echo "VALIDATE_GITLEAKS=false" >> "$GITHUB_ENV"
@@ -365,17 +487,26 @@ jobs:
           if [[ "${{ inputs.VALIDATE_GO }}" == "false" ]]; then
             echo "VALIDATE_GO=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_GO_MODULES }}" == "false" ]]; then
+            echo "VALIDATE_GO_MODULES=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_GO_RELEASER }}" == "false" ]]; then
             echo "VALIDATE_GO_RELEASER=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "false" ]]; then
             echo "VALIDATE_GOOGLE_JAVA_FORMAT=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_GRAPHQL_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_GRAPHQL_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_GROOVY }}" == "false" ]]; then
             echo "VALIDATE_GROOVY=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_HTML }}" == "false" ]]; then
             echo "VALIDATE_HTML=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_HTML_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_HTML_PRETTIER=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_JAVA }}" == "false" ]]; then
             echo "VALIDATE_JAVA=false" >> "$GITHUB_ENV"
@@ -398,8 +529,35 @@ jobs:
           if [[ "${{ inputs.VALIDATE_JSON_PRETTIER }}" == "false" ]]; then
             echo "VALIDATE_JSON_PRETTIER=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_JSONC }}" == "false" ]]; then
+            echo "VALIDATE_JSONC=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JSONC_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_JSONC_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_JSX }}" == "false" ]]; then
             echo "VALIDATE_JSX=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JSX_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_JSX_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_BLACK }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_BLACK=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_FLAKE8 }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_FLAKE8=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_ISORT }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_ISORT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_MYPY }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_MYPY=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_PYLINT }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_PYLINT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_RUFF }}" == "false" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_RUFF=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_KOTLIN }}" == "false" ]]; then
             echo "VALIDATE_KOTLIN=false" >> "$GITHUB_ENV"
@@ -446,6 +604,9 @@ jobs:
           if [[ "${{ inputs.VALIDATE_PHP_PSALM }}" == "false" ]]; then
             echo "VALIDATE_PHP_PSALM=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_PRE_COMMIT }}" == "false" ]]; then
+            echo "VALIDATE_PRE_COMMIT=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_POWERSHELL }}" == "false" ]]; then
             echo "VALIDATE_POWERSHELL=false" >> "$GITHUB_ENV"
           fi
@@ -470,6 +631,12 @@ jobs:
           if [[ "${{ inputs.VALIDATE_PYTHON_PYLINT }}" == "false" ]]; then
             echo "VALIDATE_PYTHON_PYLINT=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_RUFF=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF_FORMAT }}" == "false" ]]; then
+            echo "VALIDATE_PYTHON_RUFF_FORMAT=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_R }}" == "false" ]]; then
             echo "VALIDATE_R=false" >> "$GITHUB_ENV"
           fi
@@ -491,6 +658,9 @@ jobs:
           if [[ "${{ inputs.VALIDATE_RUST_2021 }}" == "false" ]]; then
             echo "VALIDATE_RUST_2021=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_RUST_2024 }}" == "false" ]]; then
+            echo "VALIDATE_RUST_2024=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_RUST_CLIPPY }}" == "false" ]]; then
             echo "VALIDATE_RUST_CLIPPY=false" >> "$GITHUB_ENV"
           fi
@@ -505,6 +675,9 @@ jobs:
           fi
           if [[ "${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}" == "false" ]]; then
             echo "VALIDATE_SNAKEMAKE_SNAKEFMT=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_SPELL_CODESPELL }}" == "false" ]]; then
+            echo "VALIDATE_SPELL_CODESPELL=false" >> "$GITHUB_ENV"
           fi
           if [[ "${{ inputs.VALIDATE_STATES }}" == "false" ]]; then
             echo "VALIDATE_STATES=false" >> "$GITHUB_ENV"
@@ -530,6 +703,9 @@ jobs:
           if [[ "${{ inputs.VALIDATE_TERRAGRUNT }}" == "false" ]]; then
             echo "VALIDATE_TERRAGRUNT=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_TRIVY }}" == "false" ]]; then
+            echo "VALIDATE_TRIVY=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_TSX }}" == "false" ]]; then
             echo "VALIDATE_TSX=false" >> "$GITHUB_ENV"
           fi
@@ -539,6 +715,15 @@ jobs:
           if [[ "${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}" == "false" ]]; then
             echo "VALIDATE_TYPESCRIPT_STANDARD=false" >> "$GITHUB_ENV"
           fi
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_TYPESCRIPT_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_VUE }}" == "false" ]]; then
+            echo "VALIDATE_VUE=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_VUE_PRETTIER }}" == "false" ]]; then
+            echo "VALIDATE_VUE_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
           if [[ "${{ inputs.VALIDATE_XML }}" == "false" ]]; then
             echo "VALIDATE_XML=false" >> "$GITHUB_ENV"
           fi
@@ -547,6 +732,9 @@ jobs:
           fi
           if [[ "${{ inputs.VALIDATE_YAML_PRETTIER }}" == "false" ]]; then
             echo "VALIDATE_YAML_PRETTIER=false" >> "$GITHUB_ENV"
+          fi
+          if [[ "${{ inputs.VALIDATE_ALL_CODEBASE }}" == "false" ]]; then
+            echo "VALIDATE_ALL_CODEBASE=false" >> "$GITHUB_ENV"
           fi
 
           echo "Environment variables set:"
