@@ -400,340 +400,564 @@ jobs:
 
       - name: Set environment variables
         run: |
-          if [[ "${{ inputs.VALIDATE_ANSIBLE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_ANSIBLE }}" == "true" ]]; then
+            echo "VALIDATE_ANSIBLE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_ANSIBLE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_ARM }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_ARM }}" == "true" ]]; then
+            echo "VALIDATE_ARM=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_ARM=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_BASH }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_BASH }}" == "true" ]]; then
+            echo "VALIDATE_BASH=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_BASH=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_BASH_EXEC }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_BASH_EXEC }}" == "true" ]]; then
+            echo "VALIDATE_BASH_EXEC=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_BASH_EXEC=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_BIOME_FORMAT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_BIOME_FORMAT }}" == "true" ]]; then
+            echo "VALIDATE_BIOME_FORMAT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_BIOME_FORMAT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_BIOME_LINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_BIOME_LINT }}" == "true" ]]; then
+            echo "VALIDATE_BIOME_LINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_BIOME_LINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CPP }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CPP }}" == "true" ]]; then
+            echo "VALIDATE_CPP=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CPP=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CHECKOV }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CHECKOV }}" == "true" ]]; then
+            echo "VALIDATE_CHECKOV=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CHECKOV=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CLANG_FORMAT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CLANG_FORMAT }}" == "true" ]]; then
+            echo "VALIDATE_CLANG_FORMAT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CLANG_FORMAT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CLOJURE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CLOJURE }}" == "true" ]]; then
+            echo "VALIDATE_CLOJURE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CLOJURE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CLOUDFORMATION }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CLOUDFORMATION }}" == "true" ]]; then
+            echo "VALIDATE_CLOUDFORMATION=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CLOUDFORMATION=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_COFFEESCRIPT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_COFFEESCRIPT }}" == "true" ]]; then
+            echo "VALIDATE_COFFEESCRIPT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_COFFEESCRIPT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CSHARP }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CSHARP }}" == "true" ]]; then
+            echo "VALIDATE_CSHARP=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CSHARP=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CSS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CSS }}" == "true" ]]; then
+            echo "VALIDATE_CSS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CSS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_CSS_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_CSS_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_CSS_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_CSS_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_DART }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_DART }}" == "true" ]]; then
+            echo "VALIDATE_DART=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_DART=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_DOCKERFILE_HADOLINT }}" == "true" ]]; then
+            echo "VALIDATE_DOCKERFILE_HADOLINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_DOCKERFILE_HADOLINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS }}" == "true" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_DOTNET_SLN_FORMAT_ANALYZERS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_STYLE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_STYLE }}" == "true" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_STYLE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_DOTNET_SLN_FORMAT_STYLE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE }}" == "true" ]]; then
+            echo "VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_DOTNET_SLN_FORMAT_WHITESPACE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_EDITORCONFIG }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_EDITORCONFIG }}" == "true" ]]; then
+            echo "VALIDATE_EDITORCONFIG=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_EDITORCONFIG=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_ENV }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_ENV }}" == "true" ]]; then
+            echo "VALIDATE_ENV=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_ENV=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GIT_COMMITLINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GIT_COMMITLINT }}" == "true" ]]; then
+            echo "VALIDATE_GIT_COMMITLINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GIT_COMMITLINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GIT_MERGE_CONFLICT_MARKERS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GIT_MERGE_CONFLICT_MARKERS }}" == "true" ]]; then
+            echo "VALIDATE_GIT_MERGE_CONFLICT_MARKERS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GIT_MERGE_CONFLICT_MARKERS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GHERKIN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GHERKIN }}" == "true" ]]; then
+            echo "VALIDATE_GHERKIN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GHERKIN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS }}" == "true" ]]; then
+            echo "VALIDATE_GITHUB_ACTIONS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GITHUB_ACTIONS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS_ZIZMOR }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GITHUB_ACTIONS_ZIZMOR }}" == "true" ]]; then
+            echo "VALIDATE_GITHUB_ACTIONS_ZIZMOR=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GITHUB_ACTIONS_ZIZMOR=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GITLEAKS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GITLEAKS }}" == "true" ]]; then
+            echo "VALIDATE_GITLEAKS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GITLEAKS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GO }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GO }}" == "true" ]]; then
+            echo "VALIDATE_GO=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GO=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GO_MODULES }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GO_MODULES }}" == "true" ]]; then
+            echo "VALIDATE_GO_MODULES=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GO_MODULES=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GO_RELEASER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GO_RELEASER }}" == "true" ]]; then
+            echo "VALIDATE_GO_RELEASER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GO_RELEASER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GOOGLE_JAVA_FORMAT }}" == "true" ]]; then
+            echo "VALIDATE_GOOGLE_JAVA_FORMAT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GOOGLE_JAVA_FORMAT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GRAPHQL_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GRAPHQL_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_GRAPHQL_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GRAPHQL_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_GROOVY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_GROOVY }}" == "true" ]]; then
+            echo "VALIDATE_GROOVY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_GROOVY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_HTML }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_HTML }}" == "true" ]]; then
+            echo "VALIDATE_HTML=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_HTML=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_HTML_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_HTML_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_HTML_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_HTML_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JAVA }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JAVA }}" == "true" ]]; then
+            echo "VALIDATE_JAVA=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JAVA=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_ES }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_ES }}" == "true" ]]; then
+            echo "VALIDATE_JAVASCRIPT_ES=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JAVASCRIPT_ES=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_JAVASCRIPT_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JAVASCRIPT_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JAVASCRIPT_STANDARD }}" == "true" ]]; then
+            echo "VALIDATE_JAVASCRIPT_STANDARD=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JAVASCRIPT_STANDARD=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSCPD }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSCPD }}" == "true" ]]; then
+            echo "VALIDATE_JSCPD=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSCPD=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSON }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSON }}" == "true" ]]; then
+            echo "VALIDATE_JSON=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSON=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSON_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSON_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_JSON_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSON_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSONC }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSONC }}" == "true" ]]; then
+            echo "VALIDATE_JSONC=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSONC=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSONC_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSONC_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_JSONC_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSONC_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSX }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSX }}" == "true" ]]; then
+            echo "VALIDATE_JSX=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSX=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JSX_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JSX_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_JSX_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JSX_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_BLACK }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_BLACK }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_BLACK=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_BLACK=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_FLAKE8 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_FLAKE8 }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_FLAKE8=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_FLAKE8=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_ISORT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_ISORT }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_ISORT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_ISORT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_MYPY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_MYPY }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_MYPY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_MYPY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_PYLINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_PYLINT }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_PYLINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_PYLINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_RUFF }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_JUPYTER_NBQA_RUFF }}" == "true" ]]; then
+            echo "VALIDATE_JUPYTER_NBQA_RUFF=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_JUPYTER_NBQA_RUFF=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_KOTLIN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_KOTLIN }}" == "true" ]]; then
+            echo "VALIDATE_KOTLIN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_KOTLIN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_KOTLIN_ANDROID }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_KOTLIN_ANDROID }}" == "true" ]]; then
+            echo "VALIDATE_KOTLIN_ANDROID=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_KOTLIN_ANDROID=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_KUBERNETES_KUBECONFORM }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_KUBERNETES_KUBECONFORM }}" == "true" ]]; then
+            echo "VALIDATE_KUBERNETES_KUBECONFORM=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_KUBERNETES_KUBECONFORM=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_LATEX }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_LATEX }}" == "true" ]]; then
+            echo "VALIDATE_LATEX=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_LATEX=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_LUA }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_LUA }}" == "true" ]]; then
+            echo "VALIDATE_LUA=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_LUA=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_MARKDOWN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_MARKDOWN }}" == "true" ]]; then
+            echo "VALIDATE_MARKDOWN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_MARKDOWN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_MARKDOWN_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_MARKDOWN_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_MARKDOWN_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_MARKDOWN_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_NATURAL_LANGUAGE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_NATURAL_LANGUAGE }}" == "true" ]]; then
+            echo "VALIDATE_NATURAL_LANGUAGE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_NATURAL_LANGUAGE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_OPENAPI }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_OPENAPI }}" == "true" ]]; then
+            echo "VALIDATE_OPENAPI=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_OPENAPI=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PERL }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PERL }}" == "true" ]]; then
+            echo "VALIDATE_PERL=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PERL=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PHP }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PHP }}" == "true" ]]; then
+            echo "VALIDATE_PHP=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PHP=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PHP_BUILTIN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PHP_BUILTIN }}" == "true" ]]; then
+            echo "VALIDATE_PHP_BUILTIN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PHP_BUILTIN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PHP_PHPCS }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PHP_PHPCS }}" == "true" ]]; then
+            echo "VALIDATE_PHP_PHPCS=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PHP_PHPCS=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PHP_PHPSTAN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PHP_PHPSTAN }}" == "true" ]]; then
+            echo "VALIDATE_PHP_PHPSTAN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PHP_PHPSTAN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PHP_PSALM }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PHP_PSALM }}" == "true" ]]; then
+            echo "VALIDATE_PHP_PSALM=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PHP_PSALM=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PRE_COMMIT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PRE_COMMIT }}" == "true" ]]; then
+            echo "VALIDATE_PRE_COMMIT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PRE_COMMIT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_POWERSHELL }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_POWERSHELL }}" == "true" ]]; then
+            echo "VALIDATE_POWERSHELL=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_POWERSHELL=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PROTOBUF }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PROTOBUF }}" == "true" ]]; then
+            echo "VALIDATE_PROTOBUF=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PROTOBUF=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_BLACK }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_BLACK }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_BLACK=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_BLACK=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_FLAKE8 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_FLAKE8 }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_FLAKE8=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_FLAKE8=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_ISORT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_ISORT }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_ISORT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_ISORT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_MYPY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_MYPY }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_MYPY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_MYPY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_PYLINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_PYLINT }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_PYLINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_PYLINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_RUFF=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_RUFF=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF_FORMAT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_PYTHON_RUFF_FORMAT }}" == "true" ]]; then
+            echo "VALIDATE_PYTHON_RUFF_FORMAT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_PYTHON_RUFF_FORMAT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_R }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_R }}" == "true" ]]; then
+            echo "VALIDATE_R=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_R=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RAKU }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RAKU }}" == "true" ]]; then
+            echo "VALIDATE_RAKU=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RAKU=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RENOVATE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RENOVATE }}" == "true" ]]; then
+            echo "VALIDATE_RENOVATE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RENOVATE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUBY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUBY }}" == "true" ]]; then
+            echo "VALIDATE_RUBY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUBY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUST_2015 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUST_2015 }}" == "true" ]]; then
+            echo "VALIDATE_RUST_2015=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUST_2015=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUST_2018 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUST_2018 }}" == "true" ]]; then
+            echo "VALIDATE_RUST_2018=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUST_2018=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUST_2021 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUST_2021 }}" == "true" ]]; then
+            echo "VALIDATE_RUST_2021=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUST_2021=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUST_2024 }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUST_2024 }}" == "true" ]]; then
+            echo "VALIDATE_RUST_2024=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUST_2024=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_RUST_CLIPPY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_RUST_CLIPPY }}" == "true" ]]; then
+            echo "VALIDATE_RUST_CLIPPY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_RUST_CLIPPY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SCALAFMT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SCALAFMT }}" == "true" ]]; then
+            echo "VALIDATE_SCALAFMT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SCALAFMT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SHELL_SHFMT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SHELL_SHFMT }}" == "true" ]]; then
+            echo "VALIDATE_SHELL_SHFMT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SHELL_SHFMT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_LINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_LINT }}" == "true" ]]; then
+            echo "VALIDATE_SNAKEMAKE_LINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SNAKEMAKE_LINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SNAKEMAKE_SNAKEFMT }}" == "true" ]]; then
+            echo "VALIDATE_SNAKEMAKE_SNAKEFMT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SNAKEMAKE_SNAKEFMT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SPELL_CODESPELL }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SPELL_CODESPELL }}" == "true" ]]; then
+            echo "VALIDATE_SPELL_CODESPELL=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SPELL_CODESPELL=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_STATES }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_STATES }}" == "true" ]]; then
+            echo "VALIDATE_STATES=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_STATES=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SQL }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SQL }}" == "true" ]]; then
+            echo "VALIDATE_SQL=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SQL=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_SQLFLUFF }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_SQLFLUFF }}" == "true" ]]; then
+            echo "VALIDATE_SQLFLUFF=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_SQLFLUFF=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TEKTON }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TEKTON }}" == "true" ]]; then
+            echo "VALIDATE_TEKTON=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TEKTON=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TERRAFORM_FMT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_FMT }}" == "true" ]]; then
+            echo "VALIDATE_TERRAFORM_FMT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TERRAFORM_FMT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TERRAFORM_TERRASCAN }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_TERRASCAN }}" == "true" ]]; then
+            echo "VALIDATE_TERRAFORM_TERRASCAN=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TERRAFORM_TERRASCAN=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TERRAFORM_TFLINT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TERRAFORM_TFLINT }}" == "true" ]]; then
+            echo "VALIDATE_TERRAFORM_TFLINT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TERRAFORM_TFLINT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TERRAGRUNT }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TERRAGRUNT }}" == "true" ]]; then
+            echo "VALIDATE_TERRAGRUNT=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TERRAGRUNT=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TRIVY }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TRIVY }}" == "true" ]]; then
+            echo "VALIDATE_TRIVY=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TRIVY=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TSX }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TSX }}" == "true" ]]; then
+            echo "VALIDATE_TSX=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TSX=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_ES }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_ES }}" == "true" ]]; then
+            echo "VALIDATE_TYPESCRIPT_ES=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TYPESCRIPT_ES=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_STANDARD }}" == "true" ]]; then
+            echo "VALIDATE_TYPESCRIPT_STANDARD=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TYPESCRIPT_STANDARD=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_TYPESCRIPT_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_TYPESCRIPT_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_TYPESCRIPT_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_VUE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_VUE }}" == "true" ]]; then
+            echo "VALIDATE_VUE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_VUE=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_VUE_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_VUE_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_VUE_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_VUE_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_XML }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_XML }}" == "true" ]]; then
+            echo "VALIDATE_XML=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_XML=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_YAML }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_YAML }}" == "true" ]]; then
+            echo "VALIDATE_YAML=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_YAML=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_YAML_PRETTIER }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_YAML_PRETTIER }}" == "true" ]]; then
+            echo "VALIDATE_YAML_PRETTIER=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_YAML_PRETTIER=false" >> "$GITHUB_ENV"
           fi
-          if [[ "${{ inputs.VALIDATE_ALL_CODEBASE }}" == "false" ]]; then
+          if [[ "${{ inputs.VALIDATE_ALL_CODEBASE }}" == "true" ]]; then
+            echo "VALIDATE_ALL_CODEBASE=true" >> "$GITHUB_ENV"
+          else
             echo "VALIDATE_ALL_CODEBASE=false" >> "$GITHUB_ENV"
           fi
 
