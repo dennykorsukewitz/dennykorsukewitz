@@ -745,7 +745,8 @@ jobs:
         env:
           GITHUB_TOKEN: "${secrets.GITHUB_TOKEN}"
           LINTER_RULES_PATH: "./.github/linters"
-          USE_FIND_ALGORITHM: true
+          # super-linter: USE_FIND_ALGORITHM=true only with full codebase; false when incremental (VALIDATE_ALL_CODEBASE=false).
+          USE_FIND_ALGORITHM: ${{ inputs.VALIDATE_ALL_CODEBASE != 'false' }}
           FILTER_REGEX_EXCLUDE: "(.*.scss)"
           IGNORE_GITIGNORED_FILES: true
           DEFAULT_WORKSPACE: "${GITHUB_WORKSPACE}"
@@ -753,4 +754,8 @@ jobs:
           # Test
           GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
 
+          # dotenv-linter: skip alphabetical key order (grouped keys in e.g. configs/instance/my.env)
+          DOTENV_LINTER_IGNORE_CHECKS: UnorderedKey
+
           # Disable specific linters
+
