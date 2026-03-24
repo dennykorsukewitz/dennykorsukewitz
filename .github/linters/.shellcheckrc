@@ -1,1 +1,4 @@
+# ShellCheck (local + Super-linter): resolve sibling sources, relax dynamic source noise
+shell=bash
 source-path=SCRIPTDIR
+external-sources=true
