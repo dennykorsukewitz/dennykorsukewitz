@@ -435,6 +435,6 @@ jobs:
           path: .github/metrics/data/
           merge-multiple: true
       - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           message: "Updated Metrics."
