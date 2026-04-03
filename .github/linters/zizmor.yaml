@@ -1,0 +1,6 @@
+# super-linter runs zizmor without credentials that can list refs on
+# sibling repos. ref-confusion then errors with 401 when resolving
+# reusable workflows like .../reusable.*.yml@dev.
+rules:
+  ref-confusion:
+    disable: true
