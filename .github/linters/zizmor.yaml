@@ -1,6 +1,10 @@
-# super-linter runs zizmor without credentials that can list refs on
-# sibling repos. ref-confusion then errors with 401 when resolving
-# reusable workflows like .../reusable.*.yml@dev.
+# github/super-linter invokes zizmor without a token that can call the GitHub
+# API to list refs or query the advisory database. These audits then fail with
+# 401 instead of producing findings.
 rules:
   ref-confusion:
+    disable: true
+  unpinned-uses:
+    disable: true
+  known-vulnerable-actions:
     disable: true
