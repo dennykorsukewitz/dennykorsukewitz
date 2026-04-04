@@ -23,7 +23,11 @@ export default [
             'n/no-missing-import': [
                 'error',
                 {
-                    allowModules: ['vscode'],
+                    allowModules: [
+                        'vscode',
+                        '@vscode/test-electron',
+                        'mocha',
+                    ],
                 },
             ],
             '@typescript-eslint/naming-convention': [
