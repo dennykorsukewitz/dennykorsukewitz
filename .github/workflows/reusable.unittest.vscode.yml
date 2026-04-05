@@ -4,6 +4,9 @@ name: UnitTest
 on:
   workflow_call:
 
+env:
+  GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
+
 jobs:
   test:
     name: Test (${{ matrix.os }})
@@ -17,6 +20,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Checkout shared linter configs
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          repository: dennykorsukewitz/dennykorsukewitz
+          ref: dev
+          path: linters
+
+      - name: Prepare .github/linters (same layout as reusable.lint.yml)
+        shell: bash
+        run: |
+          mkdir -p "${GITHUB_WORKSPACE}/.github"
+          cp -R "${GITHUB_WORKSPACE}/linters/.github/linters" "${GITHUB_WORKSPACE}/.github/"
+          rm -Rf "${GITHUB_WORKSPACE}/linters"
+
+      - name: Use shared ESLint flat config at repo root
+        shell: bash
+        run: |
+          cp "${GITHUB_WORKSPACE}/.github/linters/eslint.config.mjs" "${GITHUB_WORKSPACE}/eslint.config.mjs"
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
