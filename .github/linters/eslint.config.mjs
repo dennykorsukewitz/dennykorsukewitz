@@ -28,6 +28,7 @@ export default [
                         '@vscode/test-electron',
                         'mocha',
                     ],
+                    tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
                 },
             ],
             '@typescript-eslint/naming-convention': [
