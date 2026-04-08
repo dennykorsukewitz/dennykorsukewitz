@@ -4,9 +4,10 @@ import nPlugin from 'eslint-plugin-n';
 
 export default [
     {
-        ignores: ['out/**', 'dist/**', '**/*.d.ts'],
+        ignores: ['out/**', 'dist/**'],
     },
     {
+        // Only .ts sources: .d.ts shims are not lint targets and avoid ESLint "ignored file" warnings in CI
         files: ['src/**/*.ts'],
         languageOptions: {
             parser: tsParser,
@@ -27,6 +28,8 @@ export default [
                         'vscode',
                         '@vscode/test-electron',
                         'mocha',
+                        'xpath',
+                        'xmldom',
                     ],
                     tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
                 },
