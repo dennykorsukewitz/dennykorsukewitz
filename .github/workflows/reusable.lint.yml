@@ -352,6 +352,11 @@ on:
       VALIDATE_ALL_CODEBASE:
         required: false
         type: string
+      NPM_CI_BEFORE_LINT:
+        description: Run npm ci (or npm install) before super-linter so rules like n/no-missing-import can resolve dependencies
+        required: false
+        type: boolean
+        default: false
     # secrets:
     #   token:
     #     required: true
@@ -397,6 +402,15 @@ jobs:
 
       - name: Show linters config
         run: ls -alih "${GITHUB_WORKSPACE}/.github/linters"
+
+      - name: Install npm dependencies (for ESLint import resolution)
+        if: inputs.NPM_CI_BEFORE_LINT
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          elif [[ -f package.json ]]; then
+            npm install
+          fi
 
       - name: Set environment variables
         run: |
