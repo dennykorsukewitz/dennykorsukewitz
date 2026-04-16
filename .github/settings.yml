@@ -155,3 +155,7 @@ labels:
   - name: Znuny 7.4
     color: "#ff8a24"
     description: Znuny 7.4.
+
+  - name: Unsupported
+    color: "#6E7681"
+    description: This version is no longer supported (end of life).
