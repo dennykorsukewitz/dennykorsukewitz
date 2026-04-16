@@ -30,6 +30,7 @@ export default [
                         'mocha',
                         'xpath',
                         'xmldom',
+                        'rainbow-colors-array-ts',
                     ],
                     tryExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
                 },

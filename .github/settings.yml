@@ -143,3 +143,15 @@ labels:
   - name: Znuny 7.1
     color: "#ff8a24"
     description: Znuny 7.1.
+
+  - name: Znuny 7.2
+    color: "#ff8a24"
+    description: Znuny 7.2.
+
+  - name: Znuny 7.3
+    color: "#ff8a24"
+    description: Znuny 7.3.
+
+  - name: Znuny 7.4
+    color: "#ff8a24"
+    description: Znuny 7.4.

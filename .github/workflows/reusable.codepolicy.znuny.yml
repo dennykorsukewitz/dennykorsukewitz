@@ -8,7 +8,7 @@ jobs:
   ZnunyCodePolicy:
     name: ZnunyCodePolicy
     runs-on: ubuntu-latest
-    container: debian:10-slim
+    container: debian:12-slim
     steps:
 
       - name: Check out repository code
