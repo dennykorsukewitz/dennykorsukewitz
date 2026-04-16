@@ -95,6 +95,7 @@ jobs:
         run: |
           apt-get install -y libdevel-cover-perl
           cpanm -i Devel::Cover::Report::Coveralls
+          cpanm -n Data::UUID
 
       - name: Setup Znuny
         run: |
