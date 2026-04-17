@@ -31,7 +31,7 @@ jobs:
   Build:
     name: Build
     runs-on: ubuntu-22.04 # ubuntu-latest
-    container: debian:10-slim
+    container: debian:12-slim
     env:
       DB: mysql
       MYSQL_USER: "${{ inputs.FRAMEWORK || 'znuny' }}"
