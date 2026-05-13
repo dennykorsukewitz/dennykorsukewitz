@@ -3828,5 +3828,10 @@
   {
     "date": "2026-05-10T00:00:00Z",
     "VSCode-Znuny": "203"
+  },
+  {
+    "date": "2026-05-12T00:00:00Z",
+    "VSCode-RainbowColors": "467",
+    "VSCode-GitHubFileFetcher": "870"
   }
 ]
