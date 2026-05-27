@@ -3876,5 +3876,10 @@
   {
     "date": "2026-05-25T00:00:00Z",
     "VSCode-GitHubFileFetcher": "873"
+  },
+  {
+    "date": "2026-05-26T00:00:00Z",
+    "VSCode-QuoteWithMarker": "178",
+    "VSCode-AddFolderToWorkspace": "445"
   }
 ]
