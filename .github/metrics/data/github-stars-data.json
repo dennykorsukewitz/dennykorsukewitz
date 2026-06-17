@@ -85,11 +85,6 @@
     "Sublime-GitHubFileFetcher": "1"
   },
   {
-    "date": "2024-02-03T13:14:05Z",
-    "user": "eyazi",
-    "VSCode-Znuny": "6"
-  },
-  {
     "date": "2024-02-06T05:27:09Z",
     "user": "fadrian06",
     "Sublime-GitHubFileFetcher": "2"
@@ -117,7 +112,7 @@
   {
     "date": "2024-10-30T10:46:19Z",
     "user": "jepf",
-    "VSCode-Znuny": "7"
+    "VSCode-Znuny": "6"
   },
   {
     "date": "2024-10-30T10:46:36Z",
@@ -177,7 +172,7 @@
   {
     "date": "2025-02-25T09:43:20Z",
     "user": "JohnAOSC",
-    "VSCode-Znuny": "8"
+    "VSCode-Znuny": "7"
   },
   {
     "date": "2025-04-17T23:05:14Z",
@@ -187,7 +182,7 @@
   {
     "date": "2025-04-17T23:05:49Z",
     "user": "dennykorsukewitz",
-    "VSCode-Znuny": "9"
+    "VSCode-Znuny": "8"
   },
   {
     "date": "2025-06-10T13:26:11Z",
@@ -203,5 +198,10 @@
     "date": "2025-09-18T08:20:50Z",
     "user": "barkpixels",
     "generator-sublime-package": "2"
+  },
+  {
+    "date": "2026-06-16T11:25:50Z",
+    "user": "eyazi",
+    "VSCode-Znuny": "9"
   }
 ]
