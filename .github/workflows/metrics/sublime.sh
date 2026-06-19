@@ -2,6 +2,15 @@
 
 OWNER="dennykorsukewitz"
 
+DEFAULT_REPOSITORIES=(
+  "Sublime-AddFolderToProject"
+  "Sublime-GitHubFileFetcher"
+  "Sublime-QuoteWithMarker"
+)
+
+REPOSITORIES=("${DEFAULT_REPOSITORIES[@]}")
+echo "Using default Sublime repositories: ${REPOSITORIES[*]}"
+
 # https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json
 mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
 if [ -z "${REPOSITORIES[0]}" ] ; then
@@ -58,13 +67,13 @@ done
 # Check if the current JSON data contains an entry with the specified timestamp and delete it
 if [[ $(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
   CURRENT_JSON_DAILY=$(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-daily.json"
+  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/sublime-daily.json"
 fi
 
 # Check if the current JSON data contains an entry with the specified timestamp and delete it
 if [[ $(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
   CURRENT_JSON_TOTAL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/npm-total.json"
+  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/sublime-total.json"
 fi
 
 echo '------------------------------------'
