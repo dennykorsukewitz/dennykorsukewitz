@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OWNER="dennykorsukewitz"
+
+DAILY_FILE="./.github/metrics/data/sublime-daily.json"
+TOTAL_FILE="./.github/metrics/data/sublime-total.json"
 
 DEFAULT_REPOSITORIES=(
   "Sublime-AddFolderToProject"
@@ -8,101 +11,140 @@ DEFAULT_REPOSITORIES=(
   "Sublime-QuoteWithMarker"
 )
 
-REPOSITORIES=("${DEFAULT_REPOSITORIES[@]}")
-echo "Using default Sublime repositories: ${REPOSITORIES[*]}"
+ensure_json_array_file() {
+  local file="$1"
+  if [ ! -s "$file" ] || ! jq -e 'type == "array"' "$file" >/dev/null 2>&1; then
+    echo '[]' > "$file"
+  fi
+}
 
-# https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json
-mapfile -t REPOSITORIES < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name | sort)
-if [ -z "${REPOSITORIES[0]}" ] ; then
-  echo -e "❌ No REPOSITORIES received."
-  exit 1
+ensure_json_array_file "$DAILY_FILE"
+ensure_json_array_file "$TOTAL_FILE"
+
+to_int() {
+  local value="$1"
+  value=${value//\"/}
+  value=${value// /}
+  case "$value" in
+    ''|null|*[!0-9-]*) echo 0 ;;
+    *) echo "$value" ;;
+  esac
+}
+
+last_total_for_repo() {
+  local repository="$1"
+  local file="$2"
+  jq --arg REPOSITORY "$repository" -r '
+    [.[] | select(.[$REPOSITORY] != null)] | last |
+    (.[$REPOSITORY] | if type == "string" then (tonumber? // 0) elif type == "number" then . else 0 end) // 0
+  ' "$file"
+}
+
+REPOSITORIES=()
+while IFS= read -r repo; do
+  if [ -n "$repo" ]; then
+    REPOSITORIES+=("$repo")
+  fi
+done < <(gh search repos --owner "$OWNER" --topic "metrics-sublime" --jq '.[].name' --json name 2>/dev/null | sort)
+
+if [ -z "${REPOSITORIES[0]}" ]; then
+  REPOSITORIES=("${DEFAULT_REPOSITORIES[@]}")
+  echo "Using default Sublime repositories: ${REPOSITORIES[*]}"
 fi
 
-declare -A REPOSITORYCOUNTER
+PROCESSED_REPOS=()
+PROCESSED_COUNTS=()
 
-JSON_TOTAL='['
-JSON_DAILY='['
+# Public API: https://packagecontrol.io/packages/<Package Name>.json
+fetch_packagecontrol_json() {
+  local package_slug="$1"
+  curl -fsS --http1.1 --compressed --silent \
+    --retry 5 --retry-all-errors --retry-delay 3 \
+    -A "dennykorsukewitz-github-metrics" \
+    "https://packagecontrol.io/packages/${package_slug}.json"
+}
 
-DATA_TOTAL='{}'
-DATA_DAILY='{}'
+sublime_package_slug() {
+  local repository_name="$1"
+  local sublime_repository="${repository_name//Sublime-/}"
 
-COUNT_INSTALL_TOTAL=0
-
-CURRENT_JSON_DAILY=$(jq . ./.github/metrics/data/sublime-daily.json)
-CURRENT_JSON_TOTAL=$(jq . ./.github/metrics/data/sublime-total.json)
+  echo "$sublime_repository" | sed 's/[A-Z]/ &/g' | xargs | sed 's/Git Hub/GitHub/g' | sed 's/ /%20/g'
+}
 
 for REPOSITORY in "${REPOSITORIES[@]}"; do
   echo -e "\n-----------$REPOSITORY-----------"
 
-  SUBLIME_REPOSITORY=${REPOSITORY//Sublime-/}
-  SUBLIME_REPOSITORY=$(echo "$SUBLIME_REPOSITORY" | sed 's/[A-Z]/ &/g' | xargs | sed 's/Git Hub/GitHub/g' | sed 's/ /%20/g')
+  PACKAGE_SLUG=$(sublime_package_slug "$REPOSITORY")
+  echo "PACKAGE_SLUG: $PACKAGE_SLUG"
 
-  if [[ "$SUBLIME_REPOSITORY" == "AddFolderToProject" ]]; then
-    SUBLIME_REPOSITORY+="%202"
-  fi
-
-  RESPONSE_JSON=$(curl https://packagecontrol.io/packages/"$SUBLIME_REPOSITORY".json)
-
-  if [ -z "$RESPONSE_JSON" ] ; then
-    echo -e "❌ No RESPONSE_JSON received."
-    exit 1
-  fi
-
-  if [ -z "$RESPONSE_JSON" ] ; then
-    echo -e "❌ No RESPONSE_JSON received."
-    exit 1
-  fi
-
-  DATE=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.dates[1]")
-  TIMESTAMP="${DATE}T00:00:00Z"
-
-  COUNT_INSTALL=0
-  for i in {0..2}
-  do
-    COUNT_INSTALL=$(echo "$RESPONSE_JSON" | jq --compact-output -r ".installs.daily.data[$i].totals[1]")
-    REPOSITORYCOUNTER[$REPOSITORY]=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$COUNT_INSTALL" ));
-  done
-done
-
-# Check if the current JSON data contains an entry with the specified timestamp and delete it
-if [[ $(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
-  CURRENT_JSON_DAILY=$(echo "$CURRENT_JSON_DAILY" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/sublime-daily.json"
-fi
-
-# Check if the current JSON data contains an entry with the specified timestamp and delete it
-if [[ $(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)') ]]; then
-  CURRENT_JSON_TOTAL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))')
-  echo "Element with .date $TIMESTAMP deleted from .github/metrics/data/sublime-total.json"
-fi
-
-echo '------------------------------------'
-for REPOSITORY in "${!REPOSITORYCOUNTER[@]}"
-do
-
-  CURRENT_COUNT_INSTALL=$(echo "$CURRENT_JSON_TOTAL" | jq --arg REPOSITORY "$REPOSITORY" '[.[] | select(.[$REPOSITORY] != null)] | last | .[$REPOSITORY]' | sed 's/"//g')
-
-  COUNT_INSTALL_TOTAL=$(( REPOSITORYCOUNTER[$REPOSITORY] + "$CURRENT_COUNT_INSTALL" ));
-
-  echo "| ${REPOSITORY} => ${REPOSITORYCOUNTER[${REPOSITORY}]} / ${COUNT_INSTALL_TOTAL}"
-
-  DATA_DAILY=$(
-    echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
-  )
-  DATA_DAILY=$(
-    echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPOSITORYCOUNTER[${REPOSITORY}]}\"}"
-  )
-
-  if [[ "${REPOSITORYCOUNTER[${REPOSITORY}]}" == "0" ]]; then
+  if ! RESPONSE_JSON=$(fetch_packagecontrol_json "$PACKAGE_SLUG"); then
+    echo "⚠️  Skipping $REPOSITORY: packagecontrol request failed for ${PACKAGE_SLUG}.json"
     continue
   fi
 
-  DATA_TOTAL=$(
-    echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}\"}"
-  )
-  DATA_TOTAL=$(
-    echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}"
-  )
+  if ! echo "$RESPONSE_JSON" | jq -e '.installs.daily.dates[1]' >/dev/null 2>&1; then
+    echo "⚠️  Skipping $REPOSITORY: unexpected packagecontrol JSON"
+    continue
+  fi
+
+  DATE=$(echo "$RESPONSE_JSON" | jq -r '.installs.daily.dates[1]')
+  TIMESTAMP="${DATE}T00:00:00Z"
+
+  REPO_COUNT=0
+  for i in 0 1 2; do
+    COUNT_INSTALL=$(to_int "$(echo "$RESPONSE_JSON" | jq -r ".installs.daily.data[$i].totals[1] // 0")")
+    REPO_COUNT=$(( REPO_COUNT + COUNT_INSTALL ))
+  done
+
+  PROCESSED_REPOS+=("$REPOSITORY")
+  PROCESSED_COUNTS+=("$REPO_COUNT")
+done
+
+if [ -z "${PROCESSED_REPOS[0]}" ]; then
+  echo "❌ No package stats collected from packagecontrol.io."
+  exit 1
+fi
+
+if [ -z "$TIMESTAMP" ]; then
+  echo "❌ TIMESTAMP could not be determined."
+  exit 1
+fi
+
+if jq -e --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)' "$DAILY_FILE" >/dev/null; then
+  jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))' "$DAILY_FILE" > "${DAILY_FILE}.tmp" && mv "${DAILY_FILE}.tmp" "$DAILY_FILE"
+  echo "Element with .date $TIMESTAMP deleted from $DAILY_FILE"
+fi
+
+if jq -e --arg TIMESTAMP "$TIMESTAMP" '.[] | select(.date == $TIMESTAMP)' "$TOTAL_FILE" >/dev/null; then
+  jq --arg TIMESTAMP "$TIMESTAMP" 'map(select(.date != $TIMESTAMP))' "$TOTAL_FILE" > "${TOTAL_FILE}.tmp" && mv "${TOTAL_FILE}.tmp" "$TOTAL_FILE"
+  echo "Element with .date $TIMESTAMP deleted from $TOTAL_FILE"
+fi
+
+JSON_TOTAL='['
+JSON_DAILY='['
+DATA_TOTAL='{}'
+DATA_DAILY='{}'
+
+echo '------------------------------------'
+for idx in "${!PROCESSED_REPOS[@]}"; do
+  REPOSITORY="${PROCESSED_REPOS[$idx]}"
+  REPO_COUNT=$(to_int "${PROCESSED_COUNTS[$idx]}")
+
+  CURRENT_COUNT_INSTALL=$(to_int "$(last_total_for_repo "$REPOSITORY" "$TOTAL_FILE")")
+
+  COUNT_INSTALL_TOTAL=$(( REPO_COUNT + CURRENT_COUNT_INSTALL ))
+
+  echo "| ${REPOSITORY} => ${REPO_COUNT} / ${COUNT_INSTALL_TOTAL}"
+
+  DATA_DAILY=$(echo "$DATA_DAILY" | jq ". + {\"date\": \"${TIMESTAMP}\"}")
+  DATA_DAILY=$(echo "$DATA_DAILY" | jq ". + {\"$REPOSITORY\": \"${REPO_COUNT}\"}")
+
+  if [ "$REPO_COUNT" = "0" ]; then
+    continue
+  fi
+
+  DATA_TOTAL=$(echo "$DATA_TOTAL" | jq ". + {\"date\": \"${TIMESTAMP}\"}")
+  DATA_TOTAL=$(echo "$DATA_TOTAL" | jq ". + {\"$REPOSITORY\": \"${COUNT_INSTALL_TOTAL}\"}")
 done
 echo '------------------------------------'
 
@@ -112,10 +154,14 @@ JSON_TOTAL+=']'
 JSON_DAILY+=$DATA_DAILY
 JSON_DAILY+=']'
 
-
-if [[ "$JSON_DAILY"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_DAILY" --argjson arr2 "$CURRENT_JSON_DAILY" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-daily.json
+if [ "$JSON_DAILY" != "[{}]" ]; then
+  echo "$JSON_DAILY" > temp_daily.json
+  jq -s 'add | sort_by(.date)' temp_daily.json "$DAILY_FILE" > "${DAILY_FILE}.tmp" && mv "${DAILY_FILE}.tmp" "$DAILY_FILE"
+  rm -f temp_daily.json
 fi
-if [[ "$JSON_TOTAL"  != "[{}]" ]]; then
-  jq --argjson arr1 "$JSON_TOTAL" --argjson arr2 "$CURRENT_JSON_TOTAL" -n '$arr2 + $arr1 | sort_by(.date)' > ./.github/metrics/data/sublime-total.json
+
+if [ "$JSON_TOTAL" != "[{}]" ]; then
+  echo "$JSON_TOTAL" > temp_total.json
+  jq -s 'add | sort_by(.date)' temp_total.json "$TOTAL_FILE" > "${TOTAL_FILE}.tmp" && mv "${TOTAL_FILE}.tmp" "$TOTAL_FILE"
+  rm -f temp_total.json
 fi

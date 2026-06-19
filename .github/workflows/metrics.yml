@@ -338,7 +338,7 @@ jobs:
         env:
           fetch-depth: "1"
       - name: Get Sublime data
-        run: ./.github/workflows/metrics/sublime.sh
+        run: bash ./.github/workflows/metrics/sublime.sh
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
