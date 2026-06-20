@@ -9,7 +9,7 @@
 ## Languages and Tools
 
 <p class="left" >
-    <img title="Znuny" alt="git" class="left" width="40" height="40" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png" />
+    <img title="Znuny" alt="git" class="left" width="40" height="40" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/Icon.png" />
     <img title="Git" alt="git" class="left" width="40" height="40" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" />
     <img title="GitLab" alt="GitLab" width="40" height="40" class="left" src="https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png" />
     <img title="GitHub" alt="GitHub" class="left" width="40" height="40" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
@@ -34,13 +34,13 @@
 
 ## My Work
 
-<img align="right" width="50" height="50" alt="VSCode-Znuny Znuny Logo" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/icon.png">
+<img align="right" width="50" height="50" alt="VSCode-Znuny Znuny Logo" src="https://raw.githubusercontent.com/dennykorsukewitz/VSCode-Znuny/dev/doc/images/Icon.png">
 
 Currently I am working on the ticket system [Znuny](https://www.znuny.org/).
 
 Znuny/Znuny LTS is a fork of the ((OTRS)) Community Edition, one of the most flexible web-based ticketing systems used for Customer Service, Help Desk, IT Service Management.
 
-<img title="Znuny" alt="git" src="https://www.znuny.org/media/pages/home/8ac2ada2fd-1679833325/otrs-community-edition-fork.png" />
+<img title="Znuny" alt="Znuny fork" class="normal w-75" src="/assets/img/znuny-otrs-fork.png" />
 
 Enjoy!
 
