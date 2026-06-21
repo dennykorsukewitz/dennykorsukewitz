@@ -52,7 +52,7 @@ jobs:
       #     github_token: ${{ secrets.PAT }}
 
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Sync fork
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
