@@ -3959,5 +3959,12 @@
     "VSCode-AddFolderToWorkspace": "450",
     "VSCode-GitHubFileFetcher": "880",
     "VSCode-Znuny": "209"
+  },
+  {
+    "date": "2026-06-28T00:00:00Z",
+    "VSCode-QuoteWithMarker": "182",
+    "VSCode-AddFolderToWorkspace": "451",
+    "VSCode-Znuny": "210",
+    "VSCode-MyExtensionPack": "37"
   }
 ]
