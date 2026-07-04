@@ -1,248 +1,134 @@
 [
   {
-    "date": "2014-06-21T14:19:24Z",
-    "user": "medfreeman",
-    "Znuny-QuickDelete": "1",
-    "total": 1
-  },
-  {
-    "date": "2016-06-03T17:24:07Z",
-    "user": "phalmeida",
-    "MRBS-OTRS": "1",
-    "total": 2
-  },
-  {
-    "date": "2016-11-15T17:30:22Z",
-    "user": "jhabrmall",
-    "MRBS-OTRS": "2",
-    "total": 3
-  },
-  {
-    "date": "2019-01-17T08:39:57Z",
-    "user": "thorsteneckel",
-    "Znuny-QuickDelete": "2",
-    "total": 4
-  },
-  {
-    "date": "2019-07-18T19:13:01Z",
-    "user": "kawanjaberi",
-    "MRBS-OTRS": "3",
-    "total": 5
-  },
-  {
-    "date": "2023-02-02T19:27:59Z",
-    "user": "tipue-dev",
-    "VSCode-Znuny": "1",
-    "total": 6
-  },
-  {
-    "date": "2023-02-08T20:59:35Z",
-    "user": "jg-ggs",
-    "VSCode-Znuny": "2",
-    "total": 7
-  },
-  {
-    "date": "2023-02-08T21:34:32Z",
-    "user": "joserribeiro26",
-    "VSCode-Znuny": "3",
-    "total": 8
-  },
-  {
-    "date": "2023-02-09T17:33:57Z",
-    "user": "NiklasSchmitt",
-    "Znuny-QuickDelete": "3",
-    "total": 9
-  },
-  {
-    "date": "2023-02-14T01:05:55Z",
-    "user": "asimops0258",
-    "MRBS-OTRS": "4",
-    "total": 10
-  },
-  {
     "date": "2023-06-26T15:52:39Z",
     "user": "karldaeubel",
     "dennykorsukewitz": "1",
-    "total": 11
-  },
-  {
-    "date": "2023-09-25T08:14:10Z",
-    "user": "vimuthm",
-    "VSCode-AddFolderToWorkspace": "1",
-    "total": 12
-  },
-  {
-    "date": "2023-09-27T09:01:50Z",
-    "user": "futurist",
-    "VSCode-GitHubFileFetcher": "1",
-    "total": 13
-  },
-  {
-    "date": "2023-10-19T10:48:21Z",
-    "user": "PeppeOsmio",
-    "VSCode-Znuny": "4",
-    "total": 14
-  },
-  {
-    "date": "2023-10-19T16:39:46Z",
-    "user": "baltadlakd",
-    "VSCode-Znuny": "5",
-    "total": 15
-  },
-  {
-    "date": "2023-12-13T19:18:38Z",
-    "user": "eradzh87",
-    "test": "1",
-    "total": 16
-  },
-  {
-    "date": "2023-12-26T09:21:55Z",
-    "user": "FourtyThree43",
-    "Sublime-GitHubFileFetcher": "1",
-    "total": 17
-  },
-  {
-    "date": "2024-02-06T05:27:09Z",
-    "user": "fadrian06",
-    "Sublime-GitHubFileFetcher": "2",
-    "total": 18
-  },
-  {
-    "date": "2024-02-07T16:54:10Z",
-    "user": "BirdMachine",
-    "VSCode-RainbowColors": "1",
-    "total": 19
-  },
-  {
-    "date": "2024-05-17T05:31:01Z",
-    "user": "CharlesLiaoO",
-    "VSCode-AddFolderToWorkspace": "2",
-    "total": 20
-  },
-  {
-    "date": "2024-08-13T15:49:08Z",
-    "user": "nn6n",
-    "generator-sublime-package": "1",
-    "total": 21
-  },
-  {
-    "date": "2024-08-26T08:04:01Z",
-    "user": "dennykorsukewitz",
-    "Sublime-AddFolderToProject": "1",
-    "total": 22
-  },
-  {
-    "date": "2024-10-30T10:46:19Z",
-    "user": "jepf",
-    "VSCode-Znuny": "6",
-    "total": 23
-  },
-  {
-    "date": "2024-10-30T10:46:36Z",
-    "user": "jepf",
-    "VSCode-AddFolderToWorkspace": "3",
-    "total": 24
-  },
-  {
-    "date": "2024-10-30T10:46:38Z",
-    "user": "jepf",
-    "VSCode-GitHubFileFetcher": "2",
-    "total": 25
-  },
-  {
-    "date": "2024-10-30T10:46:39Z",
-    "user": "jepf",
-    "Sublime-GitHubFileFetcher": "3",
-    "total": 26
-  },
-  {
-    "date": "2024-10-30T10:57:21Z",
-    "user": "jepf",
-    "VSCode-RainbowColors": "2",
-    "total": 27
-  },
-  {
-    "date": "2025-02-12T02:04:19Z",
-    "user": "vancaem",
-    "VSCode-AddFolderToWorkspace": "4",
-    "total": 28
-  },
-  {
-    "date": "2025-02-12T09:52:01Z",
-    "user": "vancaem",
-    "VSCode-GitHubFileFetcher": "3",
-    "total": 29
-  },
-  {
-    "date": "2025-02-12T09:52:25Z",
-    "user": "vancaem",
-    "VSCode-MyPlayground": "1",
-    "total": 30
-  },
-  {
-    "date": "2025-02-12T09:52:32Z",
-    "user": "vancaem",
-    "VSCode-MyExtensionPack": "1",
-    "total": 31
-  },
-  {
-    "date": "2025-02-12T09:53:03Z",
-    "user": "vancaem",
-    "Sublime-AddFolderToProject": "2",
-    "total": 32
-  },
-  {
-    "date": "2025-02-12T09:53:03Z",
-    "user": "vancaem",
-    "Sublime-GitHubFileFetcher": "4",
-    "total": 33
-  },
-  {
-    "date": "2025-02-12T09:53:13Z",
-    "user": "vancaem",
-    "MyPlayground": "1",
-    "total": 34
-  },
-  {
-    "date": "2025-02-25T09:43:20Z",
-    "user": "JohnAOSC",
-    "VSCode-Znuny": "7",
-    "total": 35
-  },
-  {
-    "date": "2025-04-17T23:05:14Z",
-    "user": "dennykorsukewitz",
-    "VSCode-GitHubFileFetcher": "4",
-    "total": 36
-  },
-  {
-    "date": "2025-04-17T23:05:49Z",
-    "user": "dennykorsukewitz",
-    "VSCode-Znuny": "8",
-    "total": 37
-  },
-  {
-    "date": "2025-06-10T13:26:11Z",
-    "user": "TeamDman",
-    "VSCode-AddFolderToWorkspace": "5",
-    "total": 38
+    "total": 1
   },
   {
     "date": "2025-09-17T06:34:36Z",
     "user": "SandraEvexoxo",
     "dennykorsukewitz": "2",
-    "total": 39
+    "total": 2
   },
   {
-    "date": "2025-09-18T08:20:50Z",
-    "user": "barkpixels",
-    "generator-sublime-package": "2",
-    "total": 40
+    "date": "null",
+    "user": "null",
+    "DK4": "1",
+    "total": 3
   },
   {
-    "date": "2026-06-16T11:25:50Z",
-    "user": "eyazi",
-    "VSCode-Znuny": "9",
-    "total": 41
+    "date": "null",
+    "user": "null",
+    "MRBS-OTRS": "1",
+    "total": 4
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "MyPlayground": "1",
+    "total": 5
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "Sublime-AddFolderToProject": "1",
+    "total": 6
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "Sublime-GitHubFileFetcher": "1",
+    "total": 7
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "Sublime-QuoteWithMarker": "1",
+    "total": 8
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-AddFolderToWorkspace": "1",
+    "total": 9
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-GitHubFileFetcher": "1",
+    "total": 10
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-MyExtensionPack": "1",
+    "total": 11
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-MyPlayground": "1",
+    "total": 12
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-QuoteWithMarker": "1",
+    "total": 13
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-RainbowColors": "1",
+    "total": 14
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "VSCode-Znuny": "1",
+    "total": 15
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "Znuny-QuickDelete": "1",
+    "total": 16
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "Znuny-UBInventory": "1",
+    "total": 17
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "chirpy-starter": "1",
+    "total": 18
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "dennykorsukewitz.github.io": "1",
+    "total": 19
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "generator-sublime-package": "1",
+    "total": 20
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "test": "1",
+    "total": 21
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "upptime": "1",
+    "total": 22
   }
 ]
