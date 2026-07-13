@@ -1,15 +1,5 @@
 [
   {
-    "date": "2023-06-26T15:52:39Z",
-    "user": "karldaeubel",
-    "dennykorsukewitz": "1"
-  },
-  {
-    "date": "2025-09-17T06:34:36Z",
-    "user": "SandraEvexoxo",
-    "dennykorsukewitz": "2"
-  },
-  {
     "date": "null",
     "user": "null",
     "DK4": "1"
@@ -88,6 +78,11 @@
     "date": "null",
     "user": "null",
     "chirpy-starter": "1"
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "dennykorsukewitz": "1"
   },
   {
     "date": "null",

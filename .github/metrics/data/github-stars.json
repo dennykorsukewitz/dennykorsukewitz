@@ -1,134 +1,128 @@
 [
   {
-    "date": "2023-06-26T15:52:39Z",
-    "user": "karldaeubel",
-    "dennykorsukewitz": "1",
-    "total": 1
-  },
-  {
-    "date": "2025-09-17T06:34:36Z",
-    "user": "SandraEvexoxo",
-    "dennykorsukewitz": "2",
-    "total": 2
-  },
-  {
     "date": "null",
     "user": "null",
     "DK4": "1",
-    "total": 3
+    "total": 1
   },
   {
     "date": "null",
     "user": "null",
     "MRBS-OTRS": "1",
-    "total": 4
+    "total": 2
   },
   {
     "date": "null",
     "user": "null",
     "MyPlayground": "1",
-    "total": 5
+    "total": 3
   },
   {
     "date": "null",
     "user": "null",
     "Sublime-AddFolderToProject": "1",
-    "total": 6
+    "total": 4
   },
   {
     "date": "null",
     "user": "null",
     "Sublime-GitHubFileFetcher": "1",
-    "total": 7
+    "total": 5
   },
   {
     "date": "null",
     "user": "null",
     "Sublime-QuoteWithMarker": "1",
-    "total": 8
+    "total": 6
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-AddFolderToWorkspace": "1",
-    "total": 9
+    "total": 7
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-GitHubFileFetcher": "1",
-    "total": 10
+    "total": 8
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-MyExtensionPack": "1",
-    "total": 11
+    "total": 9
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-MyPlayground": "1",
-    "total": 12
+    "total": 10
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-QuoteWithMarker": "1",
-    "total": 13
+    "total": 11
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-RainbowColors": "1",
-    "total": 14
+    "total": 12
   },
   {
     "date": "null",
     "user": "null",
     "VSCode-Znuny": "1",
-    "total": 15
+    "total": 13
   },
   {
     "date": "null",
     "user": "null",
     "Znuny-QuickDelete": "1",
-    "total": 16
+    "total": 14
   },
   {
     "date": "null",
     "user": "null",
     "Znuny-UBInventory": "1",
-    "total": 17
+    "total": 15
   },
   {
     "date": "null",
     "user": "null",
     "chirpy-starter": "1",
-    "total": 18
+    "total": 16
+  },
+  {
+    "date": "null",
+    "user": "null",
+    "dennykorsukewitz": "1",
+    "total": 17
   },
   {
     "date": "null",
     "user": "null",
     "dennykorsukewitz.github.io": "1",
-    "total": 19
+    "total": 18
   },
   {
     "date": "null",
     "user": "null",
     "generator-sublime-package": "1",
-    "total": 20
+    "total": 19
   },
   {
     "date": "null",
     "user": "null",
     "test": "1",
-    "total": 21
+    "total": 20
   },
   {
     "date": "null",
     "user": "null",
     "upptime": "1",
-    "total": 22
+    "total": 21
   }
 ]
