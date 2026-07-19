@@ -42,7 +42,7 @@ jobs:
           cp "${GITHUB_WORKSPACE}/.github/linters/eslint.config.mjs" "${GITHUB_WORKSPACE}/eslint.config.mjs"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
 
