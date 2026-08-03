@@ -154,7 +154,7 @@ jobs:
         run: echo '${{ toJSON(env) }}'
 
       - name: Create Coverage Badge
-        uses: schneegans/dynamic-badges-action@v1.8.0
+        uses: schneegans/dynamic-badges-action@v1.9.0
         with:
           auth: ${{ secrets.GIST }}
           gistID: e2729bfd9b81d9c032ded617a3f924e7
