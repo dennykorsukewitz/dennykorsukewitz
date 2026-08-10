@@ -311,7 +311,9 @@ jobs:
     permissions:
       contents: write
     env:
-      GH_TOKEN: ${{ github.token }}
+      # GITHUB_TOKEN is scoped to this repo and gets HTTP 403 on other repos'
+      # /stargazers (star+json). METRICS_TOKEN is a PAT with cross-repo read access.
+      GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
     steps:
       - name: Checkout dennykorsukewitz
         uses: actions/checkout@v7
