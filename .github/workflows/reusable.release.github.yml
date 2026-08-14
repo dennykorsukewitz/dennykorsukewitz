@@ -1,0 +1,36 @@
+---
+name: Release
+
+on:
+  workflow_call:
+    secrets:
+      PAT:
+        required: true
+
+  workflow_dispatch:
+
+jobs:
+  Release-GitHub:
+    name: Release GitHub
+    environment:
+      name: Release GitHub
+      url: "https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Change RELEASE.md
+        run: sed -i '1,2d' RELEASE.md
+
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.PAT }}
+          bodyFile: "RELEASE.md"
+          draft: false
+          generateReleaseNotes: true
