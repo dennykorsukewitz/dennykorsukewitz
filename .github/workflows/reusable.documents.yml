@@ -44,7 +44,7 @@ jobs:
       - name: Git Pull
         run: git pull
       - name: Add and Commit
-        uses: EndBug/add-and-commit@v10
+        uses: EndBug/add-and-commit@v11
         with:
           message: "Updated Documents."
       - uses: actions/upload-artifact@v7
