@@ -1,0 +1,74 @@
+---
+name: Release
+
+on:
+  workflow_call:
+    inputs:
+      SUBLIME_NAME:
+        description: "Base name for the .sublime-package file (default: repo name without Sublime- prefix)."
+        required: false
+        type: string
+    secrets:
+      PAT:
+        required: true
+
+  workflow_dispatch:
+    inputs:
+      SUBLIME_NAME:
+        description: "Base name for the .sublime-package file (default: repo name without Sublime- prefix)."
+        required: false
+        type: string
+
+jobs:
+  Release-GitHub:
+    name: Release GitHub
+    environment:
+      name: Release GitHub
+      url: "https://github.com/dennykorsukewitz/${{ github.event.repository.name }}/releases/tag/${{ github.ref_name }}"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Resolve package file name
+        id: package
+        run: |
+          if [ -n "${{ inputs.SUBLIME_NAME }}" ]; then
+            NAME="${{ inputs.SUBLIME_NAME }}"
+          else
+            NAME="${{ github.event.repository.name }}"
+            NAME="${NAME#Sublime-}"
+          fi
+          echo "name=${NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Build sublime-package
+        run: |
+          PACKAGE="${{ steps.package.outputs.name }}.sublime-package"
+          zip -r "$PACKAGE" . \
+            -x '.git/*' \
+            -x '.github/*' \
+            -x 'doc/*' \
+            -x 'README.md' \
+            -x 'RELEASE.md' \
+            -x 'CHANGELOG.md' \
+            -x 'TODO.md' \
+            -x '*.sublime-package' \
+            -x 'package-metadata.json' \
+            -x '.gitattributes' \
+            -x '.gitignore'
+
+      - name: Change RELEASE.md
+        run: sed -i '1,2d' RELEASE.md
+
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.PAT }}
+          artifacts: "${{ steps.package.outputs.name }}.sublime-package"
+          bodyFile: "RELEASE.md"
+          draft: false
+          generateReleaseNotes: true
