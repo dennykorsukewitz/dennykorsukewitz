@@ -1,4 +1,3 @@
----
 ###########################
 ###########################
 ## Markdown Linter rules ##
@@ -184,8 +183,9 @@ MD032: true
 
 # MD033/no-inline-html - Inline HTML
 MD033:
-  # Allowed elements
-  # allowed_elements: []
+  allowed_elements:
+    - img
+    - br
 
 # MD034/no-bare-urls - Bare URL used
 MD034: false
@@ -272,7 +272,8 @@ MD052: true
 
 # MD053/link-image-reference-definitions - Link and image reference definitions should be needed
 MD053:
-  # Ignored definitions
-  ignored_definitions: [
-    "//"
-  ]
+  ignored_definitions:
+    - "//"
+
+# MD060/table-column-style - Table column style
+MD060: false
