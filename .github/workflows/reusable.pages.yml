@@ -11,7 +11,8 @@ jobs:
   Trigger-GitHub-Pages:
     name: Trigger GitHub Pages
     runs-on: ubuntu-latest
-    permissions: write-all
+    # gh workflow run uses secrets.PAT only; no GITHUB_TOKEN scopes required.
+    permissions: {}
     steps:
       - run: |
           gh workflow run --repo dennykorsukewitz/dennykorsukewitz.github.io pages.yml --ref dev
