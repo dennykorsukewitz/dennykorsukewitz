@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="353" class="">
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="57" class="">
     <defs>
         <style/>
     </defs>
-    <style>@keyframes animation-gauge{0%{stroke-dasharray:0 329}}@keyframes animation-rainbow{0%,to{color:#7f00ff;fill:#7f00ff}14%{color:#a933ff;fill:#a933ff}29%{color:#007fff;fill:#007fff}43%{color:#00ff7f;fill:#00ff7f}57%{color:#ff0;fill:#ff0}71%{color:#ff7f00;fill:#ff7f00}86%{color:red;fill:red}}svg{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:14px;color:#777}h2{margin:8px 0 2px;padding:0;color:#0366d6;font-weight:400;font-size:16px}h2 svg{fill:currentColor}section&gt;.field{margin-left:5px;margin-right:5px}.field{display:flex;align-items:center;margin-bottom:2px;white-space:nowrap}.field svg{margin:0 8px;fill:#959da5;flex-shrink:0}.row{display:flex;flex-wrap:wrap}.row section{flex:1 1 0}.center{justify-content:center}.horizontal-wrap{flex-wrap:wrap}#metrics-end,.fill-width{width:100%}.avatar{border-radius:50%;margin:0 6px}svg.bar{margin:4px 0}.sponsors{white-space:normal;margin:0 13px 2px}.sponsors.goal{padding:6px 8px;border-radius:5px;background-color:#7777771f}.sponsors .goal-text,.sponsors .past-text{display:flex;justify-content:space-between;font-style:italic;font-size:12px}.sponsors .goal-text{margin-bottom:4px}.sponsors .past-text{margin:8px 0 2px}.sponsors .avatar{margin:2px}.markdown p{margin:8px 0}.markdown a{color:#58a6ff;text-decoration:none}:root{--color-calendar-graph-day-bg:#ebedf0;--color-calendar-graph-day-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L1-bg:#9be9a8;--color-calendar-graph-day-L2-bg:#40c463;--color-calendar-graph-day-L3-bg:#30a14e;--color-calendar-graph-day-L4-bg:#216e39;--color-calendar-halloween-graph-day-L1-bg:#ffee4a;--color-calendar-halloween-graph-day-L2-bg:#ffc501;--color-calendar-halloween-graph-day-L3-bg:#fe9600;--color-calendar-halloween-graph-day-L4-bg:#03001c;--color-calendar-winter-graph-day-L1-bg:#0a3069;--color-calendar-winter-graph-day-L2-bg:#0969da;--color-calendar-winter-graph-day-L3-bg:#54aeff;--color-calendar-winter-graph-day-L4-bg:#b6e3ff;--color-calendar-graph-day-L4-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L3-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L2-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L1-border:rgba(27,31,35,0.06)}</style>
+    <style>@keyframes animation-gauge{0%{stroke-dasharray:0 329}}@keyframes animation-rainbow{0%,to{color:#7f00ff;fill:#7f00ff}14%{color:#a933ff;fill:#a933ff}29%{color:#007fff;fill:#007fff}43%{color:#00ff7f;fill:#00ff7f}57%{color:#ff0;fill:#ff0}71%{color:#ff7f00;fill:#ff7f00}86%{color:red;fill:red}}svg{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:14px;color:#777}h2{margin:8px 0 2px;padding:0;color:#0366d6;font-weight:400;font-size:16px}h2 svg{fill:currentColor}section&gt;.field{margin-left:5px;margin-right:5px}.field{display:flex;align-items:center;margin-bottom:2px;white-space:nowrap}.field svg{margin:0 8px;fill:#959da5;flex-shrink:0}.field.error{color:#cb2431}.field.error svg{fill:#cb2431}.row{display:flex;flex-wrap:wrap}.row section{flex:1 1 0}#metrics-end,.fill-width{width:100%}:root{--color-calendar-graph-day-bg:#ebedf0;--color-calendar-graph-day-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L1-bg:#9be9a8;--color-calendar-graph-day-L2-bg:#40c463;--color-calendar-graph-day-L3-bg:#30a14e;--color-calendar-graph-day-L4-bg:#216e39;--color-calendar-halloween-graph-day-L1-bg:#ffee4a;--color-calendar-halloween-graph-day-L2-bg:#ffc501;--color-calendar-halloween-graph-day-L3-bg:#fe9600;--color-calendar-halloween-graph-day-L4-bg:#03001c;--color-calendar-winter-graph-day-L1-bg:#0a3069;--color-calendar-winter-graph-day-L2-bg:#0969da;--color-calendar-winter-graph-day-L3-bg:#54aeff;--color-calendar-winter-graph-day-L4-bg:#b6e3ff;--color-calendar-graph-day-L4-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L3-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L2-border:rgba(27,31,35,0.06);--color-calendar-graph-day-L1-border:rgba(27,31,35,0.06)}</style>
     <style/>
     <foreignObject x="0" y="0" width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" class="items-wrapper">
@@ -11,49 +11,14 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
                         <path fill-rule="evenodd" d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5zM8 14.25l-.345.666-.002-.001-.006-.003-.018-.01a7.643 7.643 0 01-.31-.17 22.075 22.075 0 01-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.08 22.08 0 01-3.744 2.584l-.018.01-.006.003h-.002L8 14.25zm0 0l.345.666a.752.752 0 01-.69 0L8 14.25z"/>
                     </svg>
-                    Sponsor Me!
                 </h2>
-                <div class="fill-width">
-                    <section class="sponsors goal">
-                        <div class="markdown">My second goal is to earn 4$ monthly to get a GitHub Pro Account. 
-Pro - Advanced tools for private repos
-🚀 👨🏼‍💻</div>
-                        <div class="center horizontal-wrap ">
-                            <svg class="bar" xmlns="http://www.w3.org/2000/svg" width="440" height="8">
-                                <mask id="project-bar">
-                                    <rect x="0" y="0" width="440" height="8" fill="white" rx="5"/>
-                                </mask>
-                                <rect mask="url(#project-bar)" x="0" y="0" width="0" height="8" fill="#ec6cb9"/>
-                                <rect mask="url(#project-bar)" x="0" y="0" width="440" height="8" fill="#d1d5da"/>
-                            </svg>
-                        </div>
-                        <div class="goal-text">
-                            <span>
-                            </span>
-                            <span>$4 per month</span>
-                        </div>
-                        <div class="row">
-                        </div>
-                        <div class="past-text">
-                            <span>2 sponsors helped dennykorsukewitz in the past</span>
-                        </div>
-                        <div class="row">
-                            <img class="avatar past " src="data:image/jpg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAkACQDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAQCBQYDCP/EAC4QAAIBAwQBAgUCBwAAAAAAAAECAwQREgAFITFBE1EGIjJCkRSxIzNhYnGBwf/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/xAAXEQEBAQEAAAAAAAAAAAAAAAAAATIC/9oADAMBAAIRAxEAPwDzJDtdXMmccLYFsczwt/bI8DsXv1fUxQRqwVqlHcnHCIZm/jn6ee++tamqo4dwppZgJ62eAEyGmkMiqBj85JGYUXNzZlJuAQLHVbWj1vVk2w00MCEB8XK42v8Ac5Ja4HQbodDURVyU0MalSmDHi8jXYd/aOv8Ael5qZQMoWYpjxkACx/x7f16/bTsppoAyRYyYuVMzKpxvbhFy5HfJv78HXFY2DgS2M78BWcCx/vv+x86Kr2Vl+od86NNNA00juhMi5GzdX/OjQayKv2qmqFeil3anlVP5UE+UdM17lg4szLcKbCxHeTEcyrlrERp9yjG90k7hIJYCXhZmuSoYWaN+WOJsSTcr51zo5ts3kBkdtk32CMt+oiLSU9SVFyXtdo24PIyQnsIOdLUC0+310+3ndngephwNbG7rCXJH1WXMxkZX4uSQfpvciFdS0tLXwvGlUwrFJR5GS8Z5XhunIcG7WW9j1cMEKqjm9QBZvVEjYSyF7k26yQjJTawubgno6ukWu+HaSShqqcyiV/VCu6z0dSnAyW3BPYzRgRe1xpCoSFHnWkjSjM6fLG85Kq3kAkA8AkC9/PJI0JYqKutYSBKRjDEi42VzYnsn8n8W886NL1FNNTMqzxPGWUOualclPRHuD4OjRWspqSnoItpZIUkNTQz1UnqXN2CyBRxb5RiDbye7jjWf2+pvuTGoiiqTOMGMwJIy8jng+x0aNSosdj3Wuo4aqlhqX/Sg+p6DgOhYfdYg2axtcWNvOnvjWlih3DGMEKn8MC/gf9PZ0aNdOc1i7iu2oCamPq3fBsVux4HBsOfcnRo0ay6P/9k=" width="19.200000000000003" height="19.200000000000003" alt="" />
-                            <img class="avatar past " src="data:image/jpg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAkACQDASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAAcEBQYDCAH/xAAtEAABAwMCBQMEAgMAAAAAAAABAgMEAAUREiEGMUFRYQcTFCIjcYEVoTKRsf/EABkBAAIDAQAAAAAAAAAAAAAAAAQFAAIDBv/EACARAAICAgICAwAAAAAAAAAAAAABAgMREgRBEzIhUYH/2gAMAwEAAhEDEQA/APVNc3VoaQpbiglCRkknAArm9JZjlAfebb1nSjWoDJ7Cskj1F4ZcYeV/Io0oecjgaSsrKOZAGduxPOpjJEslPfL1cJdwlptshfxG1YT7aikdBz287cq+WC73K1ym48t4qhtEF7Uor0ggjOTuAOePH+8xZb8zMuC2cF2S6StRGwIwSTjH57VD4huztsluxmVtr95shQx/jkbb9xjr3FJL7eY+T4aljtZ7+w+NUNPkfiFodbS4jCkKGQfFFUPBV2au/DUKQlRccS2G3tXMOADOf+/giinmoE4C69T75J4gtqbMxZ1pmIWJLsSWnWfZxs5lJ0Jxk51KGPNI568B6ahAab+O2cNg7Z6ZOCP6r0p6ucKW66cJXqallmPcUse8ZIByr28HBxzyE4GaQd14AlQrrPhty23DAbaLvuNkZUW9ZQMdtu2c1etZTRepSm9YIsbI3Lt0v5bzDkBvIbd9xle4853HMb1MvrTguj615y4Q4NW/TFMS2XFMiI03cg1rWkFRU39tw+R0PmpEq22V6UzLlfH1tpwG0qGn84HOt4wwOHW1Xo0a3gawxLTw+ymG8863JxJKl/QSVJT06bAUVfWt9b8BlxxKkqUnfIxnz++f7oofLErcslfxnBRcuGZ8N1x5tt1ABWyvSsfUDsaSXq5EMPjaUiNKkttS3G5DyErA1KCEjmBqx9I60UVK/YvR7o1EC2of4Ji3xx98zXSdYyNB+4U8sdh3qJGSHJsVtYyhx9tCh3ClhJ/qiit12dHx23VL9HYkYSKKKKFOWP/Z" width="19.200000000000003" height="19.200000000000003" alt="" />
-                        </div>
-                    </section>
-                </div>
                 <div class="row fill-width">
-                    <section class="sponsors">
-                        <div class="markdown">
-                            <p>I'm just a developer 🤓 who likes to drink a coffee ☕️ and program ⌨️.
-I would appreciate a donation for my open source work.</p>
-                            <p>
-                                If you have any questions, just write to me.
-                                <a href="https://github.com/sponsors/dennykorsukewitz">Denny Korsukéwitz</a>
-                            </p>
-                            <p>Currently I am working on the opensource ticket system Znuny.</p>
-                            <p>Znuny is a continuation of the ((OTRS)) Community Edition (version 6.0.30), which was declared End of Life (EOL) at the end of December 2020.</p>
+                    <section>
+                        <div class="field error">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                <path fill-rule="evenodd" d="M2.343 13.657A8 8 0 1113.657 2.343 8 8 0 012.343 13.657zM6.03 4.97a.75.75 0 00-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 101.06 1.06L8 9.06l1.97 1.97a.75.75 0 101.06-1.06L9.06 8l1.97-1.97a.75.75 0 10-1.06-1.06L8 6.94 6.03 4.97z"/>
+                            </svg>
+                            Unexpected error
                         </div>
                     </section>
                 </div>
